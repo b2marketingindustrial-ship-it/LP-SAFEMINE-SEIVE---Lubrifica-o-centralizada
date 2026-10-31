@@ -1,0 +1,343 @@
+{
+  "ficha": 1,
+  "padrao": "2.8.0",
+  "cliente": "Safe Mine Soluções",
+  "produto": "Lubrificação centralizada SEIVE LUB",
+  "data": "2026-10-30",
+  "site": {
+    "brand": "Safe Mine Soluções",
+    "brandShort": "Safe Mine",
+    "product": "Lubrificação centralizada SEIVE LUB",
+    "context": "máquinas pesadas",
+    "url": "https://lp-seive-lubrificacao-centralizada.vercel.app/",
+    "address": "Rua José de Paula Filho, 128 - Europa, Contagem - MG, 32043-050",
+    "privacyUrl": "",
+    "whatsapp": "5531995538843",
+    "shortcodes": {
+      "chat": "[atendimento_chat id=\"default\"]",
+      "form": "[atendimento_form id=\"default-form\"]"
+    }
+  },
+  "campanha": {
+    "mainKeyword": "lubrificação centralizada SEIVE",
+    "negatives": [
+      "troca de óleo",
+      "óleo de motor",
+      "lubrificante spray",
+      "lubrificante automotivo",
+      "lubrificação de bicicleta",
+      "lubrificante doméstico"
+    ],
+    "forbidden": [
+      "somos fabricantes",
+      "fabricamos",
+      "nossa fábrica",
+      "site oficial",
+      "loja oficial",
+      "canal oficial",
+      "todo o Brasil",
+      "todo o país",
+      "todo o território nacional",
+      "atendimento nacional",
+      "cobertura nacional",
+      "líder",
+      "o melhor",
+      "a melhor",
+      "número 1",
+      "nº 1",
+      "primeira fornecedora",
+      "a única do Brasil",
+      "único no mundo",
+      "distribuidor autorizado",
+      "distribuidora autorizada",
+      "distribuidor oficial",
+      "representante oficial",
+      "autorizado",
+      "autorizada",
+      "exclusivo",
+      "exclusiva",
+      "zero paradas",
+      "sem paradas",
+      "elimina paradas",
+      "elimina o desgaste",
+      "evita paradas"
+    ],
+    "areaAtendida": null,
+    "onde": null
+  },
+  "marcas": {
+    "usarLogos": false,
+    "nomes": ["SEIVE"],
+    "autorizacao": "SEIVE citada só por extenso, como na LP de supressão; logo sem autorização registrada"
+  },
+  "tokens": {
+    "padrao": false,
+    "cores": {
+      "primaria": "#102c73",
+      "marca": "#163b99",
+      "acao": "#4d7f22",
+      "verde-marca": "#7ba249"
+    }
+  },
+  "conteudo": {
+    "title": "Lubrificação centralizada SEIVE LUB para máquinas pesadas | Safe Mine",
+    "description": "Lubrificação centralizada SEIVE LUB para máquinas pesadas: sistema progressivo automático, preciso e contínuo, com atendimento da Safe Mine.",
+    "hero": {
+      "eyebrow": "Lubrificação automática para operações exigentes",
+      "title": "Lubrificação centralizada SEIVE LUB para máquinas pesadas",
+      "highlight": "máquinas pesadas",
+      "text": "Sistema progressivo que fornece lubrificante de forma precisa, contínua e uniforme. A Safe Mine ajuda você a definir a solução para a sua máquina.",
+      "help": {
+        "title": "Não sabe quantos pontos lubrificar?",
+        "text": "Descreva a máquina. Nós ajudamos na seleção."
+      },
+      "lines": {
+        "title": "Escolha a prioridade da sua operação",
+        "note": "Os resultados variam conforme o equipamento, o projeto e as condições de operação.",
+        "items": [
+          {
+            "id": "disponibilidade",
+            "icon": "trend-up",
+            "title": "Disponibilidade",
+            "spec": ["Menos paradas"],
+            "description": "Reduz paradas ligadas ao desgaste e à falta de lubrificação."
+          },
+          {
+            "id": "precisao",
+            "icon": "target",
+            "title": "Precisão",
+            "spec": ["Quantidade certa"],
+            "description": "Distribuição controlada do lubrificante nos pontos definidos."
+          },
+          {
+            "id": "desperdicio",
+            "icon": "droplet",
+            "title": "Menor desperdício",
+            "spec": ["Menos consumo"],
+            "description": "Reduz o excesso de lubrificação e o consumo desnecessário."
+          },
+          {
+            "id": "seguranca",
+            "icon": "shield",
+            "title": "Mais segurança",
+            "spec": ["Menos intervenção manual"],
+            "description": "Menor necessidade de acesso a pontos difíceis da máquina."
+          }
+        ]
+      }
+    },
+    "quote": {
+      "eyebrow": "Solicite sua cotação",
+      "title": "Fale com quem entende de lubrificação centralizada.",
+      "titleHighlight": "lubrificação centralizada.",
+      "text": "Descreva a máquina e a equipe indica a solução SEIVE LUB adequada à sua operação. Preencha o formulário ou fale direto conosco pelo WhatsApp.",
+      "help": "Não sabe quantos pontos lubrificar? Basta descrever a máquina.",
+      "trust": [
+        {
+          "icon": "users",
+          "label": "Atendimento consultivo"
+        },
+        {
+          "icon": "clock",
+          "label": "Resposta rápida"
+        },
+        {
+          "icon": "file",
+          "label": "Cotação pela descrição da máquina"
+        }
+      ],
+      "lgpd": "Seus dados serão usados apenas para responder à sua solicitação de cotação, conforme a LGPD."
+    }
+  },
+  "secoes": {
+    "linhas": {
+      "dataExport": "productLines",
+      "data": "linhas.ts",
+      "conteudo": {
+        "eyebrow": "Como o sistema funciona",
+        "title": "Um sistema progressivo para cada ponto da máquina",
+        "titleHighlight": "cada ponto da máquina",
+        "text": "O SEIVE LUB leva o lubrificante do reservatório até os pontos definidos, de forma automática, e permite acompanhar os sistemas instalados.",
+        "specLabels": ["Função", "Atuação"],
+        "help": {
+          "title": "Não sabe qual configuração escolher?",
+          "text": "Descreva sua máquina. A Safe Mine ajuda na seleção.",
+          "cta": "Receber orientação"
+        },
+        "note": "A configuração varia conforme o equipamento e os pontos de lubrificação.",
+        "items": [
+          {
+            "id": "bomba",
+            "tag": "Alimentação",
+            "title": "Bomba e reservatório",
+            "description": "Armazenam o lubrificante e alimentam o circuito de forma automática.",
+            "photo": "Bomba SEIVE LUB com reservatório transparente",
+            "features": ["Alimentação", "Contínua", "Processo automático"],
+            "dark": false
+          },
+          {
+            "id": "distribuidores",
+            "tag": "Distribuição",
+            "title": "Distribuidores progressivos",
+            "description": "Dividem o lubrificante de maneira controlada entre os pontos definidos.",
+            "photo": "Bloco distribuidor SEIVE LUB instalado na máquina",
+            "features": ["Dosagem", "Precisa", "Quantidade certa por ponto"],
+            "dark": false
+          },
+          {
+            "id": "linhas-de-lubrificacao",
+            "tag": "Condução",
+            "title": "Linhas até os pontos",
+            "description": "Levam o lubrificante às articulações e aos componentes do equipamento.",
+            "photo": "Mangueiras do sistema de lubrificação em máquina pesada",
+            "features": ["Condução", "Uniforme", "Projeto por equipamento"],
+            "dark": false
+          },
+          {
+            "id": "gestao",
+            "tag": "Gestão",
+            "title": "Software e relatórios",
+            "description": "Permitem consultar informações e relatórios dos sistemas instalados.",
+            "photo": "Painel eletrônico da bomba SEIVE LUB",
+            "features": ["Consulta", "Online", "Mais controle da manutenção"],
+            "dark": true
+          }
+        ]
+      }
+    },
+    "identificar": {
+      "dataExport": "supportPanel",
+      "data": "identificar.ts",
+      "conteudo": {
+        "eyebrow": "Dados para cotação",
+        "title": "Não sabe quantos pontos lubrificar?",
+        "text": "Descreva a máquina. A Safe Mine avalia o equipamento, os pontos de lubrificação e as condições de operação para indicar a solução.",
+        "microcopy": "Você pode pedir cotação sem os dados técnicos.",
+        "ctaLabel": "Receber indicação e cotação",
+        "list": {
+          "title": "O que ajuda na sua cotação",
+          "text": "Comece pela máquina. Os dados técnicos podem ficar para depois.",
+          "optionalLabel": "Se souber, envie também",
+          "optionalFrom": 3
+        },
+        "items": [
+          {
+            "icon": "file",
+            "label": "Equipamento",
+            "hint": "Informe o tipo, a marca e o modelo da máquina."
+          },
+          {
+            "icon": "pin",
+            "label": "Cidade/UF",
+            "hint": "Local da operação"
+          },
+          {
+            "icon": "truck",
+            "label": "Quantidade",
+            "hint": "Máquinas que receberão o sistema"
+          },
+          {
+            "icon": "target",
+            "label": "Pontos",
+            "hint": "de lubrificação"
+          },
+          {
+            "icon": "droplet",
+            "label": "Lubrificante",
+            "hint": "o que usa hoje"
+          },
+          {
+            "icon": "clock",
+            "label": "Regime",
+            "hint": "horas de operação"
+          }
+        ]
+      }
+    },
+    "aplicacoes": {
+      "dataExport": "applications",
+      "data": "aplicacoes.ts",
+      "conteudo": {
+        "eyebrow": "Aplicações",
+        "title": "Lubrificação automática para cada tipo de operação",
+        "titleHighlight": "para cada tipo de operação",
+        "text": "O projeto se adapta aos pontos de lubrificação e às características de cada equipamento. Escolha a aplicação e fale com a equipe.",
+        "cardCta": "Cotar para esta aplicação",
+        "help": {
+          "title": "Sua máquina não está aqui?",
+          "text": "Portuária, industrial ou outra: descreva o equipamento e a Safe Mine ajuda na seleção."
+        },
+        "items": [
+          {
+            "id": "mineracao",
+            "label": "Mineração",
+            "description": "Para máquinas que operam em alta exigência e não podem parar.",
+            "photo": "Caminhão fora de estrada em operação de mineração"
+          },
+          {
+            "id": "agricola",
+            "label": "Equipamentos agrícolas",
+            "description": "Lubrificação contínua para preservar componentes durante a safra.",
+            "photo": "Colheitadeira em operação na lavoura"
+          },
+          {
+            "id": "florestal",
+            "label": "Máquinas florestais",
+            "description": "Menos intervenção manual em articulações e pontos de difícil acesso.",
+            "photo": "Máquina florestal em pátio de toras"
+          },
+          {
+            "id": "moveis-e-pesados",
+            "label": "Equipamentos móveis e pesados",
+            "description": "Projeto adaptado aos pontos de lubrificação de cada equipamento.",
+            "photo": "Pá carregadeira ao lado de correia transportadora"
+          }
+        ]
+      }
+    },
+    "diferenciais": {
+      "dataExport": "why",
+      "data": "diferenciais.ts",
+      "conteudo": {
+        "eyebrow": "Diferenciais Safe Mine",
+        "titleLines": ["A quantidade certa,", "no ponto certo."],
+        "text": "A Safe Mine conecta a tecnologia SEIVE à sua operação, considerando o equipamento, os pontos de lubrificação e as condições de trabalho.",
+        "help": "Descreva a máquina. Nós ajudamos na escolha da solução.",
+        "scene": "Linha de lubrificação ligada à articulação de um cilindro em máquina pesada",
+        "reasons": [
+          {
+            "icon": "user",
+            "title": "Atendimento consultivo",
+            "description": "Entende a máquina e a operação antes de indicar o sistema."
+          },
+          {
+            "icon": "sliders",
+            "title": "Projeto personalizado",
+            "description": "Adequado às características de cada equipamento."
+          },
+          {
+            "icon": "refresh",
+            "title": "Processo automático",
+            "description": "Lubrificação precisa, contínua e uniforme durante a operação."
+          },
+          {
+            "icon": "file-text",
+            "title": "Gestão dos sistemas",
+            "description": "Relatórios e consulta online dos sistemas instalados."
+          },
+          {
+            "icon": "gear",
+            "title": "Tecnologia SEIVE",
+            "description": "Sistema progressivo desenvolvido pela própria fabricante."
+          }
+        ]
+      }
+    }
+  },
+  "assets": {
+    "pendentes": []
+  },
+  "gerado": "2026-10-30T12:00:00.000Z",
+  "origem": "docs/FICHA-LP.md",
+  "composicao": ["linhas", "identificar", "aplicacoes", "diferenciais"]
+}
