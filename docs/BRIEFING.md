@@ -65,7 +65,7 @@ Certificações, patente, números da SEIVE, "primeira fornecedora brasileira", 
 
 ## Desvios do padrão
 
-- **Header:** barra branca flutuante com a logo da Safe Mine, pedida pela B2 em 29/10/2026 com o mockup do topo. A assinatura do `check:lp` conhece essa estrutura.
+- **Header:** sem desvio. Restaurado em 01/11/2026 à estrutura fixa 4.1.1 (barra navy sticky, logo em placa pendurada, tagline central, CTA laranja, sem âncoras).
 - **Hero:** sem desvio. O Hero da primeira versão (fundo claro, sem a coluna do chat) foi substituído em 01/11/2026 pelo da estrutura fixa 4.1.2: grid `1fr · 270px · 300px`, coluna 2 vazia, slot `shortcode` de 300px, foto de 1700px ancorada na borda do container. A faixa de quatro prioridades e o cartão de ajuda do hero saíram; a nota de resultados ficou sob os botões.
 - **Linhas:** `ProductLines.astro` sem a faixa "Não sabe qual configuração escolher?" (01/11/2026), por repetir o bloco `identificar` logo abaixo. Recompor com `compose.mjs` sobrescreve o arquivo: guarde esta versão antes.
 - **Paleta:** os véus do hero usam o azul `#0a1d4d` da marca no lugar do navy `#001830` do template. O token `accent-orange-light` (`#7ba249`) existe só para o destaque do H1 sobre o fundo escuro.
@@ -74,3 +74,7 @@ Certificações, patente, números da SEIVE, "primeira fornecedora brasileira", 
 
 - `npm run ficha` e, com ele, `npm run verify` dependem da biblioteca `LP-STARTER-B2`, que não acompanha este repositório. Por isso, `ficha.json` e `docs/FICHA-LP.md` foram gerados a partir dos dados de `src/`, e a verificação é feita pelas etapas do CI: `check:lp`, `lint`, `format:check` e `build`.
 - Na Vercel, o formulário aparece como texto do shortcode, e os CTAs `btn-slave-whats` não têm ação: ambos dependem do plugin de atendimento do WordPress. O botão flutuante do WhatsApp funciona em qualquer hospedagem.
+
+## Header restaurado ao padrão (01/11/2026)
+
+A pedido do usuário, o Header deixou a barra branca flutuante do mockup de 29/10/2026 e voltou à estrutura fixa 4.1.1, como nas demais LPs da B2: barra navy `sticky`, a placa branca traz o logo SEIVE, um separador e o Safe Mine, tagline central "Lubrificação centralizada" e CTA laranja em caixa-alta ("Cotação" no celular). As âncoras do topo saíram. O Hero voltou ao padding do padrão (`py-20 lg:py-24`), já que o header não é mais sobreposto. A assinatura A8 do Header em `scripts/check-lp.mjs` voltou à da estrutura fixa.

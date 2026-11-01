@@ -42,11 +42,8 @@ export const cta = {
 /* ------------------------------------------------------------------ header */
 
 export const header = {
-  /** Âncoras da barra: rolam até as seções. */
-  nav: [
-    { id: 'sistema', label: 'Sistema SEIVE LUB', href: '#linhas' },
-    { id: 'aplicacoes', label: 'Aplicações', href: '#aplicacoes' },
-  ],
+  /** Tagline central da barra (estrutura fixa 4.1.1): o produto principal. */
+  tagline: 'Lubrificação centralizada',
 } as const
 
 /* -------------------------------------------------------------------- hero */
