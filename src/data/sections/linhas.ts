@@ -36,11 +36,6 @@ export const productLines = {
   text: 'O SEIVE LUB leva o lubrificante do reservatório até os pontos definidos, de forma automática, e permite acompanhar os sistemas instalados.',
   /** Rótulos das duas primeiras features de cada card. */
   specLabels: ['Função', 'Atuação'],
-  help: {
-    title: 'Não sabe qual configuração escolher?',
-    text: 'Descreva sua máquina. A Safe Mine ajuda na seleção.',
-    cta: 'Receber orientação',
-  },
   note: 'A configuração varia conforme o equipamento e os pontos de lubrificação.',
   items: [
     {
@@ -86,7 +81,6 @@ export const productLines = {
   titleHighlight: string
   text: string
   specLabels: readonly [string, string]
-  help: { title: string; text: string; cta: string }
   note: string
   items:
     | readonly [ProductLine, ProductLine, ProductLine]
