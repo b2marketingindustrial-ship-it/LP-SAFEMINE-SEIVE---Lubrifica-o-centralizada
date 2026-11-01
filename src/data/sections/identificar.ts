@@ -5,7 +5,7 @@
  * mãos. São 6 exatos: a faixa é um grid de 2/3/6 colunas com divisórias, e
  * qualquer outro número deixa célula órfã.
  *
- * O layout é o da LP de compressores: bloco navy com o CTA à esquerda e, à direita, os
+ * O layout é o da biblioteca B2: bloco navy com o CTA à esquerda e, à direita, os
  * 6 dados em dois grupos.
  *
  * Os 3 primeiros dados bastam para começar. Pontos, lubrificante e regime entram como

@@ -3,7 +3,7 @@
  *
  * 4 cards-botão com foto 4:3. O card inteiro é o CTA.
  *
- * O layout é o da LP de compressores. As aplicações são as da página de Lubrificação
+ * O layout é o da biblioteca B2. As aplicações são as da página de Lubrificação
  * Centralizada do site da Safe Mine; portuário e industrial ficam na faixa de ajuda porque
  * não há foto desses setores no material.
  *

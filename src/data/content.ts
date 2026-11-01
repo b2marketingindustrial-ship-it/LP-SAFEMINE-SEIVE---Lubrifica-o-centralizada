@@ -16,14 +16,11 @@ import heroBg from '@assets/heroBg.png'
 
 /* ------------------------------------------------------------------ tipos */
 
-/** Linha da faixa "Encontre a linha" no pé do hero. Cada card é um CTA. */
-export interface HeroLine {
-  id: string
+/** Ponto da caixa de ícones do hero: `line1` e `line2` ficam sempre em duas linhas. */
+export interface HeroPoint {
   icon: IconName
-  title: string
-  /** Dado de destaque sob o título; mais de um item entra separado por divisória. */
-  spec: readonly string[]
-  description: string
+  line1: string
+  line2: string
 }
 
 export interface TrustItem {
@@ -40,14 +37,12 @@ export const cta = {
   secondary: 'Identifique sua máquina',
   card: 'Falar com especialista',
   whatsapp: 'Chamar no WhatsApp',
-  /** Link do hero que rola até a seção de linhas. Não é CTA de atendimento. */
-  findLine: 'Conhecer o sistema',
 } as const
 
 /* ------------------------------------------------------------------ header */
 
 export const header = {
-  /** Âncoras da barra (como na LP de compressores): rolam até as seções. */
+  /** Âncoras da barra: rolam até as seções. */
   nav: [
     { id: 'sistema', label: 'Sistema SEIVE LUB', href: '#linhas' },
     { id: 'aplicacoes', label: 'Aplicações', href: '#aplicacoes' },
@@ -66,59 +61,24 @@ export const hero = {
     src: heroBg,
     alt: 'Bomba de lubrificação centralizada SEIVE LUB instalada em máquina pesada',
     /** Larguras geradas: as mesmas no <Picture> do Hero e no preload do Layout. */
-    widths: [480, 768, 1020],
-    sizes: '(min-width: 1024px) 46vw, 100vw',
+    widths: [640, 1024, 1536, 1981],
+    sizes: '(min-width: 1024px) 1700px, 100vw',
   },
-  help: {
-    title: 'Não sabe quantos pontos lubrificar?',
-    text: 'Descreva a máquina. Nós ajudamos na seleção.',
-  },
-  lines: {
-    title: 'Escolha a prioridade da sua operação',
-    note: 'Os resultados variam conforme o equipamento, o projeto e as condições de operação.',
-    items: [
-      {
-        id: 'disponibilidade',
-        icon: 'trend-up',
-        title: 'Disponibilidade',
-        spec: ['Menos paradas'],
-        description: 'Reduz paradas ligadas ao desgaste e à falta de lubrificação.',
-      },
-      {
-        id: 'precisao',
-        icon: 'target',
-        title: 'Precisão',
-        spec: ['Quantidade certa'],
-        description: 'Distribuição controlada do lubrificante nos pontos definidos.',
-      },
-      {
-        id: 'desperdicio',
-        icon: 'droplet',
-        title: 'Menor desperdício',
-        spec: ['Menos consumo'],
-        description: 'Reduz o excesso de lubrificação e o consumo desnecessário.',
-      },
-      {
-        id: 'seguranca',
-        icon: 'shield',
-        title: 'Mais segurança',
-        spec: ['Menos intervenção manual'],
-        description: 'Menor necessidade de acesso a pontos difíceis da máquina.',
-      },
-    ],
-  },
+  points: [
+    { icon: 'trend-up', line1: 'Menos paradas', line2: 'por desgaste' },
+    { icon: 'target', line1: 'Quantidade certa', line2: 'em cada ponto' },
+    { icon: 'droplet', line1: 'Menos consumo', line2: 'de lubrificante' },
+  ],
+  /** Aviso sob os botões: os três pontos acima são resultados que variam por máquina. */
+  note: 'Os resultados variam conforme o equipamento, o projeto e as condições de operação.',
 } as const satisfies {
   eyebrow: string
   title: string
   text: string
   highlight: string
   banner: Photo & { widths: readonly number[]; sizes: string }
-  help: { title: string; text: string }
-  lines: {
-    title: string
-    note: string
-    items: readonly [HeroLine, HeroLine, HeroLine, HeroLine]
-  }
+  points: readonly [HeroPoint, HeroPoint, HeroPoint]
+  note: string
 }
 
 /* ----------------------------------------------------------------- cotação */

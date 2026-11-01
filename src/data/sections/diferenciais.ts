@@ -1,7 +1,7 @@
 /**
  * Dados da seção "Diferenciais" (biblioteca B2, fase: autoridade).
  *
- * O layout é o da LP de compressores: frase de autoridade e CTA ao lado de uma foto, e
+ * O layout é o da biblioteca B2: frase de autoridade e CTA ao lado de uma foto, e
  * os 5 diferenciais num painel navy. São 5 exatos: o painel é `lg:grid-cols-5`.
  *
  * `cenario.jpg`: articulação com a linha de lubrificação, do site da Safe Mine.

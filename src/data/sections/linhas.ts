@@ -5,7 +5,7 @@
  * fecha o grid com peso visual. Cada linha tem 3 features de 2–4 palavras.
  *
  * Aqui os cards são as partes do sistema SEIVE LUB, que é um produto só, sob projeto. O
- * layout é o da LP de compressores: os 4 cards são claros, e `dark` fica só para o contrato
+ * layout é o da biblioteca B2: os 4 cards são claros, e `dark` fica só para o contrato
  * da biblioteca. `features` é posicional: função, atuação, resultado.
  *
  * Fotos do site da Safe Mine e da SEIVE: bomba e painel recortados do render do SEIVE LUB.
