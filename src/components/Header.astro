@@ -8,25 +8,37 @@
  */
 import { Image } from 'astro:assets'
 import Icon from './Icon.astro'
+import seiveLogo from '../assets/seive-logo.webp'
 import logo from '../assets/marca-safe-mine.png'
-import { site } from '../data/site'
 import { header, cta } from '../data/content'
 ---
 
 <header class="fixed inset-x-0 top-0 z-50 pt-3 sm:pt-4 lg:pt-5" data-header>
   <div class="mx-auto max-w-page px-3 sm:px-5 lg:px-8">
     <div class="site-bar flex items-center justify-between gap-4 rounded-2xl border border-primary-dark/10 bg-neutral-light px-4 py-2.5 sm:px-6 sm:py-3 lg:px-7">
-      {/* 1. Logo */}
-      <a href="/" class="flex shrink-0 items-center" aria-label={site.brand}>
+      {/* 1. Logos: SEIVE (fabricante) · separador · Safe Mine (anunciante) */}
+      <a href="/" class="flex shrink-0 items-center gap-3 sm:gap-5">
+        <Image
+          src={seiveLogo}
+          alt="SEIVE"
+          width={476}
+          height={126}
+          format="webp"
+          loading="eager"
+          fetchpriority="low"
+          decoding="async"
+          class="h-7 w-auto sm:h-9 lg:h-10"
+        />
+        <span aria-hidden="true" class="h-7 w-px shrink-0 bg-ink/20 sm:h-9"></span>
         <Image
           src={logo}
-          alt={site.brand}
+          alt="Safe Mine"
           width={420}
           format="webp"
           loading="eager"
           fetchpriority="low"
           decoding="async"
-          class="h-8 w-auto sm:h-10"
+          class="h-6 w-auto sm:h-8 lg:h-9"
         />
       </a>
 
