@@ -49,11 +49,13 @@ export const header = {
 /* -------------------------------------------------------------------- hero */
 
 export const hero = {
-  eyebrow: 'Lubrificação automática para operações exigentes',
+  eyebrow: 'Sistema automático para operações exigentes',
   title: `${site.product} para ${site.context}`,
+  /** Quebra de linha do H1 no desktop largo: o título vai em duas linhas. */
+  titleBreakAfter: 'Lubrificação centralizada',
   /** Trecho do H1 em verde. */
   highlight: 'máquinas pesadas',
-  text: 'Sistema progressivo que fornece lubrificante de forma precisa, contínua e uniforme. A Safe Mine ajuda você a definir a solução para a sua máquina.',
+  text: 'Sistema progressivo que fornece lubrificante de forma precisa,\ncontínua e uniforme. A Safe Mine ajuda você a definir a solução para a sua máquina.',
   banner: {
     src: heroBg,
     alt: 'Bomba de lubrificação centralizada SEIVE LUB instalada em máquina pesada',
@@ -66,16 +68,14 @@ export const hero = {
     { icon: 'target', line1: 'Quantidade certa', line2: 'em cada ponto' },
     { icon: 'droplet', line1: 'Menos consumo', line2: 'de lubrificante' },
   ],
-  /** Aviso sob os botões: os três pontos acima são resultados que variam por máquina. */
-  note: 'Os resultados variam conforme o equipamento, o projeto e as condições de operação.',
 } as const satisfies {
   eyebrow: string
   title: string
   text: string
   highlight: string
+  titleBreakAfter: string
   banner: Photo & { widths: readonly number[]; sizes: string }
   points: readonly [HeroPoint, HeroPoint, HeroPoint]
-  note: string
 }
 
 /* ----------------------------------------------------------------- cotação */
