@@ -9,7 +9,7 @@
 import type { IconName } from '@data/icons'
 import type { Photo } from '@data/types'
 
-import esquema from '@assets/solucao/esquema.png'
+import trator from '@assets/solucao/trator.jpg'
 
 export interface Purpose {
   icon: IconName
@@ -47,8 +47,8 @@ export const solution = {
     },
   ],
   scheme: {
-    src: esquema,
-    alt: 'Esquemático de uma instalação SEIVE LUB: bomba, filtros, distribuidores e linhas até os pontos da máquina',
+    src: trator,
+    alt: 'Bomba SEIVE LUB em destaque diante de um trator agrícola, com a seta indicando onde ela fica instalada na máquina',
   },
   /** Ficha técnica curta, em selos sob o esquemático. */
   facts: [
