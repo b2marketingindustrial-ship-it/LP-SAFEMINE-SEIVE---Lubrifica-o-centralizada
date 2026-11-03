@@ -1,6 +1,6 @@
 ---
 /**
- * "Por que investir" — seção própria desta LP (fase oferta), fora da biblioteca B2.
+ * "Por que investir" — seção própria desta LP (fase prova), fora da biblioteca B2.
  *
  * Layout assimétrico: à esquerda, os 6 benefícios como uma lista técnica (linhas com
  * divisória, ícone e marcador que acende no hover); à direita, o painel das duas
@@ -19,7 +19,7 @@ type Props = SectionProps
 const { tone, rhythm } = Astro.props
 ---
 
-<Section id="beneficios" tone={tone} rhythm={rhythm}>
+<Section id="beneficios" tone={tone} rhythm={rhythm} class="rounded-t-[2rem] sm:rounded-t-[3rem]">
   <SplitHeader
     eyebrow={benefits.eyebrow}
     title={benefits.title}

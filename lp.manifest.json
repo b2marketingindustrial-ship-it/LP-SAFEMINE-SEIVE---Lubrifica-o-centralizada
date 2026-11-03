@@ -1,14 +1,14 @@
 {
   "standardVersion": "2.8.0",
-  "composedAt": "2026-11-01",
+  "composedAt": "2026-11-02",
   "library": "../Projetos B2/LP-STARTER-B2/sections",
   "primitives": [
     "BrandCarousel"
   ],
   "phases": {
     "oferta": [
-      "linhas",
-      "beneficios"
+      "solucao",
+      "linhas"
     ],
     "apoio": [
       "processo",
@@ -16,6 +16,7 @@
     ],
     "prova": [
       "aplicacoes",
+      "beneficios",
       "clientes"
     ],
     "autoridade": [
@@ -24,6 +25,62 @@
     ]
   },
   "sections": [
+    {
+      "slug": "solucao",
+      "id": "solucao",
+      "title": "A solução (seção própria da LP)",
+      "phase": "oferta",
+      "component": "Solution.astro",
+      "data": "solucao.ts",
+      "dataExport": "solution",
+      "carriesNavy": false,
+      "tone": "light",
+      "rhythm": "open",
+      "tones": [
+        "light",
+        "gray"
+      ],
+      "rhythms": [
+        "open",
+        "even",
+        "flow",
+        "tight"
+      ],
+      "ctas": [
+        "solucao-cta"
+      ],
+      "contract": {
+        "itemsPath": "purposes",
+        "itemsMin": 3,
+        "itemsMax": 4,
+        "requiredItemFields": [
+          "icon",
+          "title",
+          "description"
+        ],
+        "alsoCount": {
+          "facts": [
+            3,
+            3
+          ]
+        },
+        "maxLength": {
+          "text": 200,
+          "item.description": 90
+        }
+      },
+      "assets": [
+        {
+          "dir": "solucao",
+          "match": "esquema",
+          "files": "esquema.png",
+          "spec": "Esquemático da instalação, PNG com fundo transparente, ~1800 px de largura",
+          "width": 1800,
+          "height": 838,
+          "alpha": true
+        }
+      ]
+    },
     {
       "slug": "linhas",
       "id": "linhas",
@@ -95,48 +152,7 @@
       ]
     },
     {
-      "carriesNavy": false,
-      "tones": [
-        "light",
-        "gray"
-      ],
-      "assets": [],
-      "slug": "beneficios",
-      "id": "beneficios",
-      "title": "Por que investir (seção própria da LP)",
-      "phase": "oferta",
-      "component": "Benefits.astro",
-      "data": "beneficios.ts",
-      "dataExport": "benefits",
-      "tone": "light",
-      "rhythm": "even",
-      "rhythms": [
-        "even",
-        "flow",
-        "tight",
-        "open"
-      ],
-      "ctas": [
-        "beneficios-cta"
-      ],
-      "contract": {
-        "itemsPath": "items",
-        "itemsMin": 4,
-        "itemsMax": 6,
-        "requiredItemFields": [
-          "id",
-          "icon",
-          "title",
-          "description"
-        ],
-        "maxLength": {
-          "text": 170,
-          "item.description": 90
-        }
-      }
-    },
-    {
-      "carriesNavy": false,
+      "carriesNavy": true,
       "tones": [
         "light",
         "gray"
@@ -144,18 +160,15 @@
       "assets": [],
       "slug": "processo",
       "id": "processo",
-      "title": "Como funciona (etapas), variante clara",
+      "title": "Como funciona (etapas) · bloco navy",
       "phase": "apoio",
       "component": "ProcessSteps.astro",
       "data": "processo.ts",
       "dataExport": "processSteps",
       "tone": "light",
-      "rhythm": "even",
+      "rhythm": "panel-lead",
       "rhythms": [
-        "even",
-        "flow",
-        "tight",
-        "open"
+        "panel-lead"
       ],
       "ctas": [
         "processo-cta"
@@ -179,20 +192,22 @@
     {
       "slug": "identificar",
       "id": "identificar",
-      "title": "Painel de apoio à identificação",
+      "title": "Painel de apoio à identificação, variante clara",
       "phase": "apoio",
       "component": "SupportPanel.astro",
       "data": "identificar.ts",
       "dataExport": "supportPanel",
-      "carriesNavy": true,
+      "carriesNavy": false,
       "tone": "light",
-      "rhythm": "panel-lead",
+      "rhythm": "flow",
       "tones": [
         "light",
         "gray"
       ],
       "rhythms": [
-        "panel-lead"
+        "flow",
+        "even",
+        "tight"
       ],
       "exampleHash": "dfa6bcf7c0258bb1",
       "ctas": [
@@ -223,7 +238,7 @@
       "data": "aplicacoes.ts",
       "dataExport": "applications",
       "carriesNavy": false,
-      "tone": "gray",
+      "tone": "light",
       "rhythm": "centered-lead",
       "tones": [
         "light",
@@ -270,6 +285,47 @@
         "light",
         "gray"
       ],
+      "assets": [],
+      "slug": "beneficios",
+      "id": "beneficios",
+      "title": "Por que investir (seção própria da LP)",
+      "phase": "prova",
+      "component": "Benefits.astro",
+      "data": "beneficios.ts",
+      "dataExport": "benefits",
+      "tone": "gray",
+      "rhythm": "even",
+      "rhythms": [
+        "even",
+        "flow",
+        "tight",
+        "open"
+      ],
+      "ctas": [
+        "beneficios-cta"
+      ],
+      "contract": {
+        "itemsPath": "items",
+        "itemsMin": 4,
+        "itemsMax": 6,
+        "requiredItemFields": [
+          "id",
+          "icon",
+          "title",
+          "description"
+        ],
+        "maxLength": {
+          "text": 170,
+          "item.description": 90
+        }
+      }
+    },
+    {
+      "carriesNavy": false,
+      "tones": [
+        "light",
+        "gray"
+      ],
       "assets": [
         {
           "dir": "clientes",
@@ -285,7 +341,7 @@
       "data": "clientes.ts",
       "dataExport": "clients",
       "tone": "gray",
-      "rhythm": "flow",
+      "rhythm": "even",
       "rhythms": [
         "even",
         "tight",
@@ -412,5 +468,5 @@
       ]
     }
   ],
-  "note": "Composição estendida à mão em 01/11/2026 (biblioteca indisponível nesta máquina): beneficios (seção própria), processo (variante clara), clientes (carrossel com 18 logos), perguntas; aplicacoes com 8 itens em carrossel. Ver docs/BRIEFING.md."
+  "note": "Composição estendida à mão (biblioteca indisponível nesta máquina): solucao e beneficios são seções próprias; processo é o bloco navy da fase de apoio e identificar ficou claro; aplicacoes em faixa verde-escura com 8 itens em carrossel; clientes com 18 logos. Tons e ritmos de resolveLayout em 02/11/2026. Ver docs/BRIEFING.md."
 }

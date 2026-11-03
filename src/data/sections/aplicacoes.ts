@@ -9,6 +9,7 @@
  * Fotos 5 a 8: catálogo SEIVE LUB 2024, p. 4, em baixa resolução (210 a 348 px de largura);
  * troque pelos originais quando chegarem.
  */
+import type { IconName } from '@data/icons'
 import type { Photo } from '@data/types'
 
 import app1 from '@assets/aplicacoes/aplicacao-1.png'
@@ -22,6 +23,7 @@ import app8 from '@assets/aplicacoes/aplicacao-8.jpg'
 
 export interface Application {
   id: string
+  icon: IconName
   label: string
   description: string
   photo: Photo
@@ -43,48 +45,56 @@ export const applications = {
   items: [
     {
       id: 'mineracao',
+      icon: 'mountain',
       label: 'Mineração',
       description: 'Para máquinas que operam em alta exigência e não podem parar.',
       photo: { src: app1, alt: 'Caminhão fora de estrada em operação de mineração' },
     },
     {
       id: 'agricola',
+      icon: 'leaf',
       label: 'Equipamentos agrícolas',
       description: 'Lubrificação contínua para preservar componentes durante a safra.',
       photo: { src: app2, alt: 'Colheitadeira em operação na lavoura' },
     },
     {
       id: 'sucroenergetico',
+      icon: 'factory',
       label: 'Sucroenergético',
       description: 'Para colhedoras e equipamentos que operam em turnos longos na safra.',
       photo: { src: app5, alt: 'Colhedora de cana em operação no canavial' },
     },
     {
       id: 'algodao',
+      icon: 'layers',
       label: 'Algodão',
       description: 'Pontos protegidos da contaminação por pó e resíduos da colheita.',
       photo: { src: app6, alt: 'Colhedora de algodão em operação na lavoura' },
     },
     {
       id: 'florestal',
+      icon: 'engine',
       label: 'Máquinas florestais',
       description: 'Menos intervenção manual em articulações e pontos de difícil acesso.',
       photo: { src: app3, alt: 'Máquina florestal em pátio de toras' },
     },
     {
       id: 'moveis-e-pesados',
+      icon: 'truck',
       label: 'Equipamentos móveis e pesados',
       description: 'Projeto adaptado aos pontos de lubrificação de cada equipamento.',
       photo: { src: app4, alt: 'Pá carregadeira ao lado de correia transportadora' },
     },
     {
       id: 'portuario',
+      icon: 'box',
       label: 'Portuário',
       description: 'Para reach stackers e equipamentos de movimentação de contêineres.',
       photo: { src: app8, alt: 'Reach stacker movimentando contêiner em terminal portuário' },
     },
     {
       id: 'estacionarios',
+      icon: 'cylinder',
       label: 'Estacionários',
       description: 'Para equipamentos fixos de pátio, com pontos de difícil acesso.',
       photo: { src: app7, alt: 'Empilhadeira de pátio sobre pilha de minério' },

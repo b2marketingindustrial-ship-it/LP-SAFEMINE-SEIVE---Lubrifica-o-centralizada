@@ -1,5 +1,5 @@
 /**
- * Dados da seção "Por que investir" (fase: oferta). Seção própria desta LP, fora da
+ * Dados da seção "Por que investir" (fase: prova). Seção própria desta LP, fora da
  * biblioteca B2 (01/11/2026, docs/BRIEFING.md).
  *
  * 6 benefícios do catálogo SEIVE LUB 2024 (p. 8, 12 e 14) e as duas estatísticas de

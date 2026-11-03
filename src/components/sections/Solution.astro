@@ -1,0 +1,103 @@
+---
+/**
+ * "A solução" — seção própria desta LP (fase oferta), logo abaixo do hero.
+ *
+ * Duas colunas: à esquerda, o que é o SEIVE LUB (título, frase-síntese, texto) e as 4
+ * finalidades em grade; à direita, o esquemático de uma instalação sobre a placa
+ * texturizada, com legenda e uma ficha técnica curta. O CTA fecha a coluna de texto.
+ */
+import { Image } from 'astro:assets'
+import Button from '@components/Button.astro'
+import Icon from '@components/Icon.astro'
+import Section from '@components/Section.astro'
+import type { SectionProps } from '@lib/layout'
+import { cta } from '@data/content'
+import { solution } from '@data/sections/solucao'
+
+type Props = SectionProps
+
+const { tone, rhythm } = Astro.props
+
+const at = solution.title.indexOf(solution.titleHighlight)
+const before = at >= 0 ? solution.title.slice(0, at) : solution.title
+const after = at >= 0 ? solution.title.slice(at + solution.titleHighlight.length) : ''
+---
+
+<Section id="solucao" tone={tone} rhythm={rhythm}>
+  <div class="grid gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:items-center lg:gap-16">
+    <div>
+      <span class="inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.18em] text-ink-soft uppercase sm:text-[13px]">
+        <span class="h-[3px] w-9 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
+        {solution.eyebrow}
+      </span>
+      <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-primary-dark-900 sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
+        {before}
+        {at >= 0 && <span class="text-accent-orange">{solution.titleHighlight}</span>}
+        {after}
+      </h2>
+
+      <p class="mt-6 max-w-[34rem] font-display text-[1.15rem] leading-snug font-bold text-primary-dark-900 sm:text-[1.3rem]">
+        {solution.lead}
+      </p>
+      <p class="mt-4 max-w-[34rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[17px]">
+        {solution.text}
+      </p>
+
+      <ul class="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+        {solution.purposes.map((item) => (
+          <li class="flex gap-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent-orange/10 text-accent-orange">
+              <Icon name={item.icon} class="size-5" />
+            </span>
+            <span>
+              <h3 class="font-display text-[1rem] leading-snug font-extrabold text-primary-dark-900">
+                {item.title}
+              </h3>
+              <p class="mt-1 font-sans text-[14.5px] leading-snug text-ink-soft">
+                {item.description}
+              </p>
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <Button cta="solucao-cta" size="md" class="mt-9">
+        {cta.card}
+      </Button>
+    </div>
+
+    <figure class="relative overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
+      <div class="surface-plate relative px-6 pt-8 pb-6 sm:px-10 sm:pt-10">
+        <span
+          class="blueprint-light pointer-events-none absolute inset-0"
+          aria-hidden="true"
+        ></span>
+        <Image
+          src={solution.scheme.src}
+          alt={solution.scheme.alt}
+          format="webp"
+          width={1200}
+          loading="lazy"
+          decoding="async"
+          class="relative mx-auto w-full max-w-[36rem] object-contain"
+        />
+        <figcaption class="relative mt-5 max-w-[30rem] font-sans text-[13px] leading-snug text-ink-soft">
+          {solution.caption}
+        </figcaption>
+      </div>
+
+      <dl class="grid divide-y divide-primary-dark/10 border-t border-primary-dark/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        {solution.facts.map((fact) => (
+          <div class="px-6 py-4 sm:px-6">
+            <dt class="font-sans text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+              {fact.label}
+            </dt>
+            <dd class="mt-1 font-display text-[16px] font-extrabold text-primary-dark-900">
+              {fact.value}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </figure>
+  </div>
+</Section>

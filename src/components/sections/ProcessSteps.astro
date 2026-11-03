@@ -1,133 +1,114 @@
 ---
 /**
- * Como funciona (etapas) — biblioteca B2, fase apoio. Variante clara nesta LP: o bloco
- * navy da fase continua sendo o "identificar" (docs/BRIEFING.md).
- *
- * As 4 etapas vão numa "folha técnica": painel branco com malha de blueprint, uma linha
- * de fluxo verde que liga os marcadores numerados (horizontal no desktop, vertical no
- * celular) e, no pé, o CTA com a linha de reforço.
+ * Como funciona (etapas) — biblioteca B2, fase apoio. É o bloco navy da primeira metade
+ * da página (o "identificar" ficou claro), no layout do painel de dados da COAIR que o
+ * usuário trouxe como referência em 02/11/2026: painel navy com cantos técnicos, malha de
+ * blueprint e o esquemático da instalação em marca d'água à direita; cabeçalho e texto à
+ * esquerda, CTA e reforço à direita; abaixo, as 4 etapas numeradas em pílulas numa linha.
  */
+import { Image } from 'astro:assets'
 import Button from '@components/Button.astro'
 import Icon from '@components/Icon.astro'
 import Section from '@components/Section.astro'
-import SplitHeader from '@components/SplitHeader.astro'
 import type { SectionProps } from '@lib/layout'
 import { cta } from '@data/content'
 import { processSteps } from '@data/sections/processo'
+import { solution } from '@data/sections/solucao'
 
 type Props = SectionProps
 
 const { tone, rhythm } = Astro.props
+
+const at = processSteps.title.indexOf(processSteps.titleHighlight)
+const before = at >= 0 ? processSteps.title.slice(0, at) : processSteps.title
+const after = at >= 0 ? processSteps.title.slice(at + processSteps.titleHighlight.length) : ''
 ---
 
 <Section id="processo" tone={tone} rhythm={rhythm}>
-  <SplitHeader
-    eyebrow={processSteps.eyebrow}
-    title={processSteps.title}
-    highlight={processSteps.titleHighlight}
-    text={processSteps.text}
-  />
+  <div class="process-panel tech-corners relative overflow-hidden rounded-[1.5rem] px-6 py-9 sm:px-10 sm:py-11 lg:px-12 lg:py-12">
+    <span class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></span>
+    {/* Esquemático em marca d'água: só no desktop, atrás do CTA. */}
+    <Image
+      src={solution.scheme.src}
+      alt=""
+      format="webp"
+      width={1200}
+      loading="lazy"
+      decoding="async"
+      aria-hidden="true"
+      class="process-ghost pointer-events-none absolute -right-12 top-1/2 hidden w-[46%] -translate-y-1/2 lg:block"
+    />
 
-  <div class="relative mt-10 overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
-    <span class="blueprint-light pointer-events-none absolute inset-0" aria-hidden="true"></span>
+    <div class="relative grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:items-start lg:gap-12">
+      <div>
+        <span class="inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.18em] text-neutral-light/70 uppercase sm:text-[13px]">
+          <span
+            class="h-[3px] w-8 shrink-0 rounded-full bg-accent-orange-light"
+            aria-hidden="true"
+          ></span>
+          {processSteps.eyebrow}
+        </span>
+        <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-neutral-light sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
+          {before}
+          {at >= 0 && <span class="text-accent-orange-light">{processSteps.titleHighlight}</span>}
+          {after}
+        </h2>
+        <p class="mt-5 max-w-[36rem] font-sans text-[16px] leading-relaxed text-neutral-light/80 sm:text-[17px]">
+          {processSteps.text}
+        </p>
+      </div>
 
-    <ol class="steps relative grid gap-10 px-6 py-8 sm:px-8 lg:grid-cols-4 lg:gap-6 lg:px-10 lg:py-10">
+      <div class="flex flex-col items-start gap-4 lg:items-end lg:pt-2">
+        <Button cta="processo-cta" size="lg" class="rounded-full">
+          {cta.card}
+        </Button>
+        <p class="flex items-center gap-2.5 font-sans text-[14px] text-neutral-light/80 sm:text-[15px]">
+          <Icon name="check" class="size-5 shrink-0 text-accent-orange-light" />
+          {processSteps.microcopy}
+        </p>
+      </div>
+    </div>
+
+    <ol class="relative mt-9 grid gap-3 sm:grid-cols-2 lg:mt-10 lg:grid-cols-4">
       {processSteps.items.map((step, i) => (
-        <li class="step relative pl-16 lg:pl-0 lg:pt-16">
-          <span class="step-marker" aria-hidden="true">
-            <span class="step-number">{i + 1}</span>
+        <li class="step-pill flex items-start gap-4 rounded-xl px-5 py-4">
+          <span class="relative flex size-11 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/[0.06] text-accent-orange-light">
+            <Icon name={step.icon} class="size-5" />
+            <span class="absolute -top-1.5 -right-1.5 flex size-5 items-center justify-center rounded-full bg-accent-orange font-sans text-[11px] font-bold text-neutral-light tabular-nums">
+              {i + 1}
+            </span>
           </span>
-          <span class="flex items-center gap-3">
-            <Icon name={step.icon} class="size-5 shrink-0 text-accent-orange" />
-            <h3 class="font-display text-[1.1rem] leading-snug font-extrabold text-primary-dark-900">
+          <span class="min-w-0">
+            <h3 class="font-display text-[15px] leading-snug font-extrabold text-neutral-light sm:text-[16px]">
               {step.title}
             </h3>
+            <p class="mt-1 font-sans text-[13.5px] leading-snug text-neutral-light/75">
+              {step.description}
+            </p>
           </span>
-          <p class="mt-2 max-w-[17rem] font-sans text-[15px] leading-snug text-ink-soft">
-            {step.description}
-          </p>
         </li>
       ))}
     </ol>
-
-    <div class="relative flex flex-col gap-4 border-t border-primary-dark/10 bg-primary-dark/[0.03] px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
-      <p class="flex items-center gap-3 font-sans text-[15px] text-ink">
-        <Icon name="check" class="size-5 shrink-0 text-accent-orange" />
-        {processSteps.microcopy}
-      </p>
-      <Button cta="processo-cta" size="md" class="self-start sm:self-auto">
-        {cta.card}
-      </Button>
-    </div>
   </div>
 </Section>
 
 <style>
-  /* Marcador: círculo branco com anel, número verde no canto. */
-  .step-marker {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    width: 2.75rem;
-    height: 2.75rem;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgb(10 29 77 / 0.12);
-    border-radius: 9999px;
-    background: var(--color-neutral-light);
-    box-shadow: 0 10px 22px -16px rgb(10 29 77 / 0.5);
+  .process-panel {
+    background:
+      radial-gradient(900px 480px at 0% 0%, rgb(255 255 255 / 0.07) 0%, transparent 60%),
+      linear-gradient(160deg, var(--color-primary-dark-800) 0%, var(--color-primary-dark-900) 70%);
+    box-shadow: 0 30px 60px -36px rgb(10 29 77 / 0.6);
   }
 
-  .step-marker::before {
-    content: '';
-    width: 0.625rem;
-    height: 0.625rem;
-    border-radius: 9999px;
-    background: var(--color-accent-orange);
+  /* Esquemático como traço claro: tira a cor, inverte e deixa quase transparente. */
+  .process-ghost {
+    filter: grayscale(1) invert(1) brightness(1.6);
+    opacity: 0.16;
+    mix-blend-mode: screen;
   }
 
-  .step-number {
-    position: absolute;
-    top: -0.4rem;
-    right: -0.4rem;
-    display: flex;
-    width: 1.4rem;
-    height: 1.4rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 9999px;
-    background: var(--color-primary-dark-900);
-    color: var(--color-neutral-light);
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-  }
-
-  /* Linha de fluxo: vertical no celular, atrás dos marcadores. */
-  .step::after {
-    content: '';
-    position: absolute;
-    top: 2.75rem;
-    bottom: -2.5rem;
-    left: 1.375rem;
-    border-left: 2px dashed rgb(77 127 34 / 0.45);
-  }
-
-  .step:last-child::after {
-    display: none;
-  }
-
-  @media (width >= 64rem) {
-    /* Horizontal no desktop: cada etapa liga à próxima. */
-    .step::after {
-      top: 1.375rem;
-      right: -1.5rem;
-      bottom: auto;
-      left: 2.75rem;
-      border-top: 2px dashed rgb(77 127 34 / 0.45);
-      border-left: 0;
-    }
+  .step-pill {
+    border: 1px solid rgb(255 255 255 / 0.14);
+    background: linear-gradient(160deg, rgb(255 255 255 / 0.08) 0%, rgb(255 255 255 / 0.02) 100%);
   }
 </style>

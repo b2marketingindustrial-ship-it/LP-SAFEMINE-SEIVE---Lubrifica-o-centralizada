@@ -4,8 +4,9 @@
  * mockup de 29/10/2026 nesta LP (desvio registrado em docs/BRIEFING.md).
  * `npm run compose` sobrescreve este arquivo com o da biblioteca: guarde-o antes.
  *
- * Card dividido a partir de 1280px (abaixo, empilhado): bloco navy à esquerda (título, texto, CTA e reforço) — continua sendo
- * o bloco navy da primeira metade da página — e, à direita, os 6 dados em dois grupos:
+ * Card dividido a partir de 1280px (abaixo, empilhado): placa clara à esquerda (título,
+ * texto, CTA e reforço; deixou de ser navy em 02/11/2026, quando o "processo" virou o bloco
+ * navy da fase) e, à direita, os 6 dados em dois grupos:
  * o essencial e o "se souber" (`list.optionalFrom`).
  */
 import Button from '@components/Button.astro'
@@ -25,18 +26,18 @@ const optionals = supportPanel.items.slice(list.optionalFrom)
 <Section id="identificar" tone={tone} rhythm={rhythm}>
   <div class="grid overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
     {/* Bloco navy */}
-    <div class="support-navy tech-corners relative flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 xl:px-14 xl:py-14">
-      <span class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></span>
-      <span class="relative inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.16em] text-neutral-light/70 uppercase sm:text-[13px]">
+    <div class="support-lead relative flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 xl:px-14 xl:py-14">
+      <span class="blueprint-light pointer-events-none absolute inset-0" aria-hidden="true"></span>
+      <span class="relative inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.16em] text-ink-soft uppercase sm:text-[13px]">
         <span class="h-[3px] w-8 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
         {supportPanel.eyebrow}
       </span>
 
-      <h2 class="relative mt-4 max-w-[26rem] font-display leading-[1.06] font-extrabold tracking-[-0.02em] text-neutral-light text-[1.75rem] sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
+      <h2 class="relative mt-4 max-w-[26rem] font-display leading-[1.06] font-extrabold tracking-[-0.02em] text-primary-dark-900 text-[1.75rem] sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
         {supportPanel.title}
       </h2>
 
-      <p class="relative mt-5 max-w-[30rem] font-sans text-[16px] leading-relaxed text-neutral-light/80 sm:text-[18px]">
+      <p class="relative mt-5 max-w-[30rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[18px]">
         {supportPanel.text}
       </p>
 
@@ -44,8 +45,8 @@ const optionals = supportPanel.items.slice(list.optionalFrom)
         {supportPanel.ctaLabel}
       </Button>
 
-      <p class="relative mt-6 flex items-center gap-3 font-sans text-[14px] text-neutral-light/70 sm:text-[15px]">
-        <Icon name="chat" class="size-6 shrink-0 text-neutral-light/85" />
+      <p class="relative mt-6 flex items-center gap-3 font-sans text-[14px] text-ink-soft sm:text-[15px]">
+        <Icon name="chat" class="size-6 shrink-0 text-primary-dark-900" />
         {supportPanel.microcopy}
       </p>
     </div>
@@ -114,10 +115,10 @@ const optionals = supportPanel.items.slice(list.optionalFrom)
 </Section>
 
 <style>
-  .support-navy {
-    background:
-      radial-gradient(700px 420px at 0% 0%, rgb(255 255 255 / 0.06) 0%, transparent 60%),
-      linear-gradient(160deg, var(--color-primary-dark-900) 0%, #071634 100%);
+  /* Lado claro do painel: placa com a malha de blueprint, separada do lado da lista. */
+  .support-lead {
+    background-color: #f3f5fa;
+    border-right: 1px solid rgb(10 29 77 / 0.1);
   }
 
   .support-card {

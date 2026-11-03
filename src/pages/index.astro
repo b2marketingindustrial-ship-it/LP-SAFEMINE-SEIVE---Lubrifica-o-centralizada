@@ -18,6 +18,7 @@ import Header from '../components/Header.astro'
 import Hero from '../components/Hero.astro'
 import QuoteForm from '../components/QuoteForm.astro'
 import Footer from '../components/Footer.astro'
+import Solution from '../components/sections/Solution.astro'
 import ProductLines from '../components/sections/ProductLines.astro'
 import Benefits from '../components/sections/Benefits.astro'
 import ProcessSteps from '../components/sections/ProcessSteps.astro'
@@ -36,12 +37,13 @@ import { shortcodes } from '../data/site'
     <Hero>
       <Fragment slot="shortcode">{shortcodes.chat}</Fragment>
     </Hero>
+    <Solution tone="light" rhythm="open" />
     <ProductLines tone="light" rhythm="open" />
-    <Benefits tone="light" rhythm="even" />
-    <ProcessSteps tone="light" rhythm="even" />
-    <SupportPanel tone="light" rhythm="panel-lead" />
-    <ApplicationsGallery tone="gray" rhythm="centered-lead" />
-    <ClientLogos tone="gray" rhythm="flow" />
+    <ProcessSteps tone="light" rhythm="panel-lead" />
+    <SupportPanel tone="light" rhythm="flow" />
+    <ApplicationsGallery tone="light" rhythm="centered-lead" />
+    <Benefits tone="gray" rhythm="even" />
+    <ClientLogos tone="gray" rhythm="even" />
     <Faq tone="gray" rhythm="even" />
     <WhyBrand tone="gray" rhythm="overlap" />
     <QuoteForm>
