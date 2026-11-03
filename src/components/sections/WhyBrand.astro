@@ -28,10 +28,10 @@ const titleBottom = why.titleLines.at(-1)
 ---
 
 <Section id="diferenciais" tone={tone} rhythm={rhythm} container={false} class="relative">
-  {/* Bloco verde-escuro em largura total, encostado no topo da seção */}
+  {/* Bloco verde-escuro em largura total; sobe por baixo da curva da seção de cima */}
   <div
     class="why-hero relative overflow-hidden"
-    style="margin-top: calc(-1 * var(--section-space))"
+    style="margin-top: calc(-1 * var(--section-space) - var(--lp-round)); padding-top: var(--lp-round)"
   >
     {/* Foto à direita (desktop), com a borda esquerda esmaecida no verde */}
     <div class="why-photo absolute inset-y-0 right-0 hidden w-[58%] lg:block">
