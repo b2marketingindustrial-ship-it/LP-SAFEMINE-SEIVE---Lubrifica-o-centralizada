@@ -51,7 +51,7 @@ export const header = {
 export const hero = {
   eyebrow: 'Sistema automático para operações exigentes',
   title: `${site.product} para ${site.context}`,
-  /** Quebra de linha do H1 no desktop largo: o título vai em duas linhas. */
+  /** Quebra de linha do H1 no desktop largo; a outra vem antes do destaque: três linhas. */
   titleBreakAfter: 'Lubrificação centralizada',
   /** Trecho do H1 em verde. */
   highlight: 'máquinas pesadas',

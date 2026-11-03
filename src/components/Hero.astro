@@ -20,7 +20,8 @@ const at = hero.title.indexOf(hero.highlight)
 const titleBefore = at >= 0 ? hero.title.slice(0, at) : hero.title
 const titleAfter = at >= 0 ? hero.title.slice(at + hero.highlight.length) : ''
 
-// Título em duas linhas no desktop largo: a quebra vem de `hero.titleBreakAfter`; abaixo de xl a coluna é estreita e o texto corre.
+// Título em três linhas no desktop largo (03/11/2026): quebra depois de `hero.titleBreakAfter` e antes
+// do destaque; abaixo de xl a coluna é estreita e o texto corre.
 const breakAt = hero.title.startsWith(hero.titleBreakAfter) ? hero.titleBreakAfter.length : 0
 const titleHead = breakAt ? titleBefore.slice(0, breakAt) : ''
 const titleRest = breakAt ? titleBefore.slice(breakAt).trimStart() : titleBefore
@@ -76,11 +77,12 @@ const textLines = hero.text.split('\n')
       <div class="max-w-xl lg:max-w-none">
         <Eyebrow tone="light">{hero.eyebrow}</Eyebrow>
 
-        <h1 class="mt-2 font-display leading-[1.1] font-extrabold text-neutral-light text-[2rem] sm:text-[2.4rem] lg:text-[2.1rem] xl:text-[2.3rem]">
+        <h1 class="mt-2 font-display leading-[1.1] font-extrabold text-neutral-light text-[2.15rem] sm:text-[2.6rem] lg:text-[2.1rem] xl:text-[2.85rem] 2xl:text-[3.1rem]">
           {titleHead}
           {breakAt > 0 && <br class="hidden xl:block" />}
           {breakAt > 0 && ' '}
           {titleRest}
+          {at >= 0 && <br class="hidden xl:block" />}
           <span class="text-seive-green-light">{at >= 0 ? hero.highlight : ''}</span>
           {titleAfter}
         </h1>
