@@ -6,7 +6,8 @@
  * linha em amarelo), texto e CTA, foto à direita, e os 5 diferenciais em cards brancos
  * sobrepostos à base do bloco. São 5 exatos: o grid é `xl:grid-cols-5`.
  *
- * `cenario.jpg`: articulação com a linha de lubrificação, do site da Safe Mine.
+ * `cenario.jpg`: bomba SEIVE LUB instalada em máquina amarela (enviada pelo usuário em 03/11/2026,
+ * cantos arredondados do original recortados).
  * Itens 2 a 4 do catálogo SEIVE LUB 2024 (p. 2, 3 e 15), com o aval da B2 em 01/11/2026.
  */
 import type { IconName } from '@data/icons'
@@ -28,7 +29,7 @@ export const why = {
   text: `A ${site.brandShort} leva a lubrificação centralizada à sua operação, considerando o equipamento, os pontos de lubrificação e as condições de trabalho.`,
   scene: {
     src: cenario,
-    alt: 'Linha de lubrificação ligada à articulação de um cilindro em máquina pesada',
+    alt: 'Bomba de lubrificação centralizada SEIVE LUB instalada em máquina pesada amarela, com manômetros e linhas',
   },
   /** Título em uma linha (até ~19 caracteres) e descrição em duas (até ~48) nos cards do desktop. */
   reasons: [
