@@ -54,7 +54,9 @@ const { tone, rhythm } = Astro.props
     <dl class="relative grid divide-y divide-primary-dark/10 border-t border-primary-dark/10 sm:grid-cols-[repeat(2,minmax(0,1fr))_auto] sm:divide-x sm:divide-y-0">
       {clients.metrics.map((metric) => (
         <div class="flex items-center gap-4 px-6 py-5 lg:px-8">
-          <Icon name={metric.icon} class="size-6 shrink-0 text-accent-orange" />
+          <span class="icon-chip size-11">
+            <Icon name={metric.icon} class="size-5" />
+          </span>
           <div class="font-sans leading-tight">
             <dd class="font-display text-[1.6rem] font-extrabold tracking-[-0.02em] text-primary-dark-900 tabular-nums">
               {metric.value}

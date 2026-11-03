@@ -107,3 +107,10 @@ A pedido do usuário, a página ganhou uma introdução logo abaixo do hero: o q
 ## Referências da COAIR aplicadas em "Como funciona" e "Aplicações" (02/11/2026)
 
 A pedido do usuário, com capturas da LP da COAIR como referência: o "Como funciona" virou um painel navy (cantos técnicos, malha de blueprint, esquemático em marca d'água, CTA em pílula à direita e as 4 etapas em pílulas numa linha). Com isso ele passou a ser o bloco navy da fase de apoio, e o "Dados para cotação" ficou com a placa clara. As "Aplicações" viraram uma faixa de largura total em verde escuro da marca (a "cor diferente" pedida; não é navy, então os dois blocos navy do padrão continuam sendo processo e diferenciais), com cabeçalho centrado e cards cuja foto se dissolve no corpo escuro, com ícone, título e seta. A faixa anula o padding do ritmo `centered-lead` com margens negativas e repõe o respiro por dentro.
+
+## Padronização de cores e estilos (03/11/2026)
+
+- Tokens novos em `global.css`: `--color-surface` (placa clara), `--color-brand-green-700/800/900` (faixa de aplicações). Nenhuma cor fixa sobra nos componentes, fora transparências de branco e navy.
+- Utilitários: `navy-panel` (um único gradiente para Como funciona, faixa de números e Diferenciais), `panel-shadow` (painéis e fotos grandes), `card-shadow` (cards), `icon-chip` (selo de ícone das listas sobre fundo claro).
+- `Eyebrow.astro` é a fonte única do rótulo acima dos títulos: traço de 36px, 12/13px, tracking 0.18em; `tone="light"` sobre fundos escuros. Substituiu as 9 versões escritas à mão.
+- Destaque do título: `accent-orange` em fundo claro, `accent-orange-light` em fundo escuro. Parágrafo de abertura das seções em 16/17px. Raio de 1.5rem em painéis e fotos grandes, 1rem em cards. Todos os CTAs com cantos retos.

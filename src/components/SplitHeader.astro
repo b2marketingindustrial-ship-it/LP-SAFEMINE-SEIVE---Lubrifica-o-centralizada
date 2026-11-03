@@ -4,6 +4,7 @@
  * H2 com o trecho `highlight` em verde e, ao lado (desktop), o parágrafo de abertura.
  * Mesmas classes do cabeçalho de "linhas" e "aplicacoes", para a escala não variar.
  */
+import Eyebrow from './Eyebrow.astro'
 interface Props {
   eyebrow: string
   title: string
@@ -26,10 +27,7 @@ const after = at >= 0 ? title.slice(at + highlight.length) : ''
   ]}
 >
   <div>
-    <span class="inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.18em] text-ink-soft uppercase sm:text-[13px]">
-      <span class="h-[3px] w-9 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
-      {eyebrow}
-    </span>
+    <Eyebrow>{eyebrow}</Eyebrow>
     <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-primary-dark-900 sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
       {before}
       {at >= 0 && <span class="text-accent-orange">{highlight}</span>}

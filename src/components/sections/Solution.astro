@@ -6,6 +6,7 @@
  * grade 2×2 e o CTA; à direita o esquemático da instalação numa placa leve, com a ficha
  * técnica em selos. Tudo numa altura só, sem régua solta abaixo (02/11/2026).
  */
+import Eyebrow from '@components/Eyebrow.astro'
 import { Image } from 'astro:assets'
 import Button from '@components/Button.astro'
 import Icon from '@components/Icon.astro'
@@ -26,23 +27,20 @@ const after = at >= 0 ? solution.title.slice(at + solution.titleHighlight.length
 <Section id="solucao" tone={tone} rhythm={rhythm}>
   <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-center lg:gap-14">
     <div>
-      <span class="inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.18em] text-ink-soft uppercase sm:text-[13px]">
-        <span class="h-[3px] w-9 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
-        {solution.eyebrow}
-      </span>
+      <Eyebrow>{solution.eyebrow}</Eyebrow>
       <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-primary-dark-900 sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
         {before}
         {at >= 0 && <span class="text-accent-orange">{solution.titleHighlight}</span>}
         {after}
       </h2>
-      <p class="mt-4 max-w-[32rem] font-sans text-[17px] leading-relaxed text-ink-soft sm:text-[18px]">
+      <p class="mt-4 max-w-[32rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[17px]">
         {solution.lead}
       </p>
 
       <ul class="mt-7 grid gap-x-6 gap-y-5 sm:grid-cols-2">
         {solution.purposes.map((item) => (
           <li class="flex items-start gap-3">
-            <span class="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg bg-accent-orange/10 text-accent-orange">
+            <span class="icon-chip mt-0.5 size-9">
               <Icon name={item.icon} class="size-[18px]" />
             </span>
             <span>

@@ -39,7 +39,7 @@ export const supportPanel = {
     { icon: 'truck', label: 'Quantidade', hint: 'Máquinas a equipar' },
     { icon: 'target', label: 'Pontos', hint: 'De lubrificação' },
     { icon: 'droplet', label: 'Lubrificante', hint: 'O que usa hoje' },
-    { icon: 'clock', label: 'Regime', hint: 'Horas de operação' },
+    { icon: 'clock', label: 'Regime', hint: 'Horas de uso' },
   ],
 } as const satisfies {
   eyebrow: string

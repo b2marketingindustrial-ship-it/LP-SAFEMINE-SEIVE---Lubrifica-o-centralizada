@@ -14,8 +14,16 @@
   --color-primary-dark-900: #0a1d4d;
   --color-accent-orange: #4d7f22;
   --color-accent-orange-dark: #3f6a1b;
-  /* Verde original da marca: só para destaque de texto sobre fundo navy (hero). */
+  /* Verde original da marca: destaque de texto e ícones sobre fundos escuros (navy e verde). */
   --color-accent-orange-light: #7ba249;
+
+  /* Verde escuro da marca: faixa de aplicações (fundo e cards). */
+  --color-brand-green-900: #142b0d;
+  --color-brand-green-800: #1c3a12;
+  --color-brand-green-700: #21401a;
+
+  /* Placa clara de apoio (atrás de fotos, esquemas e do lado de texto de painéis). */
+  --color-surface: #f3f5fa;
   --color-neutral-light: #ffffff;
   --color-neutral-gray-100: #f4f6fa;
   --color-neutral-gray-200: #a0a0a0;
@@ -163,13 +171,37 @@
 
 /* Placa clara onde as fotos de produto se apoiam. */
 @utility surface-plate {
-  background-color: #f3f5fa;
+  background-color: var(--color-surface);
   background-image:
     radial-gradient(120% 90% at 50% 0%, rgb(255 255 255 / 0.9) 0%, transparent 60%),
     radial-gradient(circle, rgb(10 29 77 / 0.1) 1px, transparent 1.2px);
   background-size:
     100% 100%,
     18px 18px;
+}
+
+/* Painel navy das seções do meio (como funciona, números, diferenciais): um gradiente só. */
+@utility navy-panel {
+  background-color: var(--color-primary-dark-900);
+  background-image:
+    radial-gradient(900px 480px at 0% 0%, rgb(255 255 255 / 0.07) 0%, transparent 60%),
+    linear-gradient(160deg, var(--color-primary-dark-800) 0%, var(--color-primary-dark-900) 70%);
+}
+
+/* Sombra de painéis e fotos grandes. */
+@utility panel-shadow {
+  box-shadow: 0 30px 60px -36px rgb(10 29 77 / 0.55);
+}
+
+/* Selo de ícone das listas sobre fundo claro. */
+@utility icon-chip {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: rgb(77 127 34 / 0.1);
+  color: var(--color-accent-orange);
 }
 
 /* Sombra padrão dos cards claros: deslocada e difusa, nunca um halo. */

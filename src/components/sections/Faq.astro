@@ -6,6 +6,7 @@
  * no desktop); à direita o acordeão nativo (<details>), que funciona por teclado sem
  * script. A pergunta aberta ganha borda verde. JSON-LD FAQPage com as mesmas perguntas.
  */
+import Eyebrow from '@components/Eyebrow.astro'
 import Button from '@components/Button.astro'
 import Icon from '@components/Icon.astro'
 import Section from '@components/Section.astro'
@@ -35,10 +36,7 @@ const jsonLd = {
 <Section id="perguntas" tone={tone} rhythm={rhythm}>
   <div class="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
     <div class="lg:sticky lg:top-28 lg:self-start">
-      <span class="inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.18em] text-ink-soft uppercase sm:text-[13px]">
-        <span class="h-[3px] w-9 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
-        {faq.eyebrow}
-      </span>
+      <Eyebrow>{faq.eyebrow}</Eyebrow>
       <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-primary-dark-900 sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
         {before}
         {at >= 0 && <span class="text-accent-orange">{faq.titleHighlight}</span>}

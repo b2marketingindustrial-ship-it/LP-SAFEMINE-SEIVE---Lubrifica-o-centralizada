@@ -30,7 +30,7 @@ const { tone, rhythm } = Astro.props
   <ul class="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
     {benefits.items.map((item) => (
       <li class="flex items-start gap-4">
-        <span class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-neutral-light text-accent-orange card-shadow">
+        <span class="icon-chip size-11">
           <Icon name={item.icon} class="size-5" />
         </span>
         <span>
@@ -43,7 +43,7 @@ const { tone, rhythm } = Astro.props
     ))}
   </ul>
 
-  <div class="stats-band relative mt-12 overflow-hidden rounded-[1.5rem] px-6 py-7 sm:px-10 lg:px-12">
+  <div class="navy-panel panel-shadow relative mt-12 overflow-hidden rounded-[1.5rem] px-6 py-7 sm:px-10 lg:px-12">
     <span class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></span>
     <div class="relative grid gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] lg:items-center lg:gap-10">
       {benefits.stats.items.map((stat) => (
@@ -63,13 +63,3 @@ const { tone, rhythm } = Astro.props
     </p>
   </div>
 </Section>
-
-<style>
-  .stats-band {
-    background: linear-gradient(
-      160deg,
-      var(--color-primary-dark-800) 0%,
-      var(--color-primary-dark-900) 70%
-    );
-  }
-</style>

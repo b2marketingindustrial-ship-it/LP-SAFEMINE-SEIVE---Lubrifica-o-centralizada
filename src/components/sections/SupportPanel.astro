@@ -9,6 +9,7 @@
  * navy da fase) e, à direita, os 6 dados em dois grupos:
  * o essencial e o "se souber" (`list.optionalFrom`).
  */
+import Eyebrow from '@components/Eyebrow.astro'
 import Button from '@components/Button.astro'
 import Section from '@components/Section.astro'
 import Icon from '@components/Icon.astro'
@@ -26,16 +27,13 @@ const { list } = supportPanel
     {/* Bloco navy */}
     <div class="support-lead relative flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 xl:px-14 xl:py-14">
       <span class="blueprint-light pointer-events-none absolute inset-0" aria-hidden="true"></span>
-      <span class="relative inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.16em] text-ink-soft uppercase sm:text-[13px]">
-        <span class="h-[3px] w-8 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
-        {supportPanel.eyebrow}
-      </span>
+      <Eyebrow>{supportPanel.eyebrow}</Eyebrow>
 
       <h2 class="relative mt-4 max-w-[26rem] font-display leading-[1.06] font-extrabold tracking-[-0.02em] text-primary-dark-900 text-[1.75rem] sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
         {supportPanel.title}
       </h2>
 
-      <p class="relative mt-5 max-w-[30rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[18px]">
+      <p class="relative mt-5 max-w-[30rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[17px]">
         {supportPanel.text}
       </p>
 
@@ -92,7 +90,7 @@ const { list } = supportPanel
 <style>
   /* Lado do texto: placa com a malha de blueprint, separada do checklist. */
   .support-lead {
-    background-color: #f3f5fa;
+    background-color: var(--color-surface);
     border-right: 1px solid rgb(10 29 77 / 0.1);
   }
 

@@ -10,6 +10,7 @@
  *
  * `npm run compose` sobrescreve este arquivo com o da biblioteca: guarde-o antes.
  */
+import Eyebrow from '@components/Eyebrow.astro'
 import Button from '@components/Button.astro'
 import { Image } from 'astro:assets'
 import Section from '@components/Section.astro'
@@ -33,10 +34,7 @@ const after = at >= 0 ? applications.title.slice(at + applications.titleHighligh
 
     <div class="relative mx-auto max-w-page px-6 lg:px-10">
       <div class="mx-auto max-w-3xl text-center xl:max-w-none">
-        <span class="inline-flex items-center gap-3 font-sans text-[12px] font-semibold tracking-[0.18em] text-neutral-light/75 uppercase sm:text-[13px]">
-          <span class="size-2 shrink-0 rounded-sm bg-accent-orange-light" aria-hidden="true"></span>
-          {applications.eyebrow}
-        </span>
+        <Eyebrow tone="light">{applications.eyebrow}</Eyebrow>
         <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-neutral-light sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem] xl:whitespace-nowrap">
           {before}
           {at >= 0 && <span class="text-accent-orange-light">{applications.titleHighlight}</span>}
@@ -148,7 +146,7 @@ const after = at >= 0 ? applications.title.slice(at + applications.titleHighligh
   .apps-band {
     background:
       radial-gradient(1100px 520px at 50% -10%, rgb(123 162 73 / 0.28) 0%, transparent 60%),
-      linear-gradient(180deg, #1c3a12 0%, #142b0d 100%);
+      linear-gradient(180deg, var(--color-brand-green-800) 0%, var(--color-brand-green-900) 100%);
   }
 
   /* Malha de pontos clara, esmaecida no meio para não disputar com os cards. */
@@ -161,7 +159,7 @@ const after = at >= 0 ? applications.title.slice(at + applications.titleHighligh
 
   .app-card {
     border: 1px solid rgb(255 255 255 / 0.12);
-    background-color: #21401a;
+    background-color: var(--color-brand-green-700);
   }
 
   .app-help {
@@ -175,7 +173,7 @@ const after = at >= 0 ? applications.title.slice(at + applications.titleHighligh
 
   /* A foto se dissolve no corpo escuro do card. */
   .app-veil {
-    background: linear-gradient(to top, #21401a 0%, rgb(33 64 26 / 0) 45%);
+    background: linear-gradient(to top, var(--color-brand-green-700) 0%, transparent 45%);
   }
 
   .app-track {
