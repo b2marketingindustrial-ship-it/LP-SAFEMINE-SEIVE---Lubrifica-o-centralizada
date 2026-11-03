@@ -3,7 +3,7 @@
  * Clientes e números — biblioteca B2, fase prova. Nesta LP os logos (clientes da SEIVE,
  * com aval registrado no BRIEFING) correm num carrossel contínuo em escala de cinza, que
  * ganha cor e para no hover e fica parado com `prefers-reduced-motion`. Abaixo, uma
- * régua com os 3 números e o CTA.
+ * régua com os 2 números e o CTA.
  */
 import { Image } from 'astro:assets'
 import Button from '@components/Button.astro'
@@ -28,18 +28,13 @@ const { tone, rhythm } = Astro.props
   />
 
   <div class="relative mt-10 overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
-    <span
-      class="dot-grid pointer-events-none absolute inset-0 opacity-60"
-      aria-hidden="true"
-    ></span>
-
-    <div class="clients-marquee relative py-8">
+    <div class="clients-marquee relative py-10">
       <div class="clients-track flex w-max items-center">
         {/* Lista duplicada para o loop ficar contínuo; a cópia some para leitor de tela. */}
         {[0, 1].map((copy) => (
           <ul class="flex shrink-0 items-center" aria-hidden={copy === 1 ? 'true' : undefined}>
             {clients.logos.map((logo) => (
-              <li class="flex h-10 w-44 shrink-0 items-center justify-center px-6">
+              <li class="flex h-12 w-48 shrink-0 items-center justify-center px-7">
                 <Image
                   src={logo.src}
                   alt={copy === 1 ? '' : logo.alt}
@@ -47,7 +42,7 @@ const { tone, rhythm } = Astro.props
                   format="webp"
                   loading="lazy"
                   decoding="async"
-                  class="client-logo max-h-9 w-auto object-contain"
+                  class="client-logo max-h-10 w-auto object-contain"
                 />
               </li>
             ))}
@@ -56,7 +51,7 @@ const { tone, rhythm } = Astro.props
       </div>
     </div>
 
-    <dl class="relative grid divide-y divide-primary-dark/10 border-t border-primary-dark/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:grid-cols-[repeat(3,minmax(0,1fr))_auto]">
+    <dl class="relative grid divide-y divide-primary-dark/10 border-t border-primary-dark/10 sm:grid-cols-[repeat(2,minmax(0,1fr))_auto] sm:divide-x sm:divide-y-0">
       {clients.metrics.map((metric) => (
         <div class="flex items-center gap-4 px-6 py-5 lg:px-8">
           <Icon name={metric.icon} class="size-6 shrink-0 text-accent-orange" />
@@ -68,7 +63,7 @@ const { tone, rhythm } = Astro.props
           </div>
         </div>
       ))}
-      <div class="flex items-center px-6 py-5 sm:col-span-3 sm:border-t sm:border-primary-dark/10 lg:col-span-1 lg:border-t-0 lg:px-8">
+      <div class="flex items-center px-6 py-5 lg:px-8">
         <Button cta="clientes-cta" size="md" class="w-full sm:w-auto">
           {cta.card}
         </Button>

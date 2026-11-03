@@ -32,17 +32,17 @@ const after = at >= 0 ? applications.title.slice(at + applications.titleHighligh
     <span class="apps-mesh pointer-events-none absolute inset-0" aria-hidden="true"></span>
 
     <div class="relative mx-auto max-w-page px-6 lg:px-10">
-      <div class="mx-auto max-w-3xl text-center">
+      <div class="mx-auto max-w-3xl text-center xl:max-w-none">
         <span class="inline-flex items-center gap-3 font-sans text-[12px] font-semibold tracking-[0.18em] text-neutral-light/75 uppercase sm:text-[13px]">
           <span class="size-2 shrink-0 rounded-sm bg-accent-orange-light" aria-hidden="true"></span>
           {applications.eyebrow}
         </span>
-        <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-neutral-light sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
+        <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-neutral-light sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem] xl:whitespace-nowrap">
           {before}
           {at >= 0 && <span class="text-accent-orange-light">{applications.titleHighlight}</span>}
           {after}
         </h2>
-        <p class="mt-5 font-sans text-[16px] leading-relaxed text-neutral-light/80 sm:text-[17px]">
+        <p class="mt-5 font-sans text-[16px] leading-relaxed text-neutral-light/80 sm:text-[17px] xl:whitespace-nowrap">
           {applications.text}
         </p>
       </div>

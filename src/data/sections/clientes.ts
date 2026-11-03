@@ -4,9 +4,10 @@
  * Logos da página 5 do catálogo SEIVE LUB 2024: são clientes da fabricante, não da
  * Safe Mine, e entraram com o aval da B2 em 01/11/2026 (docs/BRIEFING.md). Vieram do PDF
  * em baixa resolução (cerca de 75×22 px cada); troque pelos arquivos originais quando
- * chegarem. Nesta LP são 18 logos em carrossel, acima dos 4–8 da biblioteca.
+ * chegarem. Nesta LP são 18 logos em carrossel, acima dos 4–8 da biblioteca, e 2 números
+ * em vez de 3 (a contagem de segmentos saiu a pedido do usuário, 02/11/2026).
  *
- * Números: catálogo p. 2 (35 anos do fundador), p. 4 (7 segmentos) e p. 15 (garantia).
+ * Números: catálogo p. 2 (35 anos do fundador) e p. 15 (garantia).
  */
 import type { IconName } from '@data/icons'
 import type { Photo } from '@data/types'
@@ -66,7 +67,6 @@ export const clients = {
   ],
   metrics: [
     { icon: 'user', value: '35+', label: 'anos de engenharia do fundador' },
-    { icon: 'layers', value: '7', label: 'segmentos atendidos' },
     { icon: 'shield', value: '24 meses', label: 'de garantia nos distribuidores' },
   ],
 } as const satisfies {
@@ -75,5 +75,5 @@ export const clients = {
   titleHighlight: string
   text: string
   logos: readonly Photo[]
-  metrics: readonly [Metric, Metric, Metric]
+  metrics: readonly [Metric, Metric]
 }

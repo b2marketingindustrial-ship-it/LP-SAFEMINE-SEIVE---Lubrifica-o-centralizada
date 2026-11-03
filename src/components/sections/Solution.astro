@@ -2,9 +2,9 @@
 /**
  * "A solução" — seção própria desta LP (fase oferta), logo abaixo do hero.
  *
- * Duas colunas: à esquerda, o que é o SEIVE LUB (título, frase-síntese, texto) e as 4
- * finalidades em grade; à direita, o esquemático de uma instalação sobre a placa
- * texturizada, com legenda e uma ficha técnica curta. O CTA fecha a coluna de texto.
+ * Simplificada em 02/11/2026 (o usuário achou a primeira versão densa): à esquerda só o
+ * título, uma frase e o CTA; à direita o esquemático da instalação, solto sobre uma placa
+ * leve, com a ficha técnica em selos. Abaixo, as 4 finalidades numa régua de uma linha.
  */
 import { Image } from 'astro:assets'
 import Button from '@components/Button.astro'
@@ -24,7 +24,7 @@ const after = at >= 0 ? solution.title.slice(at + solution.titleHighlight.length
 ---
 
 <Section id="solucao" tone={tone} rhythm={rhythm}>
-  <div class="grid gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:items-center lg:gap-16">
+  <div class="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-16">
     <div>
       <span class="inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.18em] text-ink-soft uppercase sm:text-[13px]">
         <span class="h-[3px] w-9 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
@@ -35,69 +35,51 @@ const after = at >= 0 ? solution.title.slice(at + solution.titleHighlight.length
         {at >= 0 && <span class="text-accent-orange">{solution.titleHighlight}</span>}
         {after}
       </h2>
-
-      <p class="mt-6 max-w-[34rem] font-display text-[1.15rem] leading-snug font-bold text-primary-dark-900 sm:text-[1.3rem]">
+      <p class="mt-5 max-w-[30rem] font-sans text-[17px] leading-relaxed text-ink-soft sm:text-[19px]">
         {solution.lead}
       </p>
-      <p class="mt-4 max-w-[34rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[17px]">
-        {solution.text}
-      </p>
-
-      <ul class="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2">
-        {solution.purposes.map((item) => (
-          <li class="flex gap-4">
-            <span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-accent-orange/10 text-accent-orange">
-              <Icon name={item.icon} class="size-5" />
-            </span>
-            <span>
-              <h3 class="font-display text-[1rem] leading-snug font-extrabold text-primary-dark-900">
-                {item.title}
-              </h3>
-              <p class="mt-1 font-sans text-[14.5px] leading-snug text-ink-soft">
-                {item.description}
-              </p>
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <Button cta="solucao-cta" size="md" class="mt-9">
+      <Button cta="solucao-cta" size="md" class="mt-8">
         {cta.card}
       </Button>
     </div>
 
-    <figure class="relative overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
-      <div class="surface-plate relative px-6 pt-8 pb-6 sm:px-10 sm:pt-10">
-        <span
-          class="blueprint-light pointer-events-none absolute inset-0"
-          aria-hidden="true"
-        ></span>
-        <Image
-          src={solution.scheme.src}
-          alt={solution.scheme.alt}
-          format="webp"
-          width={1200}
-          loading="lazy"
-          decoding="async"
-          class="relative mx-auto w-full max-w-[36rem] object-contain"
-        />
-        <figcaption class="relative mt-5 max-w-[30rem] font-sans text-[13px] leading-snug text-ink-soft">
-          {solution.caption}
-        </figcaption>
-      </div>
-
-      <dl class="grid divide-y divide-primary-dark/10 border-t border-primary-dark/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+    <figure class="relative rounded-[1.5rem] bg-neutral-gray-100 px-6 pt-8 pb-6 sm:px-10">
+      <span
+        class="dot-grid pointer-events-none absolute inset-0 rounded-[1.5rem] opacity-60"
+        aria-hidden="true"
+      ></span>
+      <Image
+        src={solution.scheme.src}
+        alt={solution.scheme.alt}
+        format="webp"
+        width={1200}
+        loading="lazy"
+        decoding="async"
+        class="relative mx-auto w-full max-w-[38rem] object-contain"
+      />
+      <ul class="relative mt-5 flex flex-wrap justify-center gap-2" aria-label="Ficha técnica">
         {solution.facts.map((fact) => (
-          <div class="px-6 py-4 sm:px-6">
-            <dt class="font-sans text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
-              {fact.label}
-            </dt>
-            <dd class="mt-1 font-display text-[16px] font-extrabold text-primary-dark-900">
-              {fact.value}
-            </dd>
-          </div>
+          <li class="rounded-full border border-primary-dark/10 bg-neutral-light px-4 py-1.5 font-sans text-[13px] text-ink-soft">
+            {fact.label}: <strong class="font-semibold text-primary-dark-900">{fact.value}</strong>
+          </li>
         ))}
-      </dl>
+      </ul>
     </figure>
   </div>
+
+  <ul class="mt-12 grid gap-6 border-t border-primary-dark/10 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+    {solution.purposes.map((item) => (
+      <li class="flex items-center gap-4">
+        <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-accent-orange/10 text-accent-orange">
+          <Icon name={item.icon} class="size-5" />
+        </span>
+        <span>
+          <h3 class="font-display text-[1rem] leading-snug font-extrabold text-primary-dark-900">
+            {item.title}
+          </h3>
+          <p class="font-sans text-[14.5px] leading-snug text-ink-soft">{item.description}</p>
+        </span>
+      </li>
+    ))}
+  </ul>
 </Section>

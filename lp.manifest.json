@@ -65,8 +65,8 @@
           ]
         },
         "maxLength": {
-          "text": 200,
-          "item.description": 90
+          "lead": 170,
+          "item.description": 60
         }
       },
       "assets": [
@@ -361,7 +361,7 @@
         ],
         "alsoCount": {
           "metrics": [
-            3,
+            2,
             3
           ]
         },

@@ -22,7 +22,7 @@ export interface SupportItem {
 export const supportPanel = {
   eyebrow: 'Dados para cotação',
   title: 'Não sabe quantos pontos lubrificar?',
-  text: 'Descreva a máquina. A Safe Mine avalia o equipamento, os pontos de lubrificação e as condições de operação para indicar a solução.',
+  text: 'Descreva a máquina. A Safe Mine avalia os pontos de lubrificação e indica a solução.',
   microcopy: 'Você pode pedir cotação sem os dados técnicos.',
   /** Rótulo do botão do bloco navy. */
   ctaLabel: 'Receber indicação e cotação',
@@ -30,16 +30,16 @@ export const supportPanel = {
   list: {
     title: 'O que ajuda na sua cotação',
     text: 'Comece pela máquina. Os dados técnicos podem ficar para depois.',
-    optionalLabel: 'Se souber, envie também',
+    optionalLabel: 'Se souber',
     optionalFrom: 3,
   },
   items: [
-    { icon: 'file', label: 'Equipamento', hint: 'Informe o tipo, a marca e o modelo da máquina.' },
+    { icon: 'file', label: 'Equipamento', hint: 'Tipo, marca e modelo' },
     { icon: 'pin', label: 'Cidade/UF', hint: 'Local da operação' },
-    { icon: 'truck', label: 'Quantidade', hint: 'Máquinas que receberão o sistema' },
-    { icon: 'target', label: 'Pontos', hint: 'de lubrificação' },
-    { icon: 'droplet', label: 'Lubrificante', hint: 'o que usa hoje' },
-    { icon: 'clock', label: 'Regime', hint: 'horas de operação' },
+    { icon: 'truck', label: 'Quantidade', hint: 'Máquinas a equipar' },
+    { icon: 'target', label: 'Pontos', hint: 'De lubrificação' },
+    { icon: 'droplet', label: 'Lubrificante', hint: 'O que usa hoje' },
+    { icon: 'clock', label: 'Regime', hint: 'Horas de operação' },
   ],
 } as const satisfies {
   eyebrow: string

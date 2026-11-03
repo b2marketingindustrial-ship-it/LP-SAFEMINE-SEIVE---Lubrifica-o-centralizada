@@ -27,38 +27,30 @@ export const solution = {
   title: 'O que é o SEIVE LUB',
   /** Trecho do título em verde. */
   titleHighlight: 'SEIVE LUB',
-  lead: 'Um sistema progressivo de lubrificação automática: uma central de bombeamento leva a graxa, na quantidade e no intervalo certos, a todos os pontos da máquina, sem intervenção manual.',
-  text: 'Desenvolvido pela SEIVE para máquinas que operam em ciclos longos e exigentes, o sistema substitui a lubrificação manual por um processo contínuo e previsível.',
-  /** Para que serve: 4 finalidades, em grade 2×2. */
+  lead: 'Um sistema progressivo de lubrificação automática que leva a graxa certa a cada ponto da máquina, sem intervenção manual.',
   purposes: [
-    {
-      icon: 'wrench',
-      title: 'Prevenir o desgaste',
-      description: 'Medida preventiva contra o desgaste de componentes mecânicos e articulações.',
-    },
+    { icon: 'wrench', title: 'Prevenir o desgaste', description: 'De componentes e articulações.' },
     {
       icon: 'clock',
       title: 'Manter a máquina operando',
-      description: 'Menos paradas não programadas e menos custo com manutenção corretiva.',
+      description: 'Menos paradas não programadas.',
     },
     {
       icon: 'sliders',
       title: 'Projeto sob medida',
-      description: 'Padroniza a instalação e adapta o projeto a qualquer tipo de equipamento.',
+      description: 'Para qualquer tipo de equipamento.',
     },
     {
       icon: 'file-text',
       title: 'Acompanhamento online',
-      description: 'Software de relatórios mostra a situação de cada sistema instalado.',
+      description: 'Relatórios de cada sistema.',
     },
   ],
   scheme: {
     src: esquema,
     alt: 'Esquemático de uma instalação SEIVE LUB: bomba, filtros, distribuidores e linhas até os pontos da máquina',
   },
-  caption:
-    'Instalação típica: bomba de 4 litros, filtros de graxa e distribuidores de 8 a 14 saídas levando o lubrificante a cada ponto.',
-  /** Ficha técnica curta sob o esquemático. */
+  /** Ficha técnica curta, em selos sob o esquemático. */
   facts: [
     { label: 'Sistema', value: 'Progressivo' },
     { label: 'Operação', value: 'Automática, 24 h' },
@@ -69,9 +61,7 @@ export const solution = {
   title: string
   titleHighlight: string
   lead: string
-  text: string
   purposes: readonly [Purpose, Purpose, Purpose, Purpose]
   scheme: Photo
-  caption: string
   facts: readonly [Fact, Fact, Fact]
 }
