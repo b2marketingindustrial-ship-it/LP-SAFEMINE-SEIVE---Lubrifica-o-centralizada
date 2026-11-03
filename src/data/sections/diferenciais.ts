@@ -30,26 +30,27 @@ export const why = {
     src: cenario,
     alt: 'Linha de lubrificação ligada à articulação de um cilindro em máquina pesada',
   },
+  /** Descrições curtas (até ~48 caracteres): duas linhas em cada coluna do painel no desktop. */
   reasons: [
     {
       icon: 'user',
       title: 'Atendimento consultivo',
-      description: 'Entende a máquina e a operação antes de indicar o sistema.',
+      description: 'Avalia a máquina antes de indicar o sistema.',
     },
     {
       icon: 'badge-check',
       title: 'SEIVE, pioneira no Brasil',
-      description: 'Primeira fornecedora brasileira de lubrificação progressiva.',
+      description: 'Primeira brasileira em lubrificação progressiva.',
     },
     {
       icon: 'factory',
       title: 'Fabricação nacional',
-      description: 'Fabricado pela SEIVE no Brasil, com ISO 9001:2015 e patente.',
+      description: 'Feito no Brasil, com ISO 9001:2015 e patente.',
     },
     {
       icon: 'shield',
       title: 'Garantia de fábrica',
-      description: '12 meses no sistema e 24 meses nos distribuidores.',
+      description: '12 meses no sistema e 24 nos distribuidores.',
     },
     {
       icon: 'wrench',
