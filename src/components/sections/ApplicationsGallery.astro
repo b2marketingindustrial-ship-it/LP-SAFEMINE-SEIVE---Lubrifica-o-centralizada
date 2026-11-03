@@ -146,7 +146,7 @@ const after = at >= 0 ? applications.title.slice(at + applications.titleHighligh
   .apps-band {
     background:
       radial-gradient(1100px 520px at 50% -10%, rgb(123 162 73 / 0.28) 0%, transparent 60%),
-      linear-gradient(180deg, var(--color-brand-green-800) 0%, var(--color-brand-green-900) 100%);
+      var(--color-brand-green-900);
   }
 
   /* Malha de pontos clara, esmaecida no meio para não disputar com os cards. */
@@ -159,7 +159,7 @@ const after = at >= 0 ? applications.title.slice(at + applications.titleHighligh
 
   .app-card {
     border: 1px solid rgb(255 255 255 / 0.12);
-    background-color: var(--color-brand-green-700);
+    background-color: var(--color-brand-green-800);
   }
 
   .app-help {
@@ -173,7 +173,7 @@ const after = at >= 0 ? applications.title.slice(at + applications.titleHighligh
 
   /* A foto se dissolve no corpo escuro do card. */
   .app-veil {
-    background: linear-gradient(to top, var(--color-brand-green-700) 0%, transparent 45%);
+    background: linear-gradient(to top, var(--color-brand-green-800) 0%, transparent 45%);
   }
 
   .app-track {

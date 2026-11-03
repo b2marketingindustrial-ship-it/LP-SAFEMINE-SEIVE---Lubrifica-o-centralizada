@@ -114,3 +114,10 @@ A pedido do usuário, com capturas da LP da COAIR como referência: o "Como func
 - Utilitários: `navy-panel` (um único gradiente para Como funciona, faixa de números e Diferenciais), `panel-shadow` (painéis e fotos grandes), `card-shadow` (cards), `icon-chip` (selo de ícone das listas sobre fundo claro).
 - `Eyebrow.astro` é a fonte única do rótulo acima dos títulos: traço de 36px, 12/13px, tracking 0.18em; `tone="light"` sobre fundos escuros. Substituiu as 9 versões escritas à mão.
 - Destaque do título: `accent-orange` em fundo claro, `accent-orange-light` em fundo escuro. Parágrafo de abertura das seções em 16/17px. Raio de 1.5rem em painéis e fotos grandes, 1rem em cards. Todos os CTAs com cantos retos.
+
+## Paleta enxuta, cotação e clientes (03/11/2026)
+
+- Paleta: superfícies escuras sempre em navy 900, com gradiente só até o navy médio (`primary-dark`); o azul 800 saiu dos fundos (hero, rodapé, painéis). Verde: ação `#4d7f22` (hover `#3f6a1b`), verde da marca `#7ba249` só sobre fundo escuro, e a faixa de aplicações em dois tons (`brand-green-900` fundo, `800` cards). Um único cinza claro (`neutral-gray-100`), no lugar do `#f3f5fa` quase idêntico.
+- Cotação: só o espaço do shortcode, sem card branco, e sem a nota de LGPD, a pedido do usuário. O formulário do plugin deve trazer o próprio aviso de privacidade.
+- Tipografia: títulos com `text-wrap: balance` e textos com `pretty`, para não deixar palavra sozinha na última linha.
+- Clientes: saíram os números (35+ anos e 24 meses); o card tem o carrossel e, no pé, uma linha de texto com o CTA.

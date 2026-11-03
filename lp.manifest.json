@@ -359,12 +359,6 @@
           "src",
           "alt"
         ],
-        "alsoCount": {
-          "metrics": [
-            2,
-            3
-          ]
-        },
         "maxLength": {
           "text": 170
         }

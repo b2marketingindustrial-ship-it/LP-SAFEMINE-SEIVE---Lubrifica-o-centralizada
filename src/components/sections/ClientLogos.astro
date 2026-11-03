@@ -7,7 +7,6 @@
  */
 import { Image } from 'astro:assets'
 import Button from '@components/Button.astro'
-import Icon from '@components/Icon.astro'
 import Section from '@components/Section.astro'
 import SplitHeader from '@components/SplitHeader.astro'
 import type { SectionProps } from '@lib/layout'
@@ -28,7 +27,7 @@ const { tone, rhythm } = Astro.props
   />
 
   <div class="relative mt-10 overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
-    <div class="clients-marquee relative py-10">
+    <div class="clients-marquee relative py-12">
       <div class="clients-track flex w-max items-center">
         {/* Lista duplicada para o loop ficar contínuo; a cópia some para leitor de tela. */}
         {[0, 1].map((copy) => (
@@ -51,26 +50,12 @@ const { tone, rhythm } = Astro.props
       </div>
     </div>
 
-    <dl class="relative grid divide-y divide-primary-dark/10 border-t border-primary-dark/10 sm:grid-cols-[repeat(2,minmax(0,1fr))_auto] sm:divide-x sm:divide-y-0">
-      {clients.metrics.map((metric) => (
-        <div class="flex items-center gap-4 px-6 py-5 lg:px-8">
-          <span class="icon-chip size-11">
-            <Icon name={metric.icon} class="size-5" />
-          </span>
-          <div class="font-sans leading-tight">
-            <dd class="font-display text-[1.6rem] font-extrabold tracking-[-0.02em] text-primary-dark-900 tabular-nums">
-              {metric.value}
-            </dd>
-            <dt class="text-[14px] text-ink-soft">{metric.label}</dt>
-          </div>
-        </div>
-      ))}
-      <div class="flex items-center px-6 py-5 lg:px-8">
-        <Button cta="clientes-cta" size="md" class="w-full sm:w-auto">
-          {cta.card}
-        </Button>
-      </div>
-    </dl>
+    <div class="relative flex flex-col gap-4 border-t border-primary-dark/10 bg-neutral-gray-100/60 px-6 py-5 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <p class="font-sans text-[15px] text-ink">{clients.ctaText}</p>
+      <Button cta="clientes-cta" size="md" class="self-start sm:self-auto">
+        {cta.card}
+      </Button>
+    </div>
   </div>
 </Section>
 
