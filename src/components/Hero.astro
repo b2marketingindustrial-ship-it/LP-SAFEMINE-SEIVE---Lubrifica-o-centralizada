@@ -219,7 +219,8 @@ const textLines = hero.text.split('\n')
       linear-gradient(
         to right,
         var(--color-primary-dark) 0%,
-        var(--color-primary-dark-900) 55%,
+        var(--color-primary-dark-900) 38%,
+        rgb(20 43 13 / 0.88) 66%,
         transparent 96%
       );
   }
@@ -237,7 +238,7 @@ const textLines = hero.text.split('\n')
       width: 1700px;
     }
 
-    /* Navy sólido sob a coluna 1, dissolvendo antes do assunto. */
+    /* Navy sob o texto da coluna 1, passando ao verde escuro da SEIVE antes do assunto. */
     .hero-navy {
       width: calc(50% - 20px);
       background:
@@ -245,20 +246,21 @@ const textLines = hero.text.split('\n')
         linear-gradient(
           to left,
           transparent 0px,
-          rgb(10 29 77 / 0.45) 70px,
-          var(--color-primary-dark-900) 150px,
+          rgb(28 58 18 / 0.5) 70px,
+          var(--color-brand-green-900) 150px,
+          var(--color-primary-dark-900) 420px,
           var(--color-primary-dark) 100%
         );
     }
 
-    /* Navy da direita: cobre a coluna do shortcode e fecha a margem da página. */
+    /* Verde escuro da SEIVE à direita: cobre a coluna do shortcode e fecha a margem da página. */
     .hero-navy-right {
       width: calc(50% - 261px);
       background: linear-gradient(
         to right,
         transparent 0px,
-        rgb(10 29 77 / 0.55) 200px,
-        var(--color-primary-dark-900) 364px
+        rgb(20 43 13 / 0.55) 200px,
+        var(--color-brand-green-900) 364px
       );
     }
 
