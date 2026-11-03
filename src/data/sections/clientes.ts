@@ -43,8 +43,6 @@ export const clients = {
   /** Trecho do título em verde. */
   titleHighlight: 'tecnologia SEIVE',
   text: 'Grandes operações no Brasil e na América do Sul já confiam na tecnologia SEIVE.',
-  /** Linha acima do CTA. */
-  ctaText: 'Leve a mesma tecnologia para a sua operação.',
   /** Setores na ordem da página 5 do catálogo; cada um vira uma linha de logos. */
   sectors: [
     { id: 'mineracao', label: 'Mineração', icon: 'mountain' },
@@ -76,7 +74,6 @@ export const clients = {
   title: string
   titleHighlight: string
   text: string
-  ctaText: string
   sectors: readonly { id: Sector; label: string; icon: IconName }[]
   logos: readonly ClientLogo[]
 }

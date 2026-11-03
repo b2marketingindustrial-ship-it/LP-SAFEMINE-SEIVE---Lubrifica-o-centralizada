@@ -1,33 +1,24 @@
 ---
 /**
- * Clientes — biblioteca B2, fase prova. Clientes da SEIVE (aval registrado no BRIEFING),
- * agrupados por setor como na página 5 do catálogo.
+ * Clientes — biblioteca B2, fase prova. Clientes da SEIVE (aval registrado no BRIEFING).
  *
- * Cabeçalho em duas colunas e, abaixo, um painel com uma linha por setor: rótulo à
- * esquerda e os logos daquele setor correndo num carrossel contínuo à direita. As linhas
- * alternam a direção; o carrossel para no hover e fica parado com reduced-motion. A lista
- * de cada setor é repetida até encher o trilho, para o loop não ter buraco. Logos em cinza
- * (disfarça a baixa resolução) que ganham cor no hover. No pé, a linha de CTA.
+ * Só o cabeçalho e os logos em carrossel contínuo: duas faixas, uma para cada lado, sem
+ * tabela, rótulos de setor nem CTA (pedido do usuário, 03/11/2026). Para no hover e fica
+ * parado com reduced-motion. Logos em cinza (disfarça a baixa resolução) que ganham cor
+ * no hover. Os setores continuam nos dados, para uso futuro.
  */
 import { Image } from 'astro:assets'
-import Button from '@components/Button.astro'
-import Icon from '@components/Icon.astro'
 import Section from '@components/Section.astro'
 import SplitHeader from '@components/SplitHeader.astro'
 import type { SectionProps } from '@lib/layout'
-import { cta } from '@data/content'
 import { clients } from '@data/sections/clientes'
 
 type Props = SectionProps
 
 const { tone, rhythm } = Astro.props
 
-// Cada metade do trilho precisa de pelo menos ~8 logos para cobrir a largura.
-const groups = clients.sectors.map((sector) => {
-  const logos = clients.logos.filter((logo) => logo.sector === sector.id)
-  const repeat = Math.max(1, Math.ceil(8 / logos.length))
-  return { ...sector, logos, half: Array.from({ length: repeat }, () => logos).flat() }
-})
+const middle = Math.ceil(clients.logos.length / 2)
+const rows = [clients.logos.slice(0, middle), clients.logos.slice(middle)]
 ---
 
 <Section id="clientes" tone={tone} rhythm={rhythm}>
@@ -38,79 +29,60 @@ const groups = clients.sectors.map((sector) => {
     text={clients.text}
   />
 
-  <div class="mt-10 overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
-    <ul>
-      {groups.map((group, row) => (
-        <li class="grid border-b border-primary-dark/10 sm:grid-cols-[12rem_minmax(0,1fr)] sm:items-center">
-          <span class="flex items-center gap-3 px-5 pt-5 sm:border-r sm:border-primary-dark/10 sm:px-7 sm:py-6">
-            <span class="icon-chip size-9">
-              <Icon name={group.icon} class="size-[18px]" />
-            </span>
-            <span class="font-display text-[15px] font-extrabold text-primary-dark-900">
-              {group.label}
-            </span>
-          </span>
+  <ul class="sr-only">
+    {clients.logos.map((logo) => (
+      <li>{logo.alt}</li>
+    ))}
+  </ul>
 
-          <div class="clients-marquee overflow-hidden py-5 sm:py-6">
-            <ul class="sr-only">
-              {group.logos.map((logo) => (
-                <li>{logo.alt}</li>
-              ))}
-            </ul>
-            <div
-              class:list={['clients-track flex w-max items-center', row % 2 === 1 && 'is-reverse']}
-              aria-hidden="true"
-            >
-              {[0, 1].map(() =>
-                group.half.map((logo) => (
-                  <span class="flex h-10 w-40 shrink-0 items-center justify-center px-6">
-                    <Image
-                      src={logo.src}
-                      alt=""
-                      height={48}
-                      format="webp"
-                      loading="lazy"
-                      decoding="async"
-                      class="client-logo max-h-8 w-auto max-w-full object-contain"
-                    />
-                  </span>
-                )),
-              )}
-            </div>
-          </div>
-        </li>
-      ))}
-    </ul>
-
-    <div class="flex flex-col gap-4 bg-neutral-gray-100/60 px-6 py-5 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-      <p class="font-sans text-[15px] font-semibold text-primary-dark-900">{clients.ctaText}</p>
-      <Button cta="clientes-cta" size="md" class="self-start sm:self-auto">
-        {cta.card}
-      </Button>
-    </div>
+  <div class="mt-10 flex flex-col gap-4" aria-hidden="true">
+    {rows.map((row, i) => (
+      <div class="clients-marquee overflow-hidden">
+        <div class:list={['clients-track flex w-max items-center gap-4', i === 1 && 'is-reverse']}>
+          {[0, 1].map(() =>
+            row.map((logo) => (
+              <span class="client-tile flex h-20 w-48 shrink-0 items-center justify-center rounded-2xl border border-primary-dark/10 bg-neutral-light px-7">
+                <Image
+                  src={logo.src}
+                  alt=""
+                  height={48}
+                  format="webp"
+                  loading="lazy"
+                  decoding="async"
+                  class="client-logo max-h-9 w-auto max-w-full object-contain"
+                />
+              </span>
+            )),
+          )}
+        </div>
+      </div>
+    ))}
   </div>
 </Section>
 
 <style>
   .clients-marquee {
+    padding-block: 0.25rem;
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0,
-      black 56px,
-      black calc(100% - 56px),
+      black 80px,
+      black calc(100% - 80px),
       transparent 100%
     );
     mask-image: linear-gradient(
       to right,
       transparent 0,
-      black 56px,
-      black calc(100% - 56px),
+      black 80px,
+      black calc(100% - 80px),
       transparent 100%
     );
   }
 
+  /* O gap entra na conta do loop: cada metade termina com o mesmo respiro do começo. */
   .clients-track {
-    animation: clients-scroll 40s linear infinite;
+    padding-right: 1rem;
+    animation: clients-scroll 45s linear infinite;
   }
 
   .clients-track.is-reverse {
@@ -126,7 +98,7 @@ const groups = clients.sectors.map((sector) => {
       transform: translateX(0);
     }
     to {
-      transform: translateX(-50%);
+      transform: translateX(calc(-50% - 0.5rem));
     }
   }
 
@@ -138,7 +110,7 @@ const groups = clients.sectors.map((sector) => {
       opacity 300ms ease;
   }
 
-  .clients-marquee:hover .client-logo {
+  .client-tile:hover .client-logo {
     filter: none;
     opacity: 1;
   }
