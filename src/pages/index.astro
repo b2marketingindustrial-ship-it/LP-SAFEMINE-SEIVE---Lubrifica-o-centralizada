@@ -3,7 +3,8 @@
  * ARQUIVO GERADO — não edite à mão.
  *
  * Exceção: em 01/11/2026 a composição foi estendida à mão (beneficios, processo, clientes,
- * perguntas), porque a biblioteca não está nesta máquina; ver docs/BRIEFING.md.
+ * perguntas), porque a biblioteca não está nesta máquina; ver docs/BRIEFING.md. Em 03/11/2026
+ * os fundos passaram a alternar branco e cinza seção a seção, também à mão.
  *
  * Saiu de `npm run compose`, que resolve a composição da biblioteca de seções e
  * grava `lp.manifest.json`. Para mudar a página, mude a composição:
@@ -38,12 +39,12 @@ import { shortcodes } from '../data/site'
       <Fragment slot="shortcode">{shortcodes.chat}</Fragment>
     </Hero>
     <Solution tone="light" rhythm="open" />
-    <ProductLines tone="light" rhythm="open" />
+    <ProductLines tone="gray" rhythm="open" />
     <ProcessSteps tone="light" rhythm="panel-lead" />
-    <SupportPanel tone="light" rhythm="flow" />
-    <ApplicationsGallery tone="light" rhythm="centered-lead" />
+    <SupportPanel tone="gray" rhythm="flow" />
+    <ApplicationsGallery tone="light" rhythm="even" />
     <Benefits tone="gray" rhythm="even" />
-    <ClientLogos tone="gray" rhythm="even" />
+    <ClientLogos tone="light" rhythm="even" />
     <Faq tone="gray" rhythm="even" />
     <WhyBrand tone="gray" rhythm="overlap" />
     <QuoteForm>

@@ -756,24 +756,28 @@ if (manifest) {
     for (const [i, tone] of tones.entries())
       if (!TONES[tone]) fail(MANIFEST, `"${list[i].slug}": tom "${tone}" não existe`)
 
-    const switches = tones.filter((t, i) => i > 0 && t !== tones[i - 1]).length
-    if (switches !== 1)
-      fail(
-        MANIFEST,
-        `o fundo deve trocar exatamente uma vez (branco → cinza); trocou ${switches} vez(es): ` +
-          tones.join(' → '),
-      )
+    // Desvio pedido em 03/11/2026 (docs/BRIEFING.md, Desvios do padrão): os fundos alternam
+    // branco e cinza seção a seção, no lugar da troca única no meio. Continua valendo: começa
+    // branco (depois do hero), termina cinza (antes da cotação) e não repete o fundo em mais de
+    // duas seções seguidas. Os dois blocos navy ficam um em cada metade da página.
     if (tones[0] !== 'light' || tones[tones.length - 1] !== 'gray')
       fail(
         MANIFEST,
         'a sequência de fundos vai de branco (depois do hero navy) a cinza (antes da ' +
           `cotação cinza); está ${tones[0]} → ${tones[tones.length - 1]}`,
       )
+    for (let i = 2; i < tones.length; i++)
+      if (tones[i] === tones[i - 1] && tones[i] === tones[i - 2])
+        fail(
+          MANIFEST,
+          `três seções seguidas no mesmo fundo (${list[i - 2].slug}, ${list[i - 1].slug}, ` +
+            `${list[i].slug}) — os fundos alternam: ${tones.join(' → ')}`,
+        )
 
-    const cut = tones.indexOf('gray')
+    const half = Math.ceil(list.length / 2)
     for (const [label, run] of [
-      ['primeira metade (branca)', list.slice(0, cut)],
-      ['segunda metade (cinza)', list.slice(cut)],
+      ['primeira metade', list.slice(0, half)],
+      ['segunda metade', list.slice(half)],
     ]) {
       const carriers = run.filter((s) => s.carriesNavy).length
       if (carriers !== 1)

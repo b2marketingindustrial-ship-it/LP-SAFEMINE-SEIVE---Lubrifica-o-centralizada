@@ -90,7 +90,7 @@
       "data": "linhas.ts",
       "dataExport": "productLines",
       "carriesNavy": false,
-      "tone": "light",
+      "tone": "gray",
       "rhythm": "open",
       "tones": [
         "light",
@@ -198,7 +198,7 @@
       "data": "identificar.ts",
       "dataExport": "supportPanel",
       "carriesNavy": false,
-      "tone": "light",
+      "tone": "gray",
       "rhythm": "flow",
       "tones": [
         "light",
@@ -239,7 +239,7 @@
       "dataExport": "applications",
       "carriesNavy": false,
       "tone": "light",
-      "rhythm": "centered-lead",
+      "rhythm": "even",
       "tones": [
         "light",
         "gray"
@@ -340,7 +340,7 @@
       "component": "ClientLogos.astro",
       "data": "clientes.ts",
       "dataExport": "clients",
-      "tone": "gray",
+      "tone": "light",
       "rhythm": "even",
       "rhythms": [
         "even",
@@ -460,5 +460,5 @@
       ]
     }
   ],
-  "note": "Composição estendida à mão (biblioteca indisponível nesta máquina): solucao e beneficios são seções próprias; processo é o bloco navy da fase de apoio e identificar ficou claro; aplicacoes em faixa verde-escura com 8 itens em carrossel; clientes com 18 logos. Tons e ritmos de resolveLayout em 02/11/2026. Ver docs/BRIEFING.md."
+  "note": "Composição estendida à mão (biblioteca indisponível nesta máquina): solucao e beneficios são seções próprias; processo é o bloco navy da fase de apoio e identificar ficou claro; aplicacoes em faixa verde-escura com 8 itens em carrossel; clientes com 18 logos. Tons e ritmos de resolveLayout em 02/11/2026. Ver docs/BRIEFING.md. Em 03/11/2026, a pedido do usuário, os fundos passaram a alternar branco e cinza seção a seção (desvio da troca única do padrão; ver docs/BRIEFING.md)."
 }

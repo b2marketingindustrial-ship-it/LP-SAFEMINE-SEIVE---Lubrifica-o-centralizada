@@ -21,6 +21,9 @@ const titleAt = clients.title.indexOf(clients.titleHighlight)
 const titleBefore = titleAt >= 0 ? clients.title.slice(0, titleAt) : clients.title
 const titleAfter = titleAt >= 0 ? clients.title.slice(titleAt + clients.titleHighlight.length) : ''
 
+// Placa dos logos sempre em contraste com o fundo da seção (os fundos alternam).
+const tileBg = tone === 'light' ? 'bg-neutral-gray-100' : 'bg-neutral-light'
+
 const middle = Math.ceil(clients.logos.length / 2)
 const rows = [clients.logos.slice(0, middle), clients.logos.slice(middle)]
 ---
@@ -55,7 +58,12 @@ const rows = [clients.logos.slice(0, middle), clients.logos.slice(middle)]
         <div class:list={['clients-track flex w-max items-center gap-4', i === 1 && 'is-reverse']}>
           {[0, 1].map(() =>
             row.map((logo) => (
-              <span class="client-tile flex h-20 w-48 shrink-0 items-center justify-center rounded-2xl border border-primary-dark/10 bg-neutral-light px-7">
+              <span
+                class:list={[
+                  'client-tile flex h-20 w-48 shrink-0 items-center justify-center rounded-2xl border border-primary-dark/10 px-7',
+                  tileBg,
+                ]}
+              >
                 <Image
                   src={logo.src}
                   alt=""
