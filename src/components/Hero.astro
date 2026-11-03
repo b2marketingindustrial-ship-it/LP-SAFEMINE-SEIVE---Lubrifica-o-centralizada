@@ -4,8 +4,8 @@
  * A coluna 2 é a janela do banner; nunca coloque conteúdo nela.
  * Abra a página com `?grid=1` para ver as colunas.
  *
- * Banner (src/assets/heroBg.jpg, 1981×900): bombas SEIVE LUB sobre plataforma em mina, reenquadradas
- * no grid (assunto em ~70% da largura, lado esquerdo navy). Brief em 4.1.3.
+ * Banner (src/assets/heroBg.jpg, 1981×900): arte das bombas SEIVE LUB em mina (03/11/2026), reenquadrada
+ * no grid (assunto em ~70% da largura, lado esquerdo em verde profundo). Brief em 4.1.3.
  */
 import { Picture } from 'astro:assets'
 import Icon from './Icon.astro'
@@ -234,11 +234,11 @@ const textLines = hero.text.split('\n')
       linear-gradient(
         to right,
         var(--color-seive-950) 0%,
-        rgb(5 48 31 / 0.96) 35%,
-        rgb(5 48 31 / 0.86) 50%,
-        rgb(5 48 31 / 0.66) 64%,
-        rgb(5 48 31 / 0.4) 77%,
-        rgb(5 48 31 / 0.16) 88%,
+        rgb(1 34 24 / 0.96) 35%,
+        rgb(1 34 24 / 0.86) 50%,
+        rgb(1 34 24 / 0.66) 64%,
+        rgb(1 34 24 / 0.4) 77%,
+        rgb(1 34 24 / 0.16) 88%,
         transparent 100%
       );
   }
@@ -256,7 +256,8 @@ const textLines = hero.text.split('\n')
       width: 1700px;
     }
 
-    /* Verde profundo sob a coluna 1, dissolvendo em curva longa antes do assunto. */
+    /* Verde profundo do banner sob a coluna 1, sem fechar em sólido: a arte já escurece à
+           esquerda e a textura dela continua aparecendo de leve sob o texto. */
     .hero-navy {
       width: calc(50% - 20px);
       background:
@@ -265,12 +266,13 @@ const textLines = hero.text.split('\n')
         linear-gradient(
           to left,
           transparent 0px,
-          rgb(5 48 31 / 0.06) 40px,
-          rgb(5 48 31 / 0.2) 90px,
-          rgb(5 48 31 / 0.42) 150px,
-          rgb(5 48 31 / 0.66) 220px,
-          rgb(5 48 31 / 0.86) 300px,
-          var(--color-seive-950) 400px
+          rgb(1 34 24 / 0.06) 50px,
+          rgb(1 34 24 / 0.18) 110px,
+          rgb(1 34 24 / 0.36) 180px,
+          rgb(1 34 24 / 0.56) 250px,
+          rgb(1 34 24 / 0.74) 330px,
+          rgb(1 34 24 / 0.86) 420px,
+          rgb(1 34 24 / 0.92) 100%
         );
     }
 
@@ -280,10 +282,10 @@ const textLines = hero.text.split('\n')
       background: linear-gradient(
         to right,
         transparent 0px,
-        rgb(5 48 31 / 0.12) 70px,
-        rgb(5 48 31 / 0.34) 150px,
-        rgb(5 48 31 / 0.6) 230px,
-        rgb(5 48 31 / 0.82) 300px,
+        rgb(1 34 24 / 0.12) 70px,
+        rgb(1 34 24 / 0.34) 150px,
+        rgb(1 34 24 / 0.6) 230px,
+        rgb(1 34 24 / 0.82) 300px,
         var(--color-seive-950) 380px
       );
     }
