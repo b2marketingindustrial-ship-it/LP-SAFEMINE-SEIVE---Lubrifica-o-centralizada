@@ -53,7 +53,7 @@ export const hero = {
   title: `${site.product} para ${site.context}`,
   /** Quebra de linha do H1 no desktop largo; a outra vem antes do destaque: três linhas. */
   titleBreakAfter: 'Lubrificação centralizada',
-  /** Trecho do H1 em verde. */
+  /** Trecho do H1 em amarelo (amarelo da folha SEIVE). */
   highlight: 'máquinas pesadas',
   text: 'Lubrificante levado a cada ponto da máquina de forma precisa,\nautomática e uniforme. A SEIVE ajuda você a definir a solução para a sua máquina.',
   banner: {
