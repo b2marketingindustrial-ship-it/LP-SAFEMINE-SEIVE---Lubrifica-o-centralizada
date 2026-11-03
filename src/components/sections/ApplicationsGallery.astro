@@ -151,11 +151,11 @@ const bandMargins = BAND_MARGINS[rhythm] ?? '-my-16'
 </Section>
 
 <style>
-  /* Verde escuro da marca, com brilho no alto e vinheta nas bordas. */
+  /* Superfície verde SEIVE (global.css): luzes, spots, sombras e grão, como no hero. */
   .apps-band {
-    background:
-      radial-gradient(1100px 520px at 50% -10%, rgb(0 168 90 / 0.24) 0%, transparent 60%),
-      var(--color-brand-green-900);
+    background-color: var(--seive-surface-color);
+    background-image: var(--seive-surface-image);
+    background-size: var(--seive-surface-size);
   }
 
   /* Malha de pontos clara, esmaecida no meio para não disputar com os cards. */

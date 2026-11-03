@@ -134,12 +134,12 @@ const titleBottom = why.titleLines.at(-1)
 </Section>
 
 <style>
-  /* Verde da marca: um pouco mais claro em cima, mais fundo na base. */
+  /* Superfície verde SEIVE (global.css): luzes, spots, sombras e grão, como no hero. */
   .why-hero {
     isolation: isolate;
-    background:
-      radial-gradient(900px 480px at 0% 0%, rgb(0 168 90 / 0.14) 0%, transparent 60%),
-      linear-gradient(180deg, var(--color-primary-dark) 0%, var(--color-primary-dark-900) 100%);
+    background-color: var(--seive-surface-color);
+    background-image: var(--seive-surface-image);
+    background-size: var(--seive-surface-size);
   }
 
   /* A foto nasce do verde pela esquerda: máscara, para não haver cor a casar. */

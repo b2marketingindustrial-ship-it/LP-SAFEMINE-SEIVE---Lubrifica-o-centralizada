@@ -53,6 +53,26 @@
   --section-space: 70px;
 }
 
+/* Superfície verde SEIVE (03/11/2026): o mesmo vocabulário de luz do hero em toda área de
+   fundo verde — base em degradê de verdes da logo, spot do verde da marca com núcleo claro,
+   luz amarela quente, sombras na base e na borda, feixe diagonal e grão. Posições em %,
+   para se adaptar a painel, faixa ou rodapé. Usada por navy-panel, navy-premium, pela faixa
+   de aplicações e pelo bloco dos diferenciais. */
+:root {
+  --seive-surface-color: #064229;
+  --seive-surface-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(55% 60% at 12% 8%, rgb(0 168 90 / 0.34) 0%, transparent 70%),
+    radial-gradient(28% 34% at 18% 12%, rgb(60 196 124 / 0.12) 0%, transparent 70%),
+    radial-gradient(50% 45% at 78% 22%, rgb(0 168 90 / 0.18) 0%, transparent 70%),
+    radial-gradient(42% 58% at 96% 102%, rgb(255 210 58 / 0.22) 0%, transparent 70%),
+    radial-gradient(70% 70% at 45% 125%, rgb(0 0 0 / 0.3) 0%, transparent 70%),
+    radial-gradient(30% 80% at 106% 40%, rgb(0 0 0 / 0.16) 0%, transparent 70%),
+    linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.045) 40%, transparent 50%),
+    linear-gradient(160deg, #0b5a37 0%, #064229 48%, #032b1b 100%);
+  --seive-surface-size: 180px 180px, auto, auto, auto, auto, auto, auto, auto, auto;
+}
+
 /* Curva da seção acima dos diferenciais (03/11/2026, como na LP Falanga Peças): a base dela
    se arredonda por cima do bloco verde, que sobe por baixo (ver WhyBrand.astro). O Astro
    renderiza o <script> de cada seção dentro dela, então o vizinho direto é a própria seção. */
@@ -124,12 +144,9 @@
 
 /* Fundo navy com brilho radial: hero, painéis, bloco de diferenciais e footer. */
 @utility navy-premium {
-  background-color: var(--color-primary-dark-900);
-  background-image: radial-gradient(
-    1200px 520px at 16% -10%,
-    rgb(255 255 255 / 0.05) 0%,
-    transparent 55%
-  );
+  background-color: var(--seive-surface-color);
+  background-image: var(--seive-surface-image);
+  background-size: var(--seive-surface-size);
 }
 
 /* Malha de blueprint esmaecida nas bordas, usada sobre navy. */
@@ -240,10 +257,9 @@
 
 /* Painel navy das seções do meio (como funciona, números, diferenciais): um gradiente só. */
 @utility navy-panel {
-  background-color: var(--color-primary-dark-900);
-  background-image:
-    radial-gradient(900px 480px at 0% 0%, rgb(255 255 255 / 0.07) 0%, transparent 60%),
-    linear-gradient(160deg, var(--color-primary-dark) 0%, var(--color-primary-dark-900) 70%);
+  background-color: var(--seive-surface-color);
+  background-image: var(--seive-surface-image);
+  background-size: var(--seive-surface-size);
 }
 
 /* Sombra de painéis e fotos grandes. */
