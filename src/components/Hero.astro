@@ -30,7 +30,7 @@ const textLines = hero.text.split('\n')
 ---
 
 <section
-  class="relative overflow-hidden rounded-b-[2rem] bg-primary-dark-900 sm:rounded-b-[3rem]"
+  class="relative overflow-hidden rounded-b-[2rem] bg-seive-950 sm:rounded-b-[3rem]"
   data-hero
 >
   <div class="hero-photo absolute inset-0 z-[1]">
@@ -81,7 +81,7 @@ const textLines = hero.text.split('\n')
           {breakAt > 0 && <br class="hidden xl:block" />}
           {breakAt > 0 && ' '}
           {titleRest}
-          <span class="text-accent-orange-light">{at >= 0 ? hero.highlight : ''}</span>
+          <span class="text-seive-green-light">{at >= 0 ? hero.highlight : ''}</span>
           {titleAfter}
         </h1>
 
@@ -96,7 +96,7 @@ const textLines = hero.text.split('\n')
         </p>
 
         {/* Caixa de ícones — inline, texto sempre em duas linhas */}
-        <ul class="hero-points relative z-[3] mt-7 inline-flex max-w-full flex-wrap gap-x-5 gap-y-3 rounded-xl border border-white/10 bg-primary-dark-900/55 px-3.5 py-2.5 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.7)] backdrop-blur-md sm:gap-x-6 sm:px-4 lg:w-max lg:max-w-none lg:flex-nowrap lg:gap-x-6">
+        <ul class="hero-points relative z-[3] mt-7 inline-flex max-w-full flex-wrap gap-x-5 gap-y-3 rounded-xl border border-white/10 bg-seive-950/55 px-3.5 py-2.5 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.7)] backdrop-blur-md sm:gap-x-6 sm:px-4 lg:w-max lg:max-w-none lg:flex-nowrap lg:gap-x-6">
           {hero.points.map((point) => (
             <li class="hero-point flex items-center gap-2.5">
               <span class="icon-badge flex size-10 shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white/10 backdrop-blur-sm">
@@ -135,7 +135,7 @@ const textLines = hero.text.split('\n')
         <slot name="shortcode">
           {isDev ? (
             <div
-              class="flex min-h-[430px] w-full flex-col gap-3 border border-dashed border-neutral-light/35 bg-primary-dark-900/80 p-6 text-left backdrop-blur-sm"
+              class="flex min-h-[430px] w-full flex-col gap-3 border border-dashed border-neutral-light/35 bg-seive-950/80 p-6 text-left backdrop-blur-sm"
               aria-label="Mock do chat (só em desenvolvimento)"
             >
               <span class="font-sans text-[11px] font-semibold tracking-[0.18em] text-accent-orange uppercase">
@@ -147,7 +147,7 @@ const textLines = hero.text.split('\n')
               <div class="mt-auto h-12 rounded-full bg-accent-orange" />
             </div>
           ) : (
-            <div class="flex min-h-[430px] w-full flex-col items-center justify-center gap-3 border border-dashed border-neutral-light/35 bg-primary-dark-900/80 p-6 text-center backdrop-blur-sm">
+            <div class="flex min-h-[430px] w-full flex-col items-center justify-center gap-3 border border-dashed border-neutral-light/35 bg-seive-950/80 p-6 text-center backdrop-blur-sm">
               <span class="font-sans text-[11px] font-semibold tracking-[0.18em] text-accent-orange uppercase">
                 Espaço reservado
               </span>
@@ -213,15 +213,31 @@ const textLines = hero.text.split('\n')
     --page-edge: max(0px, calc(50% - var(--page-half)));
   }
 
+  /* Grão leve sobre foto e véus (abaixo do conteúdo): tira o aspecto chapado dos degradês. */
+  [data-hero]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* Véus no verde profundo da logo SEIVE (o mesmo do fundo do banner), com queda suave em
+     vários pontos para a borda não aparecer; brilho verde difuso no alto. */
   .hero-navy {
     background:
-      radial-gradient(1100px 520px at 12% -8%, rgb(255 255 255 / 0.1) 0%, transparent 55%),
+      radial-gradient(1100px 560px at 10% -12%, rgb(0 168 90 / 0.16) 0%, transparent 60%),
+      radial-gradient(760px 420px at 28% 118%, rgb(0 168 90 / 0.14) 0%, transparent 70%),
       linear-gradient(
         to right,
-        var(--color-primary-dark) 0%,
-        var(--color-primary-dark-900) 38%,
-        rgb(20 43 13 / 0.88) 66%,
-        transparent 96%
+        var(--color-seive-950) 0%,
+        rgb(5 48 31 / 0.96) 35%,
+        rgb(5 48 31 / 0.86) 50%,
+        rgb(5 48 31 / 0.66) 64%,
+        rgb(5 48 31 / 0.4) 77%,
+        rgb(5 48 31 / 0.16) 88%,
+        transparent 100%
       );
   }
 
@@ -238,29 +254,35 @@ const textLines = hero.text.split('\n')
       width: 1700px;
     }
 
-    /* Navy sob o texto da coluna 1, passando ao verde escuro da SEIVE antes do assunto. */
+    /* Verde profundo sob a coluna 1, dissolvendo em curva longa antes do assunto. */
     .hero-navy {
       width: calc(50% - 20px);
       background:
-        radial-gradient(900px 520px at 10% -10%, rgb(255 255 255 / 0.1) 0%, transparent 55%),
+        radial-gradient(900px 560px at 8% -12%, rgb(0 168 90 / 0.16) 0%, transparent 60%),
+        radial-gradient(760px 420px at 28% 118%, rgb(0 168 90 / 0.14) 0%, transparent 70%),
         linear-gradient(
           to left,
           transparent 0px,
-          rgb(28 58 18 / 0.5) 70px,
-          var(--color-brand-green-900) 150px,
-          var(--color-primary-dark-900) 420px,
-          var(--color-primary-dark) 100%
+          rgb(5 48 31 / 0.06) 40px,
+          rgb(5 48 31 / 0.2) 90px,
+          rgb(5 48 31 / 0.42) 150px,
+          rgb(5 48 31 / 0.66) 220px,
+          rgb(5 48 31 / 0.86) 300px,
+          var(--color-seive-950) 400px
         );
     }
 
-    /* Verde escuro da SEIVE à direita: cobre a coluna do shortcode e fecha a margem da página. */
+    /* À direita: cobre a coluna do shortcode e fecha a margem da página no mesmo verde. */
     .hero-navy-right {
       width: calc(50% - 261px);
       background: linear-gradient(
         to right,
         transparent 0px,
-        rgb(20 43 13 / 0.55) 200px,
-        var(--color-brand-green-900) 364px
+        rgb(5 48 31 / 0.12) 70px,
+        rgb(5 48 31 / 0.34) 150px,
+        rgb(5 48 31 / 0.6) 230px,
+        rgb(5 48 31 / 0.82) 300px,
+        var(--color-seive-950) 380px
       );
     }
 

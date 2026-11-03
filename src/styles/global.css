@@ -22,6 +22,13 @@
   /* Verde escuro da marca: faixa de aplicações (900 é o fundo, 800 os cards). */
   --color-brand-green-900: #142b0d;
   --color-brand-green-800: #1c3a12;
+  /* Cores da logo SEIVE, usadas no hero (03/11/2026): verde da marca, amarelo da folha e o
+     verde profundo que serve de fundo. Sem azul no hero. */
+  --color-seive-green: #00a85a;
+  --color-seive-green-light: #3cc47c;
+  --color-seive-yellow: #ffd23a;
+  --color-seive-950: #05301f;
+  --color-seive-900: #0a3d27;
   --color-neutral-light: #ffffff;
   /* Cinza-azulado único das superfícies claras: fundo cinza das seções e placas. */
   --color-neutral-gray-100: #f4f6fa;

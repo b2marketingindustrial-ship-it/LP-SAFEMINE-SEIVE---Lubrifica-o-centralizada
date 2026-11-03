@@ -69,7 +69,7 @@ Certificações do supressor (ABNT PE-223, NFPA, UL), área de atendimento, tele
 - **Hero:** sem desvio. O Hero da primeira versão (fundo claro, sem a coluna do chat) foi substituído em 01/11/2026 pelo da estrutura fixa 4.1.2: grid `1fr · 270px · 300px`, coluna 2 vazia, slot `shortcode` de 300px, foto de 1700px ancorada na borda do container. A faixa de quatro prioridades e o cartão de ajuda do hero saíram; a nota de resultados ficou sob os botões.
 - **Linhas:** `ProductLines.astro` sem a faixa "Não sabe qual configuração escolher?" (01/11/2026), por repetir o bloco `identificar` logo abaixo. Recompor com `compose.mjs` sobrescreve o arquivo: guarde esta versão antes.
 - **Clientes:** `ClientLogos.astro` com cabeçalho próprio, centrado e empilhado (rótulo em pill, título e descrição, cada um numa linha a partir do tablet), no lugar do `SplitHeader` (03/11/2026). Recompor com `compose.mjs` sobrescreve o arquivo: guarde esta versão antes.
-- **Paleta:** os véus do hero usam o azul `#0a1d4d` da marca no lugar do navy `#001830` do template. O token `accent-orange-light` (`#7ba249`) existe só para o destaque do H1 sobre o fundo escuro.
+- **Paleta:** o hero não usa azul (pedido do usuário, 03/11/2026): fundo, véus e banner nas cores da logo SEIVE (tokens `seive-*`: verde profundo `#05301f`, verde `#00a85a`, amarelo `#ffd23a`), com grão leve. O resto da página segue com o azul `#0a1d4d` da marca no lugar do navy `#001830` do template. O token `accent-orange-light` (`#7ba249`) existe só para o destaque do H1 sobre o fundo escuro.
 
 ## Limitações conhecidas
 
