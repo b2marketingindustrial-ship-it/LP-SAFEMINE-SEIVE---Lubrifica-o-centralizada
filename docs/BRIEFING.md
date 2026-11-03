@@ -38,19 +38,19 @@ Composição inicial: `linhas · identificar · aplicacoes · diferenciais`, igu
 
 ## Assets
 
-| Asset                    | Arquivo                                 | Origem                                                                                                   |
-| ------------------------ | --------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Foto do hero             | `src/assets/heroBg.png`                 | Site da Safe Mine, bomba instalada (1280×853), reenquadrada em 1981×900 com o assunto em ~70% da largura |
-| Bomba                    | `src/assets/linhas/linha-1.png`         | Site da SEIVE, render com fundo transparente                                                             |
-| Distribuidor             | `src/assets/linhas/linha-2.png`         | Site da Safe Mine                                                                                        |
-| Mangueiras               | `src/assets/linhas/linha-3.png`         | Site da Safe Mine                                                                                        |
-| Painel da bomba          | `src/assets/linhas/marcas.png`          | Recorte do render da SEIVE                                                                               |
-| Mineração                | `src/assets/aplicacoes/aplicacao-1.png` | LP de supressão SEIVE                                                                                    |
-| Agrícola                 | `src/assets/aplicacoes/aplicacao-2.png` | LP de supressão SEIVE                                                                                    |
-| Florestal                | `src/assets/aplicacoes/aplicacao-3.png` | LP de supressão SEIVE (899 px de largura, abaixo dos 1200 px da especificação)                           |
-| Móveis e pesados         | `src/assets/aplicacoes/aplicacao-4.png` | Site da Safe Mine                                                                                        |
-| Cenário dos diferenciais | `src/assets/diferenciais/cenario.jpg`   | Site da Safe Mine                                                                                        |
-| Logos                    | `LOGO.png`, `marca-safe-mine.png`       | Mantidos da LP de compressores                                                                           |
+| Asset                    | Arquivo                                 | Origem                                                                                                                                 |
+| ------------------------ | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Foto do hero             | `src/assets/heroBg.jpg`                 | Bombas SEIVE LUB sobre plataforma em mina (1877×838, enviada em 03/11/2026), reenquadrada em 1981×900 com o assunto em ~70% da largura |
+| Bomba                    | `src/assets/linhas/linha-1.png`         | Site da SEIVE, render com fundo transparente                                                                                           |
+| Distribuidor             | `src/assets/linhas/linha-2.png`         | Site da Safe Mine                                                                                                                      |
+| Mangueiras               | `src/assets/linhas/linha-3.png`         | Site da Safe Mine                                                                                                                      |
+| Painel da bomba          | `src/assets/linhas/marcas.png`          | Recorte do render da SEIVE                                                                                                             |
+| Mineração                | `src/assets/aplicacoes/aplicacao-1.png` | LP de supressão SEIVE                                                                                                                  |
+| Agrícola                 | `src/assets/aplicacoes/aplicacao-2.png` | LP de supressão SEIVE                                                                                                                  |
+| Florestal                | `src/assets/aplicacoes/aplicacao-3.png` | LP de supressão SEIVE (899 px de largura, abaixo dos 1200 px da especificação)                                                         |
+| Móveis e pesados         | `src/assets/aplicacoes/aplicacao-4.png` | Site da Safe Mine                                                                                                                      |
+| Cenário dos diferenciais | `src/assets/diferenciais/cenario.jpg`   | Site da Safe Mine                                                                                                                      |
+| Logos                    | `LOGO.png`, `marca-safe-mine.png`       | Mantidos da LP de compressores                                                                                                         |
 
 ## Pendências para validar
 

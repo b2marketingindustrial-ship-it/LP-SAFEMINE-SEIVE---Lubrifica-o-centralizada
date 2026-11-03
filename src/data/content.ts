@@ -12,7 +12,7 @@ import type { IconName } from './icons'
 import type { Photo } from './types'
 import { site } from './site'
 
-import heroBg from '@assets/heroBg.png'
+import heroBg from '@assets/heroBg.jpg'
 
 /* ------------------------------------------------------------------ tipos */
 
