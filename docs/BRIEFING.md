@@ -63,7 +63,7 @@ Composição inicial: `linhas · identificar · aplicacoes · diferenciais`, igu
 
 Área de atendimento, telefones e e-mails da SEIVE.
 
-**Certificações (decisão do usuário, 03/11/2026):** entraram todas, como na página "Pioneirismo" do catálogo: ABNT PE-223 (certificado nº 270.001), ISO 9001, patente, NFPA 17, NFPA 122 e UL 1254, numa faixa sob os cards dos diferenciais. Alerta registrado antes da decisão: ABNT PE-223, NFPA 17/122 e UL 1254 são normas do sistema supressor de incêndio (NFPA 17 e UL 1254 tratam de extintores de pó químico), não da lubrificação; na LP de lubrificação podem ser lidas como alegação enganosa, inclusive pela revisão do Google Ads. Logos recortados do print do catálogo, em baixa resolução: trocar pelos originais.
+**Certificações (decisão do usuário, 03/11/2026):** entraram todas, como na página "Pioneirismo" do catálogo: ABNT PE-223 (certificado nº 270.001), ISO 9001, patente, NFPA 17, NFPA 122 e UL 1254, primeiro numa caixa sob os cards dos diferenciais e, ainda em 03/11/2026, só como selos (sem texto) ao lado do CTA dos diferenciais, a pedido. Alerta registrado antes da decisão: ABNT PE-223, NFPA 17/122 e UL 1254 são normas do sistema supressor de incêndio (NFPA 17 e UL 1254 tratam de extintores de pó químico), não da lubrificação; na LP de lubrificação podem ser lidas como alegação enganosa, inclusive pela revisão do Google Ads. Logos recortados do print do catálogo, em baixa resolução: trocar pelos originais.
 
 ## Desvios do padrão
 
