@@ -1,0 +1,116 @@
+---
+/**
+ * Clientes e números — biblioteca B2, fase prova. Nesta LP os logos (clientes da SEIVE,
+ * com aval registrado no BRIEFING) correm num carrossel contínuo, que para no hover e
+ * fica parado com `prefers-reduced-motion`. Abaixo, os 3 números e o CTA.
+ */
+import { Image } from 'astro:assets'
+import Button from '@components/Button.astro'
+import Icon from '@components/Icon.astro'
+import Section from '@components/Section.astro'
+import SplitHeader from '@components/SplitHeader.astro'
+import type { SectionProps } from '@lib/layout'
+import { cta } from '@data/content'
+import { clients } from '@data/sections/clientes'
+
+type Props = SectionProps
+
+const { tone, rhythm } = Astro.props
+---
+
+<Section id="clientes" tone={tone} rhythm={rhythm}>
+  <SplitHeader
+    eyebrow={clients.eyebrow}
+    title={clients.title}
+    highlight={clients.titleHighlight}
+    text={clients.text}
+  />
+
+  <div class="clients-marquee mt-10 overflow-hidden rounded-2xl border border-primary-dark/10 bg-neutral-light py-7">
+    <div class="clients-track flex w-max items-center">
+      {/* Lista duplicada para o loop ficar contínuo; a cópia some para leitor de tela. */}
+      {[0, 1].map((copy) => (
+        <ul class="flex shrink-0 items-center" aria-hidden={copy === 1 ? 'true' : undefined}>
+          {clients.logos.map((logo) => (
+            <li class="flex h-10 w-44 shrink-0 items-center justify-center px-6">
+              <Image
+                src={logo.src}
+                alt={copy === 1 ? '' : logo.alt}
+                height={48}
+                format="webp"
+                loading="lazy"
+                decoding="async"
+                class="max-h-9 w-auto object-contain"
+              />
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+
+  <div class="mt-6 grid gap-6 sm:grid-cols-3 lg:grid-cols-[repeat(3,minmax(0,1fr))_auto] lg:items-center">
+    {clients.metrics.map((metric) => (
+      <p class="flex items-center gap-4">
+        <span class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-accent-orange/10 text-accent-orange">
+          <Icon name={metric.icon} class="size-6" />
+        </span>
+        <span class="font-sans leading-tight">
+          <span class="block font-display text-[1.6rem] font-extrabold text-primary-dark-900">
+            {metric.value}
+          </span>
+          <span class="text-[14px] text-ink-soft">{metric.label}</span>
+        </span>
+      </p>
+    ))}
+    <Button
+      cta="clientes-cta"
+      size="md"
+      class="self-start sm:col-span-3 lg:col-span-1 lg:self-auto"
+    >
+      {cta.card}
+    </Button>
+  </div>
+</Section>
+
+<style>
+  .clients-marquee {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 64px,
+      black calc(100% - 64px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 64px,
+      black calc(100% - 64px),
+      transparent 100%
+    );
+  }
+
+  .clients-track {
+    animation: clients-scroll 48s linear infinite;
+  }
+
+  .clients-marquee:hover .clients-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes clients-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .clients-track {
+      animation: none;
+    }
+  }
+</style>

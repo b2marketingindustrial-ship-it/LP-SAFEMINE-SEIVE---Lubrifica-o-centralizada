@@ -5,6 +5,7 @@
  * os 5 diferenciais num painel navy. São 5 exatos: o painel é `lg:grid-cols-5`.
  *
  * `cenario.jpg`: articulação com a linha de lubrificação, do site da Safe Mine.
+ * Itens 2 a 4 do catálogo SEIVE LUB 2024 (p. 2, 3 e 15), com o aval da B2 em 01/11/2026.
  */
 import type { IconName } from '@data/icons'
 import type { Photo } from '@data/types'
@@ -36,24 +37,24 @@ export const why = {
       description: 'Entende a máquina e a operação antes de indicar o sistema.',
     },
     {
-      icon: 'sliders',
-      title: 'Projeto personalizado',
-      description: 'Adequado às características de cada equipamento.',
+      icon: 'badge-check',
+      title: 'Pioneira no Brasil',
+      description: 'Primeira fornecedora brasileira de lubrificação progressiva.',
     },
     {
-      icon: 'refresh',
-      title: 'Processo automático',
-      description: 'Lubrificação precisa, contínua e uniforme durante a operação.',
+      icon: 'factory',
+      title: 'Fabricação nacional',
+      description: '100% brasileira, com qualidade ISO 9001:2015 e patente.',
+    },
+    {
+      icon: 'shield',
+      title: 'Garantia estendida',
+      description: '12 meses no sistema e 24 meses nos distribuidores.',
     },
     {
       icon: 'file-text',
-      title: 'Gestão dos sistemas',
+      title: 'Gestão online',
       description: 'Relatórios e consulta online dos sistemas instalados.',
-    },
-    {
-      icon: 'gear',
-      title: 'Tecnologia SEIVE',
-      description: 'Sistema progressivo desenvolvido pela própria fabricante.',
     },
   ],
 } as const satisfies {

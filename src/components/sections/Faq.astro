@@ -1,0 +1,66 @@
+---
+/**
+ * Perguntas frequentes — biblioteca B2, fase autoridade. Acordeão nativo (<details>),
+ * que funciona por teclado sem script, e JSON-LD FAQPage com as mesmas perguntas.
+ */
+import Button from '@components/Button.astro'
+import Icon from '@components/Icon.astro'
+import Section from '@components/Section.astro'
+import SplitHeader from '@components/SplitHeader.astro'
+import type { SectionProps } from '@lib/layout'
+import { cta } from '@data/content'
+import { faq } from '@data/sections/perguntas'
+
+type Props = SectionProps
+
+const { tone, rhythm } = Astro.props
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+}
+---
+
+<Section id="perguntas" tone={tone} rhythm={rhythm}>
+  <SplitHeader
+    eyebrow={faq.eyebrow}
+    title={faq.title}
+    highlight={faq.titleHighlight}
+    text={faq.text}
+  />
+
+  <div class="mt-10 grid gap-3 lg:grid-cols-2 lg:items-start lg:gap-x-5">
+    {faq.items.map((item) => (
+      <details class="faq-item group rounded-2xl border border-primary-dark/10 bg-neutral-light">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 font-display text-[1.05rem] leading-snug font-extrabold text-primary-dark-900">
+          {item.question}
+          <Icon
+            name="chevron-down"
+            class="size-5 shrink-0 text-accent-orange transition-transform duration-200 group-open:rotate-180 motion-reduce:transition-none"
+          />
+        </summary>
+        <p class="px-6 pb-6 font-sans text-[15px] leading-relaxed text-ink-soft">{item.answer}</p>
+      </details>
+    ))}
+  </div>
+
+  <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+    <p class="font-sans text-[15px] text-ink-soft">Ficou alguma dúvida sobre a sua máquina?</p>
+    <Button cta="perguntas-cta" size="md" class="self-start">
+      {cta.card}
+    </Button>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+</Section>
+
+<style>
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

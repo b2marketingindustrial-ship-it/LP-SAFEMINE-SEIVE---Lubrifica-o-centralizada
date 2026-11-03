@@ -90,7 +90,7 @@ export const quote = {
   help: 'Não sabe quantos pontos lubrificar? Basta descrever a máquina.',
   trust: [
     { icon: 'users', label: 'Atendimento consultivo' },
-    { icon: 'clock', label: 'Resposta rápida' },
+    { icon: 'shield', label: 'Garantia 12 meses' },
     { icon: 'file', label: 'Cotação pela descrição da máquina' },
   ],
   /** Nota de LGPD exibida abaixo do formulário. */

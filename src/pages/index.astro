@@ -2,6 +2,9 @@
 /**
  * ARQUIVO GERADO — não edite à mão.
  *
+ * Exceção: em 01/11/2026 a composição foi estendida à mão (beneficios, processo, clientes,
+ * perguntas), porque a biblioteca não está nesta máquina; ver docs/BRIEFING.md.
+ *
  * Saiu de `npm run compose`, que resolve a composição da biblioteca de seções e
  * grava `lp.manifest.json`. Para mudar a página, mude a composição:
  *
@@ -16,8 +19,12 @@ import Hero from '../components/Hero.astro'
 import QuoteForm from '../components/QuoteForm.astro'
 import Footer from '../components/Footer.astro'
 import ProductLines from '../components/sections/ProductLines.astro'
+import Benefits from '../components/sections/Benefits.astro'
+import ProcessSteps from '../components/sections/ProcessSteps.astro'
 import SupportPanel from '../components/sections/SupportPanel.astro'
 import ApplicationsGallery from '../components/sections/ApplicationsGallery.astro'
+import ClientLogos from '../components/sections/ClientLogos.astro'
+import Faq from '../components/sections/Faq.astro'
 import WhyBrand from '../components/sections/WhyBrand.astro'
 import { shortcodes } from '../data/site'
 ---
@@ -30,8 +37,12 @@ import { shortcodes } from '../data/site'
       <Fragment slot="shortcode">{shortcodes.chat}</Fragment>
     </Hero>
     <ProductLines tone="light" rhythm="open" />
+    <Benefits tone="light" rhythm="even" />
+    <ProcessSteps tone="light" rhythm="even" />
     <SupportPanel tone="light" rhythm="panel-lead" />
     <ApplicationsGallery tone="gray" rhythm="centered-lead" />
+    <ClientLogos tone="gray" rhythm="flow" />
+    <Faq tone="gray" rhythm="even" />
     <WhyBrand tone="gray" rhythm="overlap" />
     <QuoteForm>
       <Fragment slot="shortcode">{shortcodes.form}</Fragment>

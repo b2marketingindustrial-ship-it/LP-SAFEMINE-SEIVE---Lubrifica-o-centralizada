@@ -1,0 +1,45 @@
+---
+/**
+ * Cabeçalho das seções desta LP no visual do mockup Safe Mine: eyebrow com traço verde,
+ * H2 com o trecho `highlight` em verde e, ao lado (desktop), o parágrafo de abertura.
+ * Mesmas classes do cabeçalho de "linhas" e "aplicacoes", para a escala não variar.
+ */
+interface Props {
+  eyebrow: string
+  title: string
+  highlight?: string
+  text?: string
+  class?: string
+}
+
+const { eyebrow, title, highlight = '', text, class: className = '' } = Astro.props
+
+const at = highlight ? title.indexOf(highlight) : -1
+const before = at >= 0 ? title.slice(0, at) : title
+const after = at >= 0 ? title.slice(at + highlight.length) : ''
+---
+
+<div
+  class:list={[
+    'grid gap-5 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-end lg:gap-16 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]',
+    className,
+  ]}
+>
+  <div>
+    <span class="inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.18em] text-ink-soft uppercase sm:text-[13px]">
+      <span class="h-[3px] w-9 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
+      {eyebrow}
+    </span>
+    <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-primary-dark-900 sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
+      {before}
+      {at >= 0 && <span class="text-accent-orange">{highlight}</span>}
+      {after}
+    </h2>
+  </div>
+
+  {text && (
+    <p class="max-w-[36rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[17px] lg:pb-1.5">
+      {text}
+    </p>
+  )}
+</div>

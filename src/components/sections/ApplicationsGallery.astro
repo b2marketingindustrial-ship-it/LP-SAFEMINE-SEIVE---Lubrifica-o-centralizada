@@ -4,8 +4,10 @@
  * 29/10/2026 nesta LP (desvio registrado em docs/BRIEFING.md). `npm run compose`
  * sobrescreve este arquivo com o da biblioteca: guarde-o antes de recompor.
  *
- * Cabeçalho em duas colunas, 4 cards brancos com foto e "Cotar para esta aplicação" —
- * o card inteiro continua sendo o CTA — e a faixa "Sua aplicação não está aqui?".
+ * Cabeçalho em duas colunas, carrossel de cards brancos com foto e "Cotar para esta
+ * aplicação" — o card inteiro continua sendo o CTA — e a faixa "Sua aplicação não está
+ * aqui?". O carrossel é um trilho com scroll-snap: rola por toque, por teclado (o trilho
+ * recebe foco) e pelas setas, que andam uma tela de cards por vez.
  */
 import Button from '@components/Button.astro'
 import { Image } from 'astro:assets'
@@ -47,47 +49,73 @@ const hasHighlight = applications.title.includes(applications.titleHighlight)
     </p>
   </div>
 
-  <ul class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-    {applications.items.map((app) => (
-      <li class="flex">
-        <button
-          type="button"
-          data-cta={`aplicacoes-${app.id}`}
-          class="btn-slave-whats group flex w-full flex-col overflow-hidden rounded-2xl border border-primary-dark/10 bg-neutral-light text-left shadow-[0_14px_34px_-24px_rgba(10,29,77,0.35)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_50px_-28px_rgba(10,29,77,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-        >
-          <span class="block aspect-[4/3] overflow-hidden bg-neutral-gray-100">
-            <Image
-              src={app.photo.src}
-              alt={app.photo.alt}
-              format="webp"
-              width={640}
-              loading="lazy"
-              decoding="async"
-              class="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-            />
-          </span>
+  <div class="mt-10" data-carousel>
+    <div class="mb-4 flex justify-end gap-2">
+      <button
+        type="button"
+        data-rail-prev
+        aria-label="Aplicações anteriores"
+        class="flex size-11 items-center justify-center rounded-full border border-primary-dark/15 bg-neutral-light text-primary-dark-900 transition-colors duration-200 hover:border-accent-orange hover:text-accent-orange disabled:opacity-35 disabled:hover:border-primary-dark/15 disabled:hover:text-primary-dark-900 motion-reduce:transition-none"
+      >
+        <Icon name="arrow-right" class="size-5 rotate-180" />
+      </button>
+      <button
+        type="button"
+        data-rail-next
+        aria-label="Próximas aplicações"
+        class="flex size-11 items-center justify-center rounded-full border border-primary-dark/15 bg-neutral-light text-primary-dark-900 transition-colors duration-200 hover:border-accent-orange hover:text-accent-orange disabled:opacity-35 disabled:hover:border-primary-dark/15 disabled:hover:text-primary-dark-900 motion-reduce:transition-none"
+      >
+        <Icon name="arrow-right" class="size-5" />
+      </button>
+    </div>
 
-          <span class="flex flex-1 flex-col px-6 pt-5 pb-6">
-            <span class="font-display text-[22px] leading-tight font-extrabold text-primary-dark-900">
-              {app.label}
-            </span>
-            <span class="mt-2 font-sans text-[15px] leading-snug text-ink-soft">
-              {app.description}
-            </span>
-            <span class="mt-auto inline-flex items-center gap-3 pt-5 font-sans text-[15px] font-bold text-primary-dark-900 transition-colors duration-200 group-hover:text-accent-orange">
-              {applications.cardCta}
-              <Icon
-                name="arrow-right"
-                class="size-[18px] shrink-0 text-accent-orange transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+    <ul
+      data-carousel-track
+      tabindex="0"
+      aria-label="Aplicações do SEIVE LUB"
+      class="app-track -mx-6 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-6 pt-2 pb-4 motion-reduce:scroll-auto lg:mx-0 lg:px-0"
+    >
+      {applications.items.map((app) => (
+        <li class="flex w-[78%] shrink-0 snap-start sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)] xl:w-[calc((100%-3.75rem)/4)]">
+          <button
+            type="button"
+            data-cta={`aplicacoes-${app.id}`}
+            class="btn-slave-whats group flex w-full flex-col overflow-hidden rounded-2xl border border-primary-dark/10 bg-neutral-light text-left shadow-[0_14px_34px_-24px_rgba(10,29,77,0.35)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_50px_-28px_rgba(10,29,77,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+          >
+            <span class="block aspect-[4/5] overflow-hidden bg-neutral-gray-100">
+              <Image
+                src={app.photo.src}
+                alt={app.photo.alt}
+                format="webp"
+                width={640}
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
               />
             </span>
-          </span>
-        </button>
-      </li>
-    ))}
-  </ul>
 
-  <div class="mt-6 flex flex-col gap-5 rounded-2xl border border-primary-dark/10 bg-primary-dark/[0.04] px-6 py-5 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+            <span class="flex flex-1 flex-col px-6 pt-5 pb-6">
+              <span class="font-display text-[22px] leading-tight font-extrabold text-primary-dark-900">
+                {app.label}
+              </span>
+              <span class="mt-2 font-sans text-[15px] leading-snug text-ink-soft">
+                {app.description}
+              </span>
+              <span class="mt-auto inline-flex items-center gap-3 pt-5 font-sans text-[15px] font-bold text-primary-dark-900 transition-colors duration-200 group-hover:text-accent-orange">
+                {applications.cardCta}
+                <Icon
+                  name="arrow-right"
+                  class="size-[18px] shrink-0 text-accent-orange transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+                />
+              </span>
+            </span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="mt-4 flex flex-col gap-5 rounded-2xl border border-primary-dark/10 bg-primary-dark/[0.04] px-6 py-5 sm:flex-row sm:items-center sm:justify-between lg:px-10">
     <div class="flex items-center gap-5">
       <span class="flex size-16 shrink-0 items-center justify-center rounded-full bg-primary-dark/[0.07] text-primary-dark-900">
         <Icon name="chat" class="size-8" />
@@ -105,3 +133,35 @@ const hasHighlight = applications.title.includes(applications.titleHighlight)
     </Button>
   </div>
 </Section>
+
+<style>
+  .app-track {
+    scrollbar-width: none;
+  }
+
+  .app-track::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  // Setas do carrossel: andam uma tela de cards por vez e desligam nas pontas.
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-carousel-track]')
+    const prev = root.querySelector<HTMLButtonElement>('[data-rail-prev]')
+    const next = root.querySelector<HTMLButtonElement>('[data-rail-next]')
+    if (!track || !prev || !next) return
+
+    const update = () => {
+      prev.disabled = track.scrollLeft <= 4
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4
+    }
+    const go = (dir: number) => track.scrollBy({ left: dir * track.clientWidth * 0.9 })
+
+    prev.addEventListener('click', () => go(-1))
+    next.addEventListener('click', () => go(1))
+    track.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    update()
+  })
+</script>

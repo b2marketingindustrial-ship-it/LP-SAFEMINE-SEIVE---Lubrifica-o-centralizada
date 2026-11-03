@@ -16,11 +16,11 @@ Este arquivo registra de onde veio cada coisa, para que o projeto possa ser reto
 
 Não houve briefing de campanha nesta LP. Os valores abaixo foram definidos na execução e precisam ser conferidos antes de ativar anúncios.
 
-| Campo               | Valor                                                                                                                                  |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Palavra-chave       | `lubrificação centralizada SEIVE` — no H1 e no title                                                                                   |
-| Negativas de oferta | troca de óleo, óleo de motor, lubrificante spray, lubrificante automotivo e doméstico, lubrificação de bicicleta                       |
-| Claims proibidos    | fabricante, autorizado, exclusivo, superlativos, "primeira fornecedora" e promessas absolutas sobre paradas (ver `campaign.forbidden`) |
+| Campo               | Valor                                                                                                            |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Palavra-chave       | `lubrificação centralizada SEIVE` — no H1 e no title                                                             |
+| Negativas de oferta | troca de óleo, óleo de motor, lubrificante spray, lubrificante automotivo e doméstico, lubrificação de bicicleta |
+| Claims proibidos    | fabricante, autorizado, exclusivo, superlativos e promessas absolutas sobre paradas (ver `campaign.forbidden`)   |
 
 ## Composição
 
@@ -61,7 +61,7 @@ Não houve briefing de campanha nesta LP. Os valores abaixo foram definidos na e
 
 ## Fora da página, de propósito
 
-Certificações, patente, números da SEIVE, "primeira fornecedora brasileira", área de atendimento, telefones e e-mails da SEIVE. Na LP de supressão, esses itens também ficaram fora, à espera de confirmação.
+Certificações do supressor (ABNT PE-223, NFPA, UL), área de atendimento, telefones e e-mails da SEIVE. Na LP de supressão, esses itens também ficaram fora, à espera de confirmação.
 
 ## Desvios do padrão
 
@@ -78,3 +78,20 @@ Certificações, patente, números da SEIVE, "primeira fornecedora brasileira", 
 ## Header restaurado ao padrão (01/11/2026)
 
 A pedido do usuário, o Header deixou a barra branca flutuante do mockup de 29/10/2026 e voltou à estrutura fixa 4.1.1, como nas demais LPs da B2: barra navy `sticky`, a placa branca traz o logo SEIVE, um separador e o Safe Mine, tagline central "Lubrificação centralizada" e CTA laranja em caixa-alta ("Cotação" no celular). As âncoras do topo saíram. O Hero voltou ao padding do padrão (`py-20 lg:py-24`), já que o header não é mais sobreposto. A assinatura A8 do Header em `scripts/check-lp.mjs` voltou à da estrutura fixa.
+
+## Conteúdo do catálogo SEIVE LUB 2024 e composição estendida (01/11/2026)
+
+Fonte: `docs/briefing-cliente/Apresentação Seive LUB 2024.pdf` e o texto do site da SEIVE. Decisões tomadas com a B2, ponto a ponto:
+
+| Ponto                                                                                                             | Decisão                                                                                                                                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Benefícios (corretivas, disponibilidade, consumo e resíduos, segurança e incêndio, quantidade exata, baixo custo) | Nova seção `beneficios` ("Por que investir"), própria desta LP                                                                                                                                                          |
+| Funcionamento (central → linha → distribuidores → pontos, dimensionado pelo manual)                               | Seção `processo` da biblioteca, em variante clara                                                                                                                                                                       |
+| Garantia (12 meses; 24 nos distribuidores; canal técnico)                                                         | Selo na cotação, item dos diferenciais e resposta no FAQ                                                                                                                                                                |
+| Fabricante                                                                                                        | Entram 100% brasileira, pioneira (primeira fornecedora brasileira), ISO 9001:2015 e patente nº 903706326. "primeira fornecedora" saiu da lista de claims proibidos. ABNT PE-223, NFPA e UL ficam fora: são do supressor |
+| Segmentos                                                                                                         | `aplicacoes` vira carrossel com 8 cards: os 4 de antes e sucroenergético, algodão, portuário e estacionários, com fotos do catálogo em baixa resolução                                                                  |
+| Clientes                                                                                                          | Nova seção `clientes` com 18 logos da p. 5 do catálogo em carrossel. São clientes da SEIVE, usados com o aval da B2; recortados do PDF em baixa resolução (trocar pelos originais)                                      |
+| Estatísticas (p. 13)                                                                                              | Entram "+60% das falhas" e "+50% dos incêndios", atribuídas a fabricantes de componentes. O "95%" ficou fora por contradizer o 60%                                                                                      |
+| Dúvidas de instalação                                                                                             | Nova seção `perguntas` (6 perguntas, JSON-LD FAQPage)                                                                                                                                                                   |
+
+Composição: `linhas · beneficios · processo · identificar · aplicacoes · clientes · perguntas · diferenciais`, com tons e ritmos resolvidos por `resolveLayout` (`src/lib/rhythm.mjs`). Como a biblioteca não está nesta máquina, `index.astro` e `lp.manifest.json` foram estendidos à mão; `npm run compose` sobrescreveria as seções novas. Os contratos de `aplicacoes` (4–8 itens) e `clientes` (até 20 logos) foram ampliados no manifesto.

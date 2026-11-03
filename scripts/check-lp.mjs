@@ -160,8 +160,8 @@ for (const f of astroFiles) {
   for (const f of astroFiles) {
     const s = read(f)
     const hasSectionId = /<(?:section|Section)\b[^>]*\bid="[^"]+"/.test(s)
-    if (hasSectionId && !/<h2\b|<SectionHeader\b/.test(s))
-      fail(f, 'seção com id sem <h2> (nem <SectionHeader>)')
+    if (hasSectionId && !/<h2\b|<SectionHeader\b|<SplitHeader\b/.test(s))
+      fail(f, 'seção com id sem <h2> (nem <SectionHeader> ou <SplitHeader>)')
   }
 
   if (!/<main id="main"/.test(read(PAGE))) fail(PAGE, 'falta <main id="main"> (alvo do skip link)')

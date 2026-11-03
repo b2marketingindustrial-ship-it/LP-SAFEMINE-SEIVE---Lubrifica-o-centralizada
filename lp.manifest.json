@@ -1,21 +1,25 @@
 {
   "standardVersion": "2.8.0",
-  "composedAt": "2026-10-29",
+  "composedAt": "2026-11-01",
   "library": "../Projetos B2/LP-STARTER-B2/sections",
   "primitives": [
     "BrandCarousel"
   ],
   "phases": {
     "oferta": [
-      "linhas"
+      "linhas",
+      "beneficios"
     ],
     "apoio": [
+      "processo",
       "identificar"
     ],
     "prova": [
-      "aplicacoes"
+      "aplicacoes",
+      "clientes"
     ],
     "autoridade": [
+      "perguntas",
       "diferenciais"
     ]
   },
@@ -91,6 +95,88 @@
       ]
     },
     {
+      "carriesNavy": false,
+      "tones": [
+        "light",
+        "gray"
+      ],
+      "assets": [],
+      "slug": "beneficios",
+      "id": "beneficios",
+      "title": "Por que investir (seção própria da LP)",
+      "phase": "oferta",
+      "component": "Benefits.astro",
+      "data": "beneficios.ts",
+      "dataExport": "benefits",
+      "tone": "light",
+      "rhythm": "even",
+      "rhythms": [
+        "even",
+        "flow",
+        "tight",
+        "open"
+      ],
+      "ctas": [
+        "beneficios-cta"
+      ],
+      "contract": {
+        "itemsPath": "items",
+        "itemsMin": 4,
+        "itemsMax": 6,
+        "requiredItemFields": [
+          "id",
+          "icon",
+          "title",
+          "description"
+        ],
+        "maxLength": {
+          "text": 170,
+          "item.description": 90
+        }
+      }
+    },
+    {
+      "carriesNavy": false,
+      "tones": [
+        "light",
+        "gray"
+      ],
+      "assets": [],
+      "slug": "processo",
+      "id": "processo",
+      "title": "Como funciona (etapas), variante clara",
+      "phase": "apoio",
+      "component": "ProcessSteps.astro",
+      "data": "processo.ts",
+      "dataExport": "processSteps",
+      "tone": "light",
+      "rhythm": "even",
+      "rhythms": [
+        "even",
+        "flow",
+        "tight",
+        "open"
+      ],
+      "ctas": [
+        "processo-cta"
+      ],
+      "contract": {
+        "itemsPath": "items",
+        "itemsMin": 4,
+        "itemsMax": 6,
+        "requiredItemFields": [
+          "icon",
+          "title",
+          "description"
+        ],
+        "maxLength": {
+          "text": 170,
+          "microcopy": 48,
+          "item.description": 90
+        }
+      }
+    },
+    {
       "slug": "identificar",
       "id": "identificar",
       "title": "Painel de apoio à identificação",
@@ -155,7 +241,7 @@
       "contract": {
         "itemsPath": "items",
         "itemsMin": 4,
-        "itemsMax": 4,
+        "itemsMax": 8,
         "requiredItemFields": [
           "id",
           "label",
@@ -170,13 +256,103 @@
       "assets": [
         {
           "dir": "aplicacoes",
-          "files": "4 fotos",
+          "files": "4 a 8 fotos",
           "spec": "JPG/PNG 1200×900 (4:3), equipamento em operação",
           "width": 1200,
           "height": 900,
           "alpha": false
         }
       ]
+    },
+    {
+      "carriesNavy": false,
+      "tones": [
+        "light",
+        "gray"
+      ],
+      "assets": [
+        {
+          "dir": "clientes",
+          "files": "4 a 20 logos",
+          "spec": "Logos com fundo transparente; aqui recortados do catálogo em baixa resolução"
+        }
+      ],
+      "slug": "clientes",
+      "id": "clientes",
+      "title": "Clientes e números",
+      "phase": "prova",
+      "component": "ClientLogos.astro",
+      "data": "clientes.ts",
+      "dataExport": "clients",
+      "tone": "gray",
+      "rhythm": "flow",
+      "rhythms": [
+        "even",
+        "tight",
+        "centered-lead",
+        "flow"
+      ],
+      "ctas": [
+        "clientes-cta"
+      ],
+      "contract": {
+        "itemsPath": "logos",
+        "itemsMin": 4,
+        "itemsMax": 20,
+        "requiredItemFields": [
+          "src",
+          "alt"
+        ],
+        "alsoCount": {
+          "metrics": [
+            3,
+            3
+          ]
+        },
+        "maxLength": {
+          "text": 170
+        }
+      }
+    },
+    {
+      "carriesNavy": false,
+      "tones": [
+        "light",
+        "gray"
+      ],
+      "assets": [],
+      "slug": "perguntas",
+      "id": "perguntas",
+      "title": "Perguntas frequentes",
+      "phase": "autoridade",
+      "component": "Faq.astro",
+      "data": "perguntas.ts",
+      "dataExport": "faq",
+      "tone": "gray",
+      "rhythm": "even",
+      "rhythms": [
+        "even",
+        "tight",
+        "flow"
+      ],
+      "ctas": [
+        "perguntas-cta"
+      ],
+      "contract": {
+        "itemsPath": "items",
+        "itemsMin": 4,
+        "itemsMax": 8,
+        "requiredItemFields": [
+          "question",
+          "answer"
+        ],
+        "endsWith": {
+          "item.question": "?"
+        },
+        "maxLength": {
+          "text": 170
+        }
+      }
     },
     {
       "slug": "diferenciais",
@@ -235,5 +411,6 @@
         }
       ]
     }
-  ]
+  ],
+  "note": "Composição estendida à mão em 01/11/2026 (biblioteca indisponível nesta máquina): beneficios (seção própria), processo (variante clara), clientes (carrossel com 18 logos), perguntas; aplicacoes com 8 itens em carrossel. Ver docs/BRIEFING.md."
 }

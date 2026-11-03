@@ -89,7 +89,6 @@ export const campaign = {
     'a melhor',
     'número 1',
     'nº 1',
-    'primeira fornecedora',
     'a única do Brasil',
     'único no mundo',
     'distribuidor autorizado',
