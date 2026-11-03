@@ -4,8 +4,8 @@
  *
  * VARIANTE LOCAL (03/11/2026, pedido do usuário): layout da seção "Por que a Falanga" da LP
  * Falanga Peças, nas cores SEIVE. Bloco verde-escuro em largura total com o fim do título
- * em amarelo, texto e CTA amarelo; à direita, a foto nascendo do verde e fechada por uma
- * faixa amarela curva; e os 5 diferenciais em cards brancos sobrepostos à base do bloco,
+ * em amarelo, texto e CTA amarelo; à direita, a foto nascendo do verde (sem a faixa amarela
+ * curva da referência, retirada a pedido em 03/11/2026); e os 5 diferenciais em cards brancos sobrepostos à base do bloco,
  * com ícone em quadrado amarelo-claro ao lado do título (trilho com setas abaixo de 1280px).
  * O contrato é o mesmo da biblioteca: 5 motivos, CTA `diferenciais-cta`, bloco escuro,
  * `tone`/`rhythm`. Registrado em docs/BRIEFING.md (Desvios do padrão).
@@ -48,29 +48,6 @@ const titleBottom = why.titleLines.at(-1)
         pictureAttributes={{ class: 'block h-full w-full' }}
       />
     </div>
-
-    {/* Faixa amarela curva fechando a foto à direita (desktop) */}
-    <svg
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden h-full w-[7%] min-w-[84px] lg:block"
-      viewBox="0 0 100 600"
-      preserveAspectRatio="none"
-    >
-      <defs>
-        <linearGradient id="why-curve-fill" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stop-color="var(--color-primary-dark)"></stop>
-          <stop offset="1" stop-color="var(--color-primary-dark-900)"></stop>
-        </linearGradient>
-      </defs>
-      <path d="M100 0H80C72 220 55 420 0 600h100Z" fill="url(#why-curve-fill)"></path>
-      <path
-        d="M80 0C72 220 55 420 0 600"
-        fill="none"
-        stroke="var(--color-seive-yellow)"
-        stroke-width="10"
-        vector-effect="non-scaling-stroke"
-      ></path>
-    </svg>
 
     <div class="relative z-[2] mx-auto max-w-page px-6 pt-(--section-space) pb-10 lg:px-10 lg:pb-36">
       <div class="max-w-xl lg:max-w-[44%] xl:max-w-[40rem]">
