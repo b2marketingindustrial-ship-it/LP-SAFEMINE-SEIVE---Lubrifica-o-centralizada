@@ -90,13 +90,17 @@
    os dois respiros somados abriam um vão de 140px. A segunda perde o respiro de cima e o
    espaço entre elas fica só o --section-space da anterior (componentes → como funciona,
    diferenciais → cotação). Os diferenciais nunca perdem o respiro de cima: o bloco verde
-   deles sobe sobre ele (ver WhyBrand.astro). */
+   deles sobe sobre ele (ver WhyBrand.astro). O Astro pode deixar o <script> de uma seção
+   entre ela e a seguinte (o carrossel dos diferenciais faz isso): daí o `script +`. */
 #main > section.bg-neutral-light + section.bg-neutral-light:not(#diferenciais),
-#main > section.bg-neutral-gray-100 + section.bg-neutral-gray-100:not(#diferenciais) {
+#main > section.bg-neutral-light + script + section.bg-neutral-light:not(#diferenciais),
+#main > section.bg-neutral-gray-100 + section.bg-neutral-gray-100:not(#diferenciais),
+#main > section.bg-neutral-gray-100 + script + section.bg-neutral-gray-100:not(#diferenciais) {
   padding-top: 0;
 }
 
-#main > section:has(+ #diferenciais) {
+#main > section:has(+ #diferenciais),
+#main > section:has(+ script + #diferenciais) {
   position: relative;
   z-index: 2;
   border-bottom-left-radius: var(--lp-round);
