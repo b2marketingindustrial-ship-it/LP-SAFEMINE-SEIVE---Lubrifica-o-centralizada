@@ -20,12 +20,12 @@ export interface Reason {
 }
 
 export const why = {
-  eyebrow: `${site.brandShort} + SEIVE`,
+  eyebrow: `Por que a ${site.brandShort}`,
   /** Cada item é uma linha do H2 (quebra forçada); a segunda sai em verde. 3–6 palavras no total. */
   titleLines: ['Tecnologia SEIVE,', 'feita no Brasil.'],
-  text: `A ${site.brandShort} conecta a tecnologia SEIVE à sua operação, considerando o equipamento, os pontos de lubrificação e as condições de trabalho.`,
+  text: `A ${site.brandShort} leva a lubrificação centralizada à sua operação, considerando o equipamento, os pontos de lubrificação e as condições de trabalho.`,
   /** Linha de apoio sob o botão. */
-  help: 'Da escolha à instalação, a Safe Mine acompanha o projeto.',
+  help: 'Da escolha à instalação, a SEIVE acompanha o projeto.',
   scene: {
     src: cenario,
     alt: 'Linha de lubrificação ligada à articulação de um cilindro em máquina pesada',

@@ -40,7 +40,7 @@ export const applications = {
   /** Faixa abaixo dos cards, para quem não se vê nas aplicações. */
   help: {
     title: 'Sua máquina não está aqui?',
-    text: 'Siderurgia, indústria ou outra operação: descreva o equipamento e a Safe Mine ajuda na seleção.',
+    text: 'Siderurgia, indústria ou outra operação: descreva o equipamento e a SEIVE ajuda na seleção.',
   },
   items: [
     {

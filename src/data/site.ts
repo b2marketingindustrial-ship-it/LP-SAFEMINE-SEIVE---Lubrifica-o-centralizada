@@ -3,10 +3,10 @@
  * JSON-LD) vem daqui. Transcrito da ficha de execução (`docs/FICHA-LP.md`): campos `site` e `campanha`.
  */
 export const site = {
-  /** Nome completo da empresa (entrada 1). */
-  brand: 'Safe Mine Soluções',
+  /** Nome completo da empresa (entrada 1). SEIVE no lugar da Safe Mine a pedido do usuário (03/11/2026). */
+  brand: 'SEIVE',
   /** Nome curto usado em frases como "Por que a …" (entrada 2). */
-  brandShort: 'Safe Mine',
+  brandShort: 'SEIVE',
   /** Produto principal, no plural (entrada 3). Vai na tagline do header e no H1. */
   product: 'Lubrificação centralizada SEIVE LUB',
   /** Contexto de uso (entrada 4). Completa o H1 e o title. */
@@ -36,13 +36,13 @@ export const shortcodes = {
 
 /**
  * Título da aba. A ficha define `conteudo.title`: o formato padrão
- * ("{Produto} para {contexto} | {Marca}") passaria de 80 caracteres com "Safe Mine Soluções".
+ * ("{Produto} para {contexto} | {Marca}").
  */
-export const title = 'Lubrificação centralizada SEIVE LUB para máquinas pesadas | Safe Mine'
+export const title = 'Lubrificação centralizada SEIVE LUB para máquinas pesadas | SEIVE'
 
 /** Meta description (≤ 160 caracteres). Ajuste o texto, mantendo marcas e o apoio técnico. */
 export const description =
-  'Lubrificação centralizada SEIVE LUB para máquinas pesadas: sistema progressivo automático, preciso e contínuo, com atendimento da Safe Mine.'
+  'Lubrificação centralizada SEIVE LUB para máquinas pesadas: sistema progressivo automático, preciso e contínuo, com atendimento da SEIVE.'
 
 /**
  * Campanha que leva tráfego para esta LP (entrada 15). Quem clica digitou a

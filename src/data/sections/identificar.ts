@@ -22,7 +22,7 @@ export interface SupportItem {
 export const supportPanel = {
   eyebrow: 'Dados para cotação',
   title: 'Não sabe quantos pontos lubrificar?',
-  text: 'Descreva a máquina. A Safe Mine avalia os pontos de lubrificação e indica a solução.',
+  text: 'Descreva a máquina. A SEIVE avalia os pontos de lubrificação e indica a solução.',
   /** Lado claro: os 3 primeiros itens são o essencial; os demais, "se souber". */
   list: {
     title: 'O que ajuda na sua cotação',

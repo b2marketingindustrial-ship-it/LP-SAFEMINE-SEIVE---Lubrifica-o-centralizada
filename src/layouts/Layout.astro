@@ -1,6 +1,6 @@
 ---
 import { getImage } from 'astro:assets'
-import logoImg from '../assets/LOGO.png'
+import logoImg from '../assets/seive-logo.webp'
 import '../styles/global.css'
 import { site, title as defaultTitle, description as defaultDescription } from '../data/site'
 import { hero } from '../data/content'
@@ -16,7 +16,7 @@ const { title = defaultTitle, description = defaultDescription } = Astro.props
 const heroPreload = await Promise.all(
   hero.banner.widths.map((width) => getImage({ src: hero.banner.src, width, format: 'webp' })),
 )
-const ogLogo = await getImage({ src: logoImg, width: 512, format: 'webp' })
+const ogLogo = await getImage({ src: logoImg, width: 476, format: 'webp' })
 
 const ogImage = new URL(ogLogo.src, site.url).href
 

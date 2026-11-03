@@ -4,13 +4,13 @@ Este arquivo registra de onde veio cada coisa, para que o projeto possa ser reto
 
 ## Origem
 
-| Campo      | Valor                                                                                                                                                                               |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pedido     | Nova LP de lubrificação centralizada SEIVE, com a estrutura da LP de compressores portáteis, trocando conteúdo e fotos (30/10/2026)                                                 |
-| Estrutura  | Cópia da LP `LP-ATLAS-COPCO---Compressores-port-teis`, padrão B2 2.8.0, com as seções e a composição dela. O Hero foi restaurado à estrutura fixa 4.1.2 em 01/11/2026 (ver Desvios) |
-| Fontes     | safeminesolucoes.com.br/produtos/lubrificacao-centralizada/10 (principal) e seive.com.br/sistema-supressor-de-incendio-lubrificaçao-automatica                                      |
-| Marca      | Safe Mine Soluções como anunciante e SEIVE como fabricante, por extenso, como nas LPs de compressores e de supressão                                                                |
-| Publicação | Vercel, projeto `lp-seive-lubrificacao-centralizada`; branch `wp-build` gerada pelo GitHub Actions                                                                                  |
+| Campo      | Valor                                                                                                                                                                                                                        |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pedido     | Nova LP de lubrificação centralizada SEIVE, com a estrutura da LP de compressores portáteis, trocando conteúdo e fotos (30/10/2026)                                                                                          |
+| Estrutura  | Cópia da LP `LP-ATLAS-COPCO---Compressores-port-teis`, padrão B2 2.8.0, com as seções e a composição dela. O Hero foi restaurado à estrutura fixa 4.1.2 em 01/11/2026 (ver Desvios)                                          |
+| Fontes     | safeminesolucoes.com.br/produtos/lubrificacao-centralizada/10 (principal) e seive.com.br/sistema-supressor-de-incendio-lubrificaçao-automatica                                                                               |
+| Marca      | SEIVE em todos os textos e metadados (título, descrição, copyright, JSON-LD, og:image), no lugar da Safe Mine, a pedido do usuário em 03/11/2026. A logo da Safe Mine segue no header; o endereço do footer é o da Safe Mine |
+| Publicação | Vercel, projeto `lp-seive-lubrificacao-centralizada`; branch `wp-build` gerada pelo GitHub Actions                                                                                                                           |
 
 ## Campanha
 
