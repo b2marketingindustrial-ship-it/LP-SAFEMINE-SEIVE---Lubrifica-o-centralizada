@@ -48,36 +48,47 @@ const [firstLine, ...otherLines] = why.titleLines
       </p>
     </div>
 
-    <Image
-      src={why.scene.src}
-      alt={why.scene.alt}
-      format="webp"
-      width={1100}
-      loading="lazy"
-      decoding="async"
-      class="aspect-[1.55] w-full rounded-[1.5rem] object-cover shadow-[0_34px_60px_-34px_rgba(10,29,77,0.55)] lg:rounded-[1.75rem]"
-    />
+    <div class="relative">
+      <span
+        class="dot-grid pointer-events-none absolute -top-5 -right-5 hidden h-40 w-40 rounded-2xl lg:block"
+        aria-hidden="true"
+      ></span>
+      <Image
+        src={why.scene.src}
+        alt={why.scene.alt}
+        format="webp"
+        width={1100}
+        loading="lazy"
+        decoding="async"
+        class="relative aspect-[1.55] w-full rounded-[1.5rem] object-cover shadow-[0_34px_60px_-34px_rgba(10,29,77,0.55)] lg:rounded-[1.75rem]"
+      />
+    </div>
   </div>
 
   {/* Painel navy com os 5 diferenciais */}
-  <ul
-    class="why-panel mt-8 grid gap-y-7 rounded-[1.5rem] px-6 py-8 sm:grid-cols-2 sm:gap-x-8 sm:px-10 lg:grid-cols-5 lg:gap-x-0 lg:px-8 lg:py-9"
-    aria-label={`${why.eyebrow}`}
-  >
-    {why.reasons.map((reason) => (
-      <li class="lg:border-l lg:border-white/15 lg:px-6 lg:first:border-l-0 lg:first:pl-0 lg:last:pr-0">
-        <div class="flex items-center gap-4">
-          <Icon name={reason.icon} class="why-icon size-10 shrink-0" />
-          <h3 class="font-display text-[17px] leading-snug font-extrabold text-neutral-light">
-            {reason.title}
-          </h3>
-        </div>
-        <p class="mt-4 font-sans text-[15px] leading-relaxed text-neutral-light/75">
-          {reason.description}
-        </p>
-      </li>
-    ))}
-  </ul>
+  <div class="why-panel tech-corners relative mt-8 overflow-hidden rounded-[1.5rem]">
+    <span class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></span>
+    <ul
+      class="relative grid gap-y-7 px-6 py-8 sm:grid-cols-2 sm:gap-x-8 sm:px-10 lg:grid-cols-5 lg:gap-x-0 lg:px-8 lg:py-9"
+      aria-label={`${why.eyebrow}`}
+    >
+      {why.reasons.map((reason) => (
+        <li class="lg:border-l lg:border-white/15 lg:px-6 lg:first:border-l-0 lg:first:pl-0 lg:last:pr-0">
+          <div class="flex items-center gap-4">
+            <span class="flex size-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.06]">
+              <Icon name={reason.icon} class="why-icon size-5" />
+            </span>
+            <h3 class="font-display text-[17px] leading-snug font-extrabold text-neutral-light">
+              {reason.title}
+            </h3>
+          </div>
+          <p class="mt-4 font-sans text-[15px] leading-relaxed text-neutral-light/75">
+            {reason.description}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
 </Section>
 
 <style>

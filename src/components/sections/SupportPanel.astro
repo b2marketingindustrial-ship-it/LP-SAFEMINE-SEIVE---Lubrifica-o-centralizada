@@ -23,27 +23,28 @@ const optionals = supportPanel.items.slice(list.optionalFrom)
 ---
 
 <Section id="identificar" tone={tone} rhythm={rhythm}>
-  <div class="grid overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light shadow-[0_30px_60px_-36px_rgba(10,29,77,0.45)] xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+  <div class="grid overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
     {/* Bloco navy */}
-    <div class="support-navy flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 xl:px-14 xl:py-14">
-      <span class="inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.16em] text-neutral-light/70 uppercase sm:text-[13px]">
+    <div class="support-navy tech-corners relative flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 xl:px-14 xl:py-14">
+      <span class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></span>
+      <span class="relative inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.16em] text-neutral-light/70 uppercase sm:text-[13px]">
         <span class="h-[3px] w-8 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
         {supportPanel.eyebrow}
       </span>
 
-      <h2 class="mt-4 max-w-[26rem] font-display leading-[1.06] font-extrabold tracking-[-0.02em] text-neutral-light text-[1.75rem] sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
+      <h2 class="relative mt-4 max-w-[26rem] font-display leading-[1.06] font-extrabold tracking-[-0.02em] text-neutral-light text-[1.75rem] sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
         {supportPanel.title}
       </h2>
 
-      <p class="mt-5 max-w-[30rem] font-sans text-[16px] leading-relaxed text-neutral-light/80 sm:text-[18px]">
+      <p class="relative mt-5 max-w-[30rem] font-sans text-[16px] leading-relaxed text-neutral-light/80 sm:text-[18px]">
         {supportPanel.text}
       </p>
 
-      <Button cta="identificar-cta" size="lg" class="mt-8 w-full max-w-[30rem]">
+      <Button cta="identificar-cta" size="lg" class="relative mt-8 w-full max-w-[30rem]">
         {supportPanel.ctaLabel}
       </Button>
 
-      <p class="mt-6 flex items-center gap-3 font-sans text-[14px] text-neutral-light/70 sm:text-[15px]">
+      <p class="relative mt-6 flex items-center gap-3 font-sans text-[14px] text-neutral-light/70 sm:text-[15px]">
         <Icon name="chat" class="size-6 shrink-0 text-neutral-light/85" />
         {supportPanel.microcopy}
       </p>
@@ -62,8 +63,8 @@ const optionals = supportPanel.items.slice(list.optionalFrom)
         class="mt-6 grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]"
         aria-label={list.title}
       >
-        <li class="support-card flex items-center gap-5 px-5 py-5 sm:col-span-2 sm:px-6">
-          <span class="support-badge size-16">
+        <li class="support-card support-card-main flex items-center gap-5 px-5 py-5 sm:col-span-2 sm:px-6">
+          <span class="support-badge support-badge-main size-16">
             <Icon name={main.icon} class="size-8" />
           </span>
           <span class="flex min-w-0 flex-col gap-1">
@@ -123,6 +124,16 @@ const optionals = supportPanel.items.slice(list.optionalFrom)
     border: 1px solid rgb(10 29 77 / 0.1);
     border-radius: 0.875rem;
     background-color: #f6f8fb;
+  }
+
+  .support-card-main {
+    border-color: rgb(77 127 34 / 0.35);
+    background-color: rgb(77 127 34 / 0.06);
+  }
+
+  .support-badge-main {
+    background-color: var(--color-accent-orange);
+    color: var(--color-neutral-light);
   }
 
   .support-badge {

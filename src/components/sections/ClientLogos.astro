@@ -1,8 +1,9 @@
 ---
 /**
  * Clientes e números — biblioteca B2, fase prova. Nesta LP os logos (clientes da SEIVE,
- * com aval registrado no BRIEFING) correm num carrossel contínuo, que para no hover e
- * fica parado com `prefers-reduced-motion`. Abaixo, os 3 números e o CTA.
+ * com aval registrado no BRIEFING) correm num carrossel contínuo em escala de cinza, que
+ * ganha cor e para no hover e fica parado com `prefers-reduced-motion`. Abaixo, uma
+ * régua com os 3 números e o CTA.
  */
 import { Image } from 'astro:assets'
 import Button from '@components/Button.astro'
@@ -26,50 +27,53 @@ const { tone, rhythm } = Astro.props
     text={clients.text}
   />
 
-  <div class="clients-marquee mt-10 overflow-hidden rounded-2xl border border-primary-dark/10 bg-neutral-light py-7">
-    <div class="clients-track flex w-max items-center">
-      {/* Lista duplicada para o loop ficar contínuo; a cópia some para leitor de tela. */}
-      {[0, 1].map((copy) => (
-        <ul class="flex shrink-0 items-center" aria-hidden={copy === 1 ? 'true' : undefined}>
-          {clients.logos.map((logo) => (
-            <li class="flex h-10 w-44 shrink-0 items-center justify-center px-6">
-              <Image
-                src={logo.src}
-                alt={copy === 1 ? '' : logo.alt}
-                height={48}
-                format="webp"
-                loading="lazy"
-                decoding="async"
-                class="max-h-9 w-auto object-contain"
-              />
-            </li>
-          ))}
-        </ul>
-      ))}
-    </div>
-  </div>
+  <div class="relative mt-10 overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
+    <span
+      class="dot-grid pointer-events-none absolute inset-0 opacity-60"
+      aria-hidden="true"
+    ></span>
 
-  <div class="mt-6 grid gap-6 sm:grid-cols-3 lg:grid-cols-[repeat(3,minmax(0,1fr))_auto] lg:items-center">
-    {clients.metrics.map((metric) => (
-      <p class="flex items-center gap-4">
-        <span class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-accent-orange/10 text-accent-orange">
-          <Icon name={metric.icon} class="size-6" />
-        </span>
-        <span class="font-sans leading-tight">
-          <span class="block font-display text-[1.6rem] font-extrabold text-primary-dark-900">
-            {metric.value}
-          </span>
-          <span class="text-[14px] text-ink-soft">{metric.label}</span>
-        </span>
-      </p>
-    ))}
-    <Button
-      cta="clientes-cta"
-      size="md"
-      class="self-start sm:col-span-3 lg:col-span-1 lg:self-auto"
-    >
-      {cta.card}
-    </Button>
+    <div class="clients-marquee relative py-8">
+      <div class="clients-track flex w-max items-center">
+        {/* Lista duplicada para o loop ficar contínuo; a cópia some para leitor de tela. */}
+        {[0, 1].map((copy) => (
+          <ul class="flex shrink-0 items-center" aria-hidden={copy === 1 ? 'true' : undefined}>
+            {clients.logos.map((logo) => (
+              <li class="flex h-10 w-44 shrink-0 items-center justify-center px-6">
+                <Image
+                  src={logo.src}
+                  alt={copy === 1 ? '' : logo.alt}
+                  height={48}
+                  format="webp"
+                  loading="lazy"
+                  decoding="async"
+                  class="client-logo max-h-9 w-auto object-contain"
+                />
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
+
+    <dl class="relative grid divide-y divide-primary-dark/10 border-t border-primary-dark/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:grid-cols-[repeat(3,minmax(0,1fr))_auto]">
+      {clients.metrics.map((metric) => (
+        <div class="flex items-center gap-4 px-6 py-5 lg:px-8">
+          <Icon name={metric.icon} class="size-6 shrink-0 text-accent-orange" />
+          <div class="font-sans leading-tight">
+            <dd class="font-display text-[1.6rem] font-extrabold tracking-[-0.02em] text-primary-dark-900 tabular-nums">
+              {metric.value}
+            </dd>
+            <dt class="text-[14px] text-ink-soft">{metric.label}</dt>
+          </div>
+        </div>
+      ))}
+      <div class="flex items-center px-6 py-5 sm:col-span-3 sm:border-t sm:border-primary-dark/10 lg:col-span-1 lg:border-t-0 lg:px-8">
+        <Button cta="clientes-cta" size="md" class="w-full sm:w-auto">
+          {cta.card}
+        </Button>
+      </div>
+    </dl>
   </div>
 </Section>
 
@@ -78,25 +82,39 @@ const { tone, rhythm } = Astro.props
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0,
-      black 64px,
-      black calc(100% - 64px),
+      black 72px,
+      black calc(100% - 72px),
       transparent 100%
     );
     mask-image: linear-gradient(
       to right,
       transparent 0,
-      black 64px,
-      black calc(100% - 64px),
+      black 72px,
+      black calc(100% - 72px),
       transparent 100%
     );
   }
 
   .clients-track {
-    animation: clients-scroll 48s linear infinite;
+    animation: clients-scroll 52s linear infinite;
+  }
+
+  /* Cinza por padrão (disfarça a baixa resolução); cor e pausa no hover. */
+  .client-logo {
+    filter: grayscale(1);
+    opacity: 0.7;
+    transition:
+      filter 300ms ease,
+      opacity 300ms ease;
   }
 
   .clients-marquee:hover .clients-track {
     animation-play-state: paused;
+  }
+
+  .clients-marquee:hover .client-logo {
+    filter: none;
+    opacity: 1;
   }
 
   @keyframes clients-scroll {
@@ -111,6 +129,10 @@ const { tone, rhythm } = Astro.props
   @media (prefers-reduced-motion: reduce) {
     .clients-track {
       animation: none;
+    }
+
+    .client-logo {
+      transition: none;
     }
   }
 </style>

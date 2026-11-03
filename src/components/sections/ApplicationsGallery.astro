@@ -12,6 +12,7 @@
 import Button from '@components/Button.astro'
 import { Image } from 'astro:assets'
 import Section from '@components/Section.astro'
+import SplitHeader from '@components/SplitHeader.astro'
 import Icon from '@components/Icon.astro'
 import type { SectionProps } from '@lib/layout'
 import { cta } from '@data/content'
@@ -20,34 +21,15 @@ import { applications } from '@data/sections/aplicacoes'
 type Props = SectionProps
 
 const { tone, rhythm } = Astro.props
-const [titleStart, titleEnd = ''] = applications.title.split(applications.titleHighlight)
-const hasHighlight = applications.title.includes(applications.titleHighlight)
 ---
 
 <Section id="aplicacoes" tone={tone} rhythm={rhythm} class="rounded-t-[2rem] sm:rounded-t-[3rem]">
-  <div class="grid gap-5 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-end lg:gap-16 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
-    <div>
-      <span class="inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.18em] text-ink-soft uppercase sm:text-[13px]">
-        <span class="h-[3px] w-9 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
-        {applications.eyebrow}
-      </span>
-      <h2 class="mt-4 font-display leading-[1.08] font-extrabold tracking-[-0.02em] text-primary-dark-900 text-[1.75rem] sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
-        {hasHighlight ? (
-          <Fragment>
-            {titleStart}
-            <span class="text-accent-orange lg:block">{applications.titleHighlight}</span>
-            {titleEnd}
-          </Fragment>
-        ) : (
-          applications.title
-        )}
-      </h2>
-    </div>
-
-    <p class="max-w-[36rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[17px] lg:pb-1.5 lg:text-[19px]">
-      {applications.text}
-    </p>
-  </div>
+  <SplitHeader
+    eyebrow={applications.eyebrow}
+    title={applications.title}
+    highlight={applications.titleHighlight}
+    text={applications.text}
+  />
 
   <div class="mt-10" data-carousel>
     <div class="mb-4 flex justify-end gap-2">
@@ -80,9 +62,9 @@ const hasHighlight = applications.title.includes(applications.titleHighlight)
           <button
             type="button"
             data-cta={`aplicacoes-${app.id}`}
-            class="btn-slave-whats group flex w-full flex-col overflow-hidden rounded-2xl border border-primary-dark/10 bg-neutral-light text-left shadow-[0_14px_34px_-24px_rgba(10,29,77,0.35)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_50px_-28px_rgba(10,29,77,0.45)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            class="btn-slave-whats group relative flex w-full flex-col overflow-hidden rounded-2xl border border-primary-dark/10 bg-neutral-light text-left card-shadow transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:card-shadow-hover motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
-            <span class="block aspect-[4/5] overflow-hidden bg-neutral-gray-100">
+            <span class="relative block aspect-[4/5] overflow-hidden bg-primary-dark-900">
               <Image
                 src={app.photo.src}
                 alt={app.photo.alt}
@@ -90,22 +72,25 @@ const hasHighlight = applications.title.includes(applications.titleHighlight)
                 width={640}
                 loading="lazy"
                 decoding="async"
-                class="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                class="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.05] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
               />
+              <span class="app-veil pointer-events-none absolute inset-0" aria-hidden="true"></span>
+              <span class="absolute inset-x-0 bottom-0 p-5">
+                <span class="block font-display text-[1.35rem] leading-tight font-extrabold text-neutral-light [text-shadow:0_1px_2px_rgba(0,0,0,0.4)]">
+                  {app.label}
+                </span>
+              </span>
             </span>
 
-            <span class="flex flex-1 flex-col px-6 pt-5 pb-6">
-              <span class="font-display text-[22px] leading-tight font-extrabold text-primary-dark-900">
-                {app.label}
-              </span>
-              <span class="mt-2 font-sans text-[15px] leading-snug text-ink-soft">
+            <span class="flex flex-1 flex-col px-5 pt-4 pb-5">
+              <span class="font-sans text-[15px] leading-snug text-ink-soft">
                 {app.description}
               </span>
-              <span class="mt-auto inline-flex items-center gap-3 pt-5 font-sans text-[15px] font-bold text-primary-dark-900 transition-colors duration-200 group-hover:text-accent-orange">
+              <span class="mt-auto inline-flex items-center gap-2.5 pt-4 font-sans text-[14px] font-bold text-primary-dark-900 transition-colors duration-200 group-hover:text-accent-orange">
                 {applications.cardCta}
                 <Icon
                   name="arrow-right"
-                  class="size-[18px] shrink-0 text-accent-orange transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+                  class="size-4 shrink-0 text-accent-orange transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
                 />
               </span>
             </span>
@@ -115,8 +100,9 @@ const hasHighlight = applications.title.includes(applications.titleHighlight)
     </ul>
   </div>
 
-  <div class="mt-4 flex flex-col gap-5 rounded-2xl border border-primary-dark/10 bg-primary-dark/[0.04] px-6 py-5 sm:flex-row sm:items-center sm:justify-between lg:px-10">
-    <div class="flex items-center gap-5">
+  <div class="relative mt-4 flex flex-col gap-5 overflow-hidden rounded-2xl border border-primary-dark/10 bg-neutral-light px-6 py-5 card-shadow sm:flex-row sm:items-center sm:justify-between lg:px-10">
+    <span class="dot-grid-fade pointer-events-none absolute inset-0" aria-hidden="true"></span>
+    <div class="relative flex items-center gap-5">
       <span class="flex size-16 shrink-0 items-center justify-center rounded-full bg-primary-dark/[0.07] text-primary-dark-900">
         <Icon name="chat" class="size-8" />
       </span>
@@ -128,13 +114,23 @@ const hasHighlight = applications.title.includes(applications.titleHighlight)
       </p>
     </div>
 
-    <Button cta="aplicacoes-outra" size="lg" class="shrink-0 self-start sm:self-auto">
+    <Button cta="aplicacoes-outra" size="md" class="relative shrink-0 self-start sm:self-auto">
       {cta.card}
     </Button>
   </div>
 </Section>
 
 <style>
+  /* Véu navy que sobe do pé da foto para o título ficar legível. */
+  .app-veil {
+    background: linear-gradient(
+      to top,
+      rgb(10 29 77 / 0.85) 0%,
+      rgb(10 29 77 / 0.25) 45%,
+      transparent 70%
+    );
+  }
+
   .app-track {
     scrollbar-width: none;
   }

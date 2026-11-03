@@ -131,3 +131,52 @@
     display: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Texturas da "folha técnica" (seções claras desta LP, 02/11/2026).
+   Pontos = pontos de lubrificação; malha = desenho técnico. Sempre discretas.
+   --------------------------------------------------------------------------- */
+
+/* Malha de pontos navy sobre fundo claro. */
+@utility dot-grid {
+  background-image: radial-gradient(circle, rgb(10 29 77 / 0.12) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+/* Malha de pontos que some para a direita/baixo (cantos de painéis). */
+@utility dot-grid-fade {
+  background-image: radial-gradient(circle, rgb(10 29 77 / 0.14) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%);
+}
+
+/* Malha de blueprint clara, esmaecida nas bordas, para painéis brancos. */
+@utility blueprint-light {
+  background-image:
+    linear-gradient(rgb(10 29 77 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(10 29 77 / 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 20%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 20%, transparent 85%);
+}
+
+/* Placa clara onde as fotos de produto se apoiam. */
+@utility surface-plate {
+  background-color: #f3f5fa;
+  background-image:
+    radial-gradient(120% 90% at 50% 0%, rgb(255 255 255 / 0.9) 0%, transparent 60%),
+    radial-gradient(circle, rgb(10 29 77 / 0.1) 1px, transparent 1.2px);
+  background-size:
+    100% 100%,
+    18px 18px;
+}
+
+/* Sombra padrão dos cards claros: deslocada e difusa, nunca um halo. */
+@utility card-shadow {
+  box-shadow: 0 18px 40px -28px rgb(10 29 77 / 0.4);
+}
+
+@utility card-shadow-hover {
+  box-shadow: 0 30px 56px -30px rgb(10 29 77 / 0.5);
+}

@@ -1,12 +1,14 @@
 ---
 /**
- * Perguntas frequentes — biblioteca B2, fase autoridade. Acordeão nativo (<details>),
- * que funciona por teclado sem script, e JSON-LD FAQPage com as mesmas perguntas.
+ * Perguntas frequentes — biblioteca B2, fase autoridade.
+ *
+ * Duas colunas: à esquerda o cabeçalho, o CTA e a malha de pontos (fica fixo ao rolar
+ * no desktop); à direita o acordeão nativo (<details>), que funciona por teclado sem
+ * script. A pergunta aberta ganha borda verde. JSON-LD FAQPage com as mesmas perguntas.
  */
 import Button from '@components/Button.astro'
 import Icon from '@components/Icon.astro'
 import Section from '@components/Section.astro'
-import SplitHeader from '@components/SplitHeader.astro'
 import type { SectionProps } from '@lib/layout'
 import { cta } from '@data/content'
 import { faq } from '@data/sections/perguntas'
@@ -14,6 +16,10 @@ import { faq } from '@data/sections/perguntas'
 type Props = SectionProps
 
 const { tone, rhythm } = Astro.props
+
+const at = faq.title.indexOf(faq.titleHighlight)
+const before = at >= 0 ? faq.title.slice(0, at) : faq.title
+const after = at >= 0 ? faq.title.slice(at + faq.titleHighlight.length) : ''
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -27,33 +33,47 @@ const jsonLd = {
 ---
 
 <Section id="perguntas" tone={tone} rhythm={rhythm}>
-  <SplitHeader
-    eyebrow={faq.eyebrow}
-    title={faq.title}
-    highlight={faq.titleHighlight}
-    text={faq.text}
-  />
+  <div class="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+    <div class="lg:sticky lg:top-28 lg:self-start">
+      <span class="inline-flex items-center gap-4 font-sans text-[12px] font-semibold tracking-[0.18em] text-ink-soft uppercase sm:text-[13px]">
+        <span class="h-[3px] w-9 shrink-0 rounded-full bg-accent-orange" aria-hidden="true"></span>
+        {faq.eyebrow}
+      </span>
+      <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-primary-dark-900 sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
+        {before}
+        {at >= 0 && <span class="text-accent-orange">{faq.titleHighlight}</span>}
+        {after}
+      </h2>
+      <p class="mt-5 max-w-[28rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[17px]">
+        {faq.text}
+      </p>
 
-  <div class="mt-10 grid gap-3 lg:grid-cols-2 lg:items-start lg:gap-x-5">
-    {faq.items.map((item) => (
-      <details class="faq-item group rounded-2xl border border-primary-dark/10 bg-neutral-light">
-        <summary class="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 font-display text-[1.05rem] leading-snug font-extrabold text-primary-dark-900">
-          {item.question}
-          <Icon
-            name="chevron-down"
-            class="size-5 shrink-0 text-accent-orange transition-transform duration-200 group-open:rotate-180 motion-reduce:transition-none"
-          />
-        </summary>
-        <p class="px-6 pb-6 font-sans text-[15px] leading-relaxed text-ink-soft">{item.answer}</p>
-      </details>
-    ))}
-  </div>
+      <div class="relative mt-8 overflow-hidden rounded-2xl border border-primary-dark/10 bg-neutral-light p-6 card-shadow">
+        <span class="dot-grid-fade pointer-events-none absolute inset-0" aria-hidden="true"></span>
+        <p class="relative font-sans text-[15px] leading-snug text-ink">
+          Ficou alguma dúvida sobre a sua máquina?
+        </p>
+        <Button cta="perguntas-cta" size="md" class="relative mt-4">
+          {cta.card}
+        </Button>
+      </div>
+    </div>
 
-  <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-    <p class="font-sans text-[15px] text-ink-soft">Ficou alguma dúvida sobre a sua máquina?</p>
-    <Button cta="perguntas-cta" size="md" class="self-start">
-      {cta.card}
-    </Button>
+    <div class="flex flex-col gap-3">
+      {faq.items.map((item) => (
+        <details class="faq-item group rounded-2xl border border-primary-dark/10 bg-neutral-light transition-[border-color,box-shadow] duration-300 open:border-accent-orange/60 open:card-shadow motion-reduce:transition-none">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 font-display text-[1.05rem] leading-snug font-extrabold text-primary-dark-900 sm:text-[1.1rem]">
+            {item.question}
+            <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-dark/[0.06] text-primary-dark-900 transition-[background-color,color,transform] duration-300 group-open:rotate-45 group-open:bg-accent-orange group-open:text-neutral-light motion-reduce:transition-none">
+              <Icon name="close" class="size-4 rotate-45" />
+            </span>
+          </summary>
+          <p class="max-w-[60ch] px-6 pb-6 font-sans text-[15px] leading-relaxed text-ink-soft">
+            {item.answer}
+          </p>
+        </details>
+      ))}
+    </div>
   </div>
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>

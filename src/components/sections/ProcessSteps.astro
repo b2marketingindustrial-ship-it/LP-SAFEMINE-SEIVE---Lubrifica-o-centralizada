@@ -1,8 +1,11 @@
 ---
 /**
  * Como funciona (etapas) — biblioteca B2, fase apoio. Variante clara nesta LP: o bloco
- * navy da fase continua sendo o "identificar" (docs/BRIEFING.md). 4 etapas numeradas,
- * ligadas por uma linha no desktop, e o CTA com a linha de reforço.
+ * navy da fase continua sendo o "identificar" (docs/BRIEFING.md).
+ *
+ * As 4 etapas vão numa "folha técnica": painel branco com malha de blueprint, uma linha
+ * de fluxo verde que liga os marcadores numerados (horizontal no desktop, vertical no
+ * celular) e, no pé, o CTA com a linha de reforço.
  */
 import Button from '@components/Button.astro'
 import Icon from '@components/Icon.astro'
@@ -25,46 +28,106 @@ const { tone, rhythm } = Astro.props
     text={processSteps.text}
   />
 
-  <ol class="process-steps relative mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-    {processSteps.items.map((step, i) => (
-      <li class="relative">
-        <span class="relative z-[1] flex size-14 items-center justify-center rounded-full border border-primary-dark/10 bg-neutral-light text-primary-dark-900 shadow-[0_10px_24px_-16px_rgba(10,29,77,0.5)]">
-          <Icon name={step.icon} class="size-6" />
-          <span class="absolute -top-1 -right-1 flex size-6 items-center justify-center rounded-full bg-accent-orange font-sans text-[12px] font-bold text-neutral-light">
-            {i + 1}
-          </span>
-        </span>
-        <h3 class="mt-5 font-display text-[1.1rem] leading-snug font-extrabold text-primary-dark-900">
-          {step.title}
-        </h3>
-        <p class="mt-1.5 max-w-[17rem] font-sans text-[15px] leading-snug text-ink-soft">
-          {step.description}
-        </p>
-      </li>
-    ))}
-  </ol>
+  <div class="relative mt-10 overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
+    <span class="blueprint-light pointer-events-none absolute inset-0" aria-hidden="true"></span>
 
-  <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-    <Button cta="processo-cta" size="md" class="self-start">
-      {cta.card}
-    </Button>
-    <p class="flex items-center gap-3 font-sans text-[15px] text-ink-soft">
-      <Icon name="check" class="size-5 shrink-0 text-accent-orange" />
-      {processSteps.microcopy}
-    </p>
+    <ol class="steps relative grid gap-10 px-6 py-8 sm:px-8 lg:grid-cols-4 lg:gap-6 lg:px-10 lg:py-10">
+      {processSteps.items.map((step, i) => (
+        <li class="step relative pl-16 lg:pl-0 lg:pt-16">
+          <span class="step-marker" aria-hidden="true">
+            <span class="step-number">{i + 1}</span>
+          </span>
+          <span class="flex items-center gap-3">
+            <Icon name={step.icon} class="size-5 shrink-0 text-accent-orange" />
+            <h3 class="font-display text-[1.1rem] leading-snug font-extrabold text-primary-dark-900">
+              {step.title}
+            </h3>
+          </span>
+          <p class="mt-2 max-w-[17rem] font-sans text-[15px] leading-snug text-ink-soft">
+            {step.description}
+          </p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="relative flex flex-col gap-4 border-t border-primary-dark/10 bg-primary-dark/[0.03] px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
+      <p class="flex items-center gap-3 font-sans text-[15px] text-ink">
+        <Icon name="check" class="size-5 shrink-0 text-accent-orange" />
+        {processSteps.microcopy}
+      </p>
+      <Button cta="processo-cta" size="md" class="self-start sm:self-auto">
+        {cta.card}
+      </Button>
+    </div>
   </div>
 </Section>
 
 <style>
-  /* Linha que liga os quatro círculos no desktop, atrás deles. */
+  /* Marcador: círculo branco com anel, número verde no canto. */
+  .step-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(10 29 77 / 0.12);
+    border-radius: 9999px;
+    background: var(--color-neutral-light);
+    box-shadow: 0 10px 22px -16px rgb(10 29 77 / 0.5);
+  }
+
+  .step-marker::before {
+    content: '';
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 9999px;
+    background: var(--color-accent-orange);
+  }
+
+  .step-number {
+    position: absolute;
+    top: -0.4rem;
+    right: -0.4rem;
+    display: flex;
+    width: 1.4rem;
+    height: 1.4rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: var(--color-primary-dark-900);
+    color: var(--color-neutral-light);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Linha de fluxo: vertical no celular, atrás dos marcadores. */
+  .step::after {
+    content: '';
+    position: absolute;
+    top: 2.75rem;
+    bottom: -2.5rem;
+    left: 1.375rem;
+    border-left: 2px dashed rgb(77 127 34 / 0.45);
+  }
+
+  .step:last-child::after {
+    display: none;
+  }
+
   @media (width >= 64rem) {
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 1.75rem;
-      right: 12%;
-      left: 1.75rem;
-      border-top: 2px dashed rgb(16 44 115 / 0.18);
+    /* Horizontal no desktop: cada etapa liga à próxima. */
+    .step::after {
+      top: 1.375rem;
+      right: -1.5rem;
+      bottom: auto;
+      left: 2.75rem;
+      border-top: 2px dashed rgb(77 127 34 / 0.45);
+      border-left: 0;
     }
   }
 </style>
