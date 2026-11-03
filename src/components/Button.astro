@@ -13,7 +13,7 @@ import type { IconName } from '../data/icons'
 interface Props {
   /** Identificador de rastreamento, ex.: "hero-primary", "linhas-esferas". */
   cta: string
-  variant?: 'primary' | 'outline-light' | 'outline-dark'
+  variant?: 'primary' | 'yellow' | 'outline-light' | 'outline-dark'
   size?: 'sm' | 'md' | 'lg'
   type?: 'button' | 'submit'
   icon?: boolean
@@ -51,6 +51,9 @@ const iconSizes = {
 const variants = {
   primary:
     'border-accent-orange bg-accent-orange text-neutral-light hover:border-accent-orange-dark hover:bg-accent-orange-dark',
+  /** Amarelo da folha SEIVE com texto verde-escuro: CTA sobre os blocos verde-escuros. */
+  yellow:
+    'border-seive-yellow bg-seive-yellow text-primary-dark-900 hover:border-[#f2c41f] hover:bg-[#f2c41f]',
   'outline-light': 'border-neutral-light/35 text-neutral-light hover:bg-neutral-light/10',
   'outline-dark': 'border-ink/25 text-ink hover:bg-ink/5',
 }

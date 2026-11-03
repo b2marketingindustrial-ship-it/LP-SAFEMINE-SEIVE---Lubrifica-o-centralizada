@@ -417,7 +417,7 @@
       "data": "diferenciais.ts",
       "dataExport": "why",
       "carriesNavy": true,
-      "tone": "light",
+      "tone": "gray",
       "rhythm": "uniform",
       "tones": [
         "light",
