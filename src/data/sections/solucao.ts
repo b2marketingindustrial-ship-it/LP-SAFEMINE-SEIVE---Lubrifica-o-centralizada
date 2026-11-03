@@ -53,7 +53,7 @@ export const solution = {
   /** Ficha técnica curta, em selos sob o esquemático. */
   facts: [
     { label: 'Sistema', value: 'Progressivo' },
-    { label: 'Operação', value: 'Automática, com a máquina em operação' },
+    { label: 'Operação', value: 'Automática' },
     { label: 'Alimentação', value: '12 VCC' },
   ],
 } as const satisfies {
