@@ -37,7 +37,7 @@ const lines: readonly ProductLine[] = productLines.items
   {/* A partir de 1280px cada card é um subgrid de 6 linhas: título, descrição, função/atuação e
       resultado ficam na mesma altura nos 4 cards, mesmo com descrições de tamanhos diferentes. */}
   <ul class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-y-0">
-    {lines.map((line, index) => (
+    {lines.map((line) => (
       <li class="group flex flex-col overflow-hidden rounded-2xl border border-primary-dark/10 bg-neutral-light card-shadow transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:card-shadow-hover motion-reduce:transition-none motion-reduce:hover:translate-y-0 xl:row-span-6 xl:grid xl:grid-rows-subgrid xl:gap-y-0">
         {/* Foto ocupando todo o topo do card; recorte transparente vai centrado sobre a placa. */}
         <div
@@ -58,15 +58,9 @@ const lines: readonly ProductLine[] = productLines.items
               line.fit === 'contain' ? 'object-contain p-6' : 'object-cover',
             ]}
           />
-          <span class="absolute inset-x-0 top-0 flex items-center justify-between p-4">
+          <span class="absolute inset-x-0 top-0 flex items-center p-4">
             <span class="rounded-full bg-neutral-light/95 px-3 py-1.5 font-sans text-[11px] font-bold tracking-[0.14em] text-accent-orange uppercase shadow-[0_6px_14px_-8px_rgb(0_0_0/0.5)]">
               {line.tag}
-            </span>
-            <span
-              class="rounded-full bg-primary-dark-900/80 px-2.5 py-1 font-sans text-[11px] font-semibold tracking-[0.08em] text-neutral-light tabular-nums"
-              aria-hidden="true"
-            >
-              {String(index + 1).padStart(2, '0')}/{String(lines.length).padStart(2, '0')}
             </span>
           </span>
         </div>
