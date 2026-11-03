@@ -6,7 +6,7 @@
  * total, cabeçalho centrado e cards brancos em três partes (foto, ícone com título e
  * descrição, rodapé com a chamada e a seta); setas do carrossel nas laterais (desktop; no celular rola por toque). O carrossel (8 segmentos) continua: trilho com scroll-snap, teclado e
  * setas. O card inteiro é o CTA. A faixa anula o padding da composição com margens
- * negativas e repõe o respiro por dentro.
+ * negativas (calculadas pelo ritmo) e repõe o respiro por dentro.
  *
  * `npm run compose` sobrescreve este arquivo com o da biblioteca: guarde-o antes.
  */
@@ -26,10 +26,19 @@ const { tone, rhythm } = Astro.props
 const at = applications.title.indexOf(applications.titleHighlight)
 const before = at >= 0 ? applications.title.slice(0, at) : applications.title
 const after = at >= 0 ? applications.title.slice(at + applications.titleHighlight.length) : ''
+
+// A faixa verde anula exatamente o padding do ritmo da composição: sem isso o fundo da seção
+// (branco ou cinza) aparece como uma tira acima ou abaixo do verde quando o ritmo muda.
+const BAND_MARGINS: Record<string, string> = {
+  'centered-lead': '-mt-4 -mb-20',
+  even: '-my-16',
+  flow: '-mt-6 -mb-16',
+}
+const bandMargins = BAND_MARGINS[rhythm] ?? '-my-16'
 ---
 
 <Section id="aplicacoes" tone={tone} rhythm={rhythm} container={false}>
-  <div class="apps-band relative -mt-4 -mb-20 overflow-hidden py-20 lg:py-24">
+  <div class:list={['apps-band relative overflow-hidden py-20 lg:py-24', bandMargins]}>
     <span class="apps-mesh pointer-events-none absolute inset-0" aria-hidden="true"></span>
 
     <div class="relative mx-auto max-w-page px-6 lg:px-10">
