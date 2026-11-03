@@ -48,7 +48,7 @@ export const solution = {
   ],
   scheme: {
     src: trator,
-    alt: 'Bomba SEIVE LUB em destaque diante de um trator agrícola, com a seta indicando onde ela fica instalada na máquina',
+    alt: 'Bomba SEIVE LUB em destaque ao lado de um trator agrícola azul, em pátio de terra cercado de árvores',
   },
   /** Ficha técnica curta, em selos sob o esquemático. */
   facts: [
