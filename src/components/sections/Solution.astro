@@ -4,7 +4,7 @@
  *
  * Duas colunas na mesma altura (03/11/2026): à esquerda o título, uma frase, as 4
  * finalidades em grade 2×2 e o CTA; à direita a foto da aplicação (bomba diante do trator),
- * que preenche a altura do texto, com a ficha técnica em selos sob ela, numa linha no desktop.
+ * que preenche a altura do texto, com a ficha técnica em selos empilhados no canto vazio dela.
  */
 import Eyebrow from '@components/Eyebrow.astro'
 import { Image } from 'astro:assets'
@@ -59,27 +59,26 @@ const after = at >= 0 ? solution.title.slice(at + solution.titleHighlight.length
     </div>
 
     {/* Foto da aplicação (03/11/2026): no desktop preenche a coluna, na mesma altura do texto;
-        no celular aparece inteira. Ficha técnica em selos numa faixa sob a foto. */}
-    <figure class="flex flex-col overflow-hidden rounded-[1.5rem] border border-primary-dark/[0.06] bg-neutral-gray-100 card-shadow">
-      <div class="relative lg:min-h-[18rem] lg:flex-1">
-        <Image
-          src={solution.scheme.src}
-          alt={solution.scheme.alt}
-          format="webp"
-          widths={[640, 1280, 1540]}
-          sizes="(min-width: 1024px) 640px, 100vw"
-          loading="lazy"
-          decoding="async"
-          class="aspect-[1540/1021] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full lg:object-[50%_70%]"
-        />
-      </div>
-      {/* Ficha técnica numa faixa sob a foto, para não cobrir a bomba (canto inferior direito). */}
+        no celular aparece inteira. Ficha técnica em selos sobre o chão vazio da foto. */}
+    <figure class="relative overflow-hidden rounded-[1.5rem] card-shadow">
+      <Image
+        src={solution.scheme.src}
+        alt={solution.scheme.alt}
+        format="webp"
+        widths={[640, 1280, 1540]}
+        sizes="(min-width: 1024px) 640px, 100vw"
+        loading="lazy"
+        decoding="async"
+        class="aspect-[1540/1021] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full lg:object-[50%_70%]"
+      />
+      {/* Ficha técnica empilhada no chão vazio da foto (canto inferior esquerdo), longe da
+          bomba, que fica à direita. */}
       <ul
-        class="flex flex-wrap justify-center gap-2 px-4 py-3.5 lg:flex-nowrap"
+        class="absolute bottom-0 left-0 flex flex-col items-start gap-2 p-4 sm:p-5"
         aria-label="Ficha técnica"
       >
         {solution.facts.map((fact) => (
-          <li class="rounded-full border border-primary-dark/10 bg-neutral-light px-3.5 py-1.5 font-sans text-[13px] whitespace-nowrap text-ink-soft">
+          <li class="rounded-full border border-white/50 bg-neutral-light/95 px-3.5 py-1.5 font-sans text-[13px] whitespace-nowrap text-ink-soft shadow-[0_8px_20px_-10px_rgb(0_0_0/0.6)] backdrop-blur-sm">
             {fact.label}: <strong class="font-semibold text-primary-dark-900">{fact.value}</strong>
           </li>
         ))}
