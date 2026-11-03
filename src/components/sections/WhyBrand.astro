@@ -12,7 +12,7 @@
  *
  * ATENÇÃO: `npm run compose` recopia o componente da biblioteca e desfaz esta variante.
  */
-import { Picture } from 'astro:assets'
+import { Image, Picture } from 'astro:assets'
 import Section from '@components/Section.astro'
 import Button from '@components/Button.astro'
 import Icon from '@components/Icon.astro'
@@ -129,6 +129,56 @@ const titleBottom = why.titleLines.at(-1)
       >
         <Icon name="chevron-right" class="size-4" />
       </button>
+    </div>
+
+    {/* Certificações e normas (página "Pioneirismo" do catálogo, 03/11/2026): texto à
+        esquerda, selos à direita; UL e NFPA agrupados como normas internacionais. */}
+    <div class="mt-10 flex flex-col gap-6 rounded-2xl border border-primary-dark/10 bg-neutral-light p-6 card-shadow lg:flex-row lg:items-center lg:gap-10 lg:px-8">
+      <div class="lg:max-w-[26rem]">
+        <h3 class="font-display text-[18px] leading-snug font-extrabold text-primary-dark-900">
+          {why.certifications.title}
+        </h3>
+        <p class="mt-2 font-sans text-[14.5px] leading-relaxed text-ink-soft">
+          {why.certifications.text}
+        </p>
+      </div>
+      <div class="flex flex-1 flex-wrap items-center gap-x-6 gap-y-5 lg:justify-end">
+        <ul class="flex flex-wrap items-center gap-5" aria-label="Certificações">
+          {why.certifications.seals.map((seal) => (
+            <li>
+              <Image
+                src={seal.src}
+                alt={seal.alt}
+                height={128}
+                format="webp"
+                loading="lazy"
+                decoding="async"
+                class="h-16 w-auto"
+              />
+            </li>
+          ))}
+        </ul>
+        <div class="flex flex-col items-center gap-2 rounded-xl border border-accent-orange/40 px-4 pt-3 pb-2">
+          <ul class="flex items-center gap-5" aria-label={why.certifications.internationalLabel}>
+            {why.certifications.international.map((seal) => (
+              <li>
+                <Image
+                  src={seal.src}
+                  alt={seal.alt}
+                  height={128}
+                  format="webp"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-14 w-auto"
+                />
+              </li>
+            ))}
+          </ul>
+          <span class="font-sans text-[10.5px] font-semibold tracking-[0.14em] text-accent-orange uppercase">
+            {why.certifications.internationalLabel}
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </Section>
