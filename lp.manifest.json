@@ -104,7 +104,7 @@
       ],
       "exampleHash": "8d2664e3a490fc3d",
       "ctas": [
-        "linhas-{item.id}"
+        "linhas-cta"
       ],
       "contract": {
         "itemsPath": "items",

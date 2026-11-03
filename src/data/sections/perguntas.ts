@@ -44,7 +44,7 @@ export const faq = {
     {
       question: 'Serve para o meu tipo de máquina?',
       answer:
-        'O SEIVE LUB atende mineração, agronegócio, sucroenergia, florestal, algodão, portos e máquinas estacionárias. Descreva a sua máquina e a Safe Mine avalia o projeto.',
+        'O SEIVE LUB atende mineração, equipamentos agrícolas, setor sucroenergético, algodão, máquinas florestais, equipamentos móveis e pesados, operações portuárias e equipamentos estacionários.',
     },
   ],
 } as const satisfies {

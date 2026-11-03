@@ -14,6 +14,7 @@ import Button from '@components/Button.astro'
 import Section from '@components/Section.astro'
 import Icon from '@components/Icon.astro'
 import type { SectionProps } from '@lib/layout'
+import { cta } from '@data/content'
 import { supportPanel } from '@data/sections/identificar'
 
 type Props = SectionProps
@@ -38,13 +39,8 @@ const { list } = supportPanel
       </p>
 
       <Button cta="identificar-cta" size="lg" class="relative mt-8 w-full max-w-[30rem]">
-        {supportPanel.ctaLabel}
+        {cta.card}
       </Button>
-
-      <p class="relative mt-6 flex items-center gap-3 font-sans text-[14px] text-ink-soft sm:text-[15px]">
-        <Icon name="chat" class="size-6 shrink-0 text-primary-dark-900" />
-        {supportPanel.microcopy}
-      </p>
     </div>
 
     {/* Lado claro: o que enviar, como checklist em duas colunas */}

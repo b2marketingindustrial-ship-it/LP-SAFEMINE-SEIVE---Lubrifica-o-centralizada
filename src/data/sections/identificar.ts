@@ -23,9 +23,6 @@ export const supportPanel = {
   eyebrow: 'Dados para cotação',
   title: 'Não sabe quantos pontos lubrificar?',
   text: 'Descreva a máquina. A Safe Mine avalia os pontos de lubrificação e indica a solução.',
-  microcopy: 'Você pode pedir cotação sem os dados técnicos.',
-  /** Rótulo do botão do bloco navy. */
-  ctaLabel: 'Receber indicação e cotação',
   /** Lado claro: os 3 primeiros itens são o essencial; os demais, "se souber". */
   list: {
     title: 'O que ajuda na sua cotação',
@@ -45,8 +42,6 @@ export const supportPanel = {
   eyebrow: string
   title: string
   text: string
-  microcopy: string
-  ctaLabel: string
   list: { title: string; text: string; optionalLabel: string; optionalFrom: number }
   items: readonly [SupportItem, SupportItem, SupportItem, SupportItem, SupportItem, SupportItem]
 }

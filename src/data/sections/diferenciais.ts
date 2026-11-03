@@ -20,12 +20,12 @@ export interface Reason {
 }
 
 export const why = {
-  eyebrow: `Diferenciais ${site.brandShort}`,
+  eyebrow: `${site.brandShort} + SEIVE`,
   /** Cada item é uma linha do H2 (quebra forçada); a segunda sai em verde. 3–6 palavras no total. */
-  titleLines: ['A quantidade certa,', 'no ponto certo.'],
+  titleLines: ['Tecnologia SEIVE,', 'feita no Brasil.'],
   text: `A ${site.brandShort} conecta a tecnologia SEIVE à sua operação, considerando o equipamento, os pontos de lubrificação e as condições de trabalho.`,
   /** Linha de apoio sob o botão. */
-  help: 'Descreva a máquina. Nós ajudamos na escolha da solução.',
+  help: 'Da escolha à instalação, a Safe Mine acompanha o projeto.',
   scene: {
     src: cenario,
     alt: 'Linha de lubrificação ligada à articulação de um cilindro em máquina pesada',
@@ -38,23 +38,23 @@ export const why = {
     },
     {
       icon: 'badge-check',
-      title: 'Pioneira no Brasil',
+      title: 'SEIVE, pioneira no Brasil',
       description: 'Primeira fornecedora brasileira de lubrificação progressiva.',
     },
     {
       icon: 'factory',
       title: 'Fabricação nacional',
-      description: '100% brasileira, com qualidade ISO 9001:2015 e patente.',
+      description: 'Fabricado pela SEIVE no Brasil, com ISO 9001:2015 e patente.',
     },
     {
       icon: 'shield',
-      title: 'Garantia estendida',
+      title: 'Garantia de fábrica',
       description: '12 meses no sistema e 24 meses nos distribuidores.',
     },
     {
-      icon: 'file-text',
-      title: 'Gestão online',
-      description: 'Relatórios e consulta online dos sistemas instalados.',
+      icon: 'wrench',
+      title: 'Suporte técnico',
+      description: 'Canal direto com um técnico durante a garantia.',
     },
   ],
 } as const satisfies {

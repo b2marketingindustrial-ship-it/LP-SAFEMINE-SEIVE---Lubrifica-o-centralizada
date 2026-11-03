@@ -44,7 +44,7 @@ export const benefits = {
       id: 'consumo',
       icon: 'leaf',
       title: 'Menos consumo e resíduos',
-      description: 'Sem excesso de graxa.',
+      description: 'Sem excesso de lubrificante.',
     },
     {
       id: 'seguranca',
@@ -62,7 +62,7 @@ export const benefits = {
       id: 'custo',
       icon: 'tag',
       title: 'Baixo custo de manutenção',
-      description: 'A equipe só faz a recarga.',
+      description: 'Sem rotina de lubrificação manual.',
     },
   ],
   stats: {
@@ -81,7 +81,8 @@ export const benefits = {
       },
     ],
     /** Fecho da faixa: o SEIVE LUB atua nessa causa. */
-    answer: 'O SEIVE LUB elimina essa causa na origem.',
+    answer:
+      'O SEIVE LUB atua nessa causa: lubrificação na dose certa, sem depender da rotina manual.',
   },
 } as const satisfies {
   eyebrow: string

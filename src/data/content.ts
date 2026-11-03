@@ -55,7 +55,7 @@ export const hero = {
   titleBreakAfter: 'Lubrificação centralizada',
   /** Trecho do H1 em verde. */
   highlight: 'máquinas pesadas',
-  text: 'Sistema progressivo que fornece lubrificante de forma precisa,\ncontínua e uniforme. A Safe Mine ajuda você a definir a solução para a sua máquina.',
+  text: 'Lubrificante levado a cada ponto da máquina de forma precisa,\nautomática e uniforme. A Safe Mine ajuda você a definir a solução para a sua máquina.',
   banner: {
     src: heroBg,
     alt: 'Bomba de lubrificação centralizada SEIVE LUB instalada em máquina pesada',
@@ -87,7 +87,7 @@ export const quote = {
   titleHighlight: 'lubrificação centralizada.',
   text: 'Descreva a máquina e a equipe indica a solução SEIVE LUB adequada à sua operação. Preencha o formulário ou fale direto conosco pelo WhatsApp.',
   /** Linha sob o botão de WhatsApp. */
-  help: 'Não sabe quantos pontos lubrificar? Basta descrever a máquina.',
+  help: 'Atendemos pelo formulário ou pelo WhatsApp, como preferir.',
   trust: [
     { icon: 'users', label: 'Atendimento consultivo' },
     { icon: 'shield', label: 'Garantia 12 meses' },

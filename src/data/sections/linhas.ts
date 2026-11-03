@@ -6,7 +6,8 @@
  *
  * Aqui os cards são as partes do sistema SEIVE LUB, que é um produto só, sob projeto. O
  * layout é o da biblioteca B2: os 4 cards são claros, e `dark` fica só para o contrato
- * da biblioteca. `features` é posicional: função, atuação, resultado.
+ * da biblioteca. `features` é posicional: função (verbo, para não repetir o tag), atuação, resultado.
+ * Sem botão por card (03/11/2026): as partes não são vendidas separadas; há um CTA único sob o grid.
  *
  * Fotos do site da Safe Mine e da SEIVE: bomba e painel recortados do render do SEIVE LUB.
  */
@@ -31,11 +32,11 @@ export interface ProductLine {
 }
 
 export const productLines = {
-  eyebrow: 'Como o sistema funciona',
-  title: 'Um sistema progressivo para cada ponto da máquina',
-  /** Trecho do título em verde, na segunda linha. */
-  titleHighlight: 'cada ponto da máquina',
-  text: 'O SEIVE LUB leva o lubrificante do reservatório até os pontos definidos, de forma automática, e permite acompanhar os sistemas instalados.',
+  eyebrow: 'Componentes',
+  title: 'O que compõe o SEIVE LUB',
+  /** Trecho do título em verde. */
+  titleHighlight: 'SEIVE LUB',
+  text: 'Quatro partes trabalham juntas, do reservatório até cada ponto de lubrificação, com acompanhamento dos sistemas instalados.',
   /** Rótulos das duas primeiras features de cada card. */
   specLabels: ['Função', 'Atuação'],
   note: 'A configuração varia conforme o equipamento e os pontos de lubrificação.',
@@ -47,7 +48,7 @@ export const productLines = {
       description: 'Armazenam o lubrificante e alimentam o circuito de forma automática.',
       photo: { src: linha1, alt: 'Bomba SEIVE LUB com reservatório transparente' },
       fit: 'contain',
-      features: ['Alimentação', 'Contínua', 'Processo automático'],
+      features: ['Armazena e bombeia', 'Contínua', 'Processo automático'],
       dark: false,
     },
     {
@@ -56,7 +57,7 @@ export const productLines = {
       title: 'Distribuidores progressivos',
       description: 'Dividem o lubrificante de maneira controlada entre os pontos definidos.',
       photo: { src: linha2, alt: 'Bloco distribuidor SEIVE LUB instalado na máquina' },
-      features: ['Dosagem', 'Precisa', 'Quantidade certa por ponto'],
+      features: ['Divide e dosa', 'Precisa', 'Quantidade certa por ponto'],
       dark: false,
     },
     {
@@ -65,7 +66,7 @@ export const productLines = {
       title: 'Linhas até os pontos',
       description: 'Levam o lubrificante às articulações e aos componentes do equipamento.',
       photo: { src: linha3, alt: 'Mangueiras do sistema de lubrificação em máquina pesada' },
-      features: ['Condução', 'Uniforme', 'Projeto por equipamento'],
+      features: ['Leva até o ponto', 'Uniforme', 'Projeto por equipamento'],
       dark: false,
     },
     {
@@ -74,7 +75,7 @@ export const productLines = {
       title: 'Software e relatórios',
       description: 'Permitem consultar informações e relatórios dos sistemas instalados.',
       photo: { src: marcasPhoto, alt: 'Painel eletrônico da bomba SEIVE LUB' },
-      features: ['Consulta', 'Online', 'Mais controle da manutenção'],
+      features: ['Registra e informa', 'Online', 'Mais controle da manutenção'],
       dark: true,
     },
   ],

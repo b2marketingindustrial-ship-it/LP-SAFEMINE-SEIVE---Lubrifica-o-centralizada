@@ -27,7 +27,7 @@ export const solution = {
   title: 'O que é o SEIVE LUB',
   /** Trecho do título em verde. */
   titleHighlight: 'SEIVE LUB',
-  lead: 'Um sistema progressivo de lubrificação automática que leva a graxa certa a cada ponto da máquina, sem intervenção manual.',
+  lead: 'Um sistema progressivo de lubrificação automática que leva o lubrificante certo a cada ponto da máquina, sem intervenção manual.',
   purposes: [
     { icon: 'wrench', title: 'Prevenir o desgaste', description: 'De componentes e articulações.' },
     {
@@ -53,7 +53,7 @@ export const solution = {
   /** Ficha técnica curta, em selos sob o esquemático. */
   facts: [
     { label: 'Sistema', value: 'Progressivo' },
-    { label: 'Operação', value: 'Automática, 24 h' },
+    { label: 'Operação', value: 'Automática, com a máquina em operação' },
     { label: 'Alimentação', value: '12 VCC' },
   ],
 } as const satisfies {

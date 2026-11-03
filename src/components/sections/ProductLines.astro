@@ -5,7 +5,7 @@
  * sobrescreve este arquivo com o da biblioteca: guarde-o antes de recompor.
  *
  * Cabeçalho em duas colunas (título · texto), 4 cards claros com foto, função e atuação
- * lado a lado, resultado e CTA de largura total. Sem a faixa de ajuda da biblioteca: o bloco
+ * lado a lado e resultado; um CTA único sob o grid. Sem a faixa de ajuda da biblioteca: o bloco
  * "Identificar" logo abaixo já cumpre esse papel. `dark` fica nos dados só pelo contrato.
  */
 import Button from '@components/Button.astro'
@@ -89,25 +89,19 @@ const lines: readonly ProductLine[] = productLines.items
           </div>
         </dl>
 
-        <p class="mx-5 mt-4 flex items-center gap-2.5 font-sans text-[14.5px] text-ink">
+        <p class="mx-5 mt-4 mb-5 flex items-center gap-2.5 font-sans text-[14.5px] text-ink">
           <Icon name="check" class="size-5 shrink-0 text-accent-orange" />
           {line.features[2]}
         </p>
-
-        {/* mt-auto alinha os botões na base quando os textos têm alturas diferentes */}
-        <div class="mt-auto px-5 pt-5 pb-5">
-          <Button
-            cta={`linhas-${line.id}`}
-            variant="outline-dark"
-            size="md"
-            class="w-full group-hover:border-accent-orange group-hover:bg-accent-orange group-hover:text-neutral-light"
-          >
-            {cta.card}
-          </Button>
-        </div>
       </li>
     ))}
   </ul>
 
-  <p class="mt-5 font-sans text-[12.5px] text-ink-soft/80 sm:text-right">{productLines.note}</p>
+  {/* CTA único: as partes não são vendidas separadas (03/11/2026). */}
+  <div class="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <p class="font-sans text-[14px] text-ink-soft">{productLines.note}</p>
+    <Button cta="linhas-cta" size="md" class="shrink-0">
+      {cta.card}
+    </Button>
+  </div>
 </Section>

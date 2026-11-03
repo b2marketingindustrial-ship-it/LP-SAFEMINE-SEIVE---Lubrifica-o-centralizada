@@ -42,7 +42,7 @@ export const clients = {
   title: 'Quem já usa a tecnologia SEIVE',
   /** Trecho do título em verde. */
   titleHighlight: 'tecnologia SEIVE',
-  text: 'Grandes operações no Brasil e na América do Sul já confiam na tecnologia SEIVE.',
+  text: 'Mineradoras, usinas, siderúrgicas e fabricantes de máquinas já usam o SEIVE LUB.',
   /** Setores na ordem da página 5 do catálogo; cada um vira uma linha de logos. */
   sectors: [
     { id: 'mineracao', label: 'Mineração', icon: 'mountain' },

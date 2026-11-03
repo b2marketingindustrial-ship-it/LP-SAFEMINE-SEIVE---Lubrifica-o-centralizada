@@ -31,7 +31,7 @@ export interface Application {
 
 export const applications = {
   eyebrow: 'Aplicações',
-  title: 'Lubrificação automática para cada tipo de operação',
+  title: 'Lubrificação centralizada para cada tipo de operação',
   /** Trecho do título em verde, na segunda linha. */
   titleHighlight: 'para cada tipo de operação',
   text: 'O projeto se adapta aos pontos de lubrificação e às características de cada equipamento. Escolha a aplicação e fale com a equipe.',
@@ -40,7 +40,7 @@ export const applications = {
   /** Faixa abaixo dos cards, para quem não se vê nas aplicações. */
   help: {
     title: 'Sua máquina não está aqui?',
-    text: 'Industrial ou outra: descreva o equipamento e a Safe Mine ajuda na seleção.',
+    text: 'Siderurgia, indústria ou outra operação: descreva o equipamento e a Safe Mine ajuda na seleção.',
   },
   items: [
     {
@@ -54,7 +54,7 @@ export const applications = {
       id: 'agricola',
       icon: 'leaf',
       label: 'Equipamentos agrícolas',
-      description: 'Componentes preservados durante toda a safra.',
+      description: 'Menos tempo de máquina parada para lubrificar no campo.',
       photo: { src: app2, alt: 'Colheitadeira em operação na lavoura' },
     },
     {
@@ -82,7 +82,7 @@ export const applications = {
       id: 'moveis-e-pesados',
       icon: 'truck',
       label: 'Móveis e pesados',
-      description: 'Projeto adaptado aos pontos de cada equipamento.',
+      description: 'Carregadeiras, escavadeiras e caminhões fora de estrada.',
       photo: { src: app4, alt: 'Pá carregadeira ao lado de correia transportadora' },
     },
     {
@@ -96,7 +96,7 @@ export const applications = {
       id: 'estacionarios',
       icon: 'cylinder',
       label: 'Estacionários',
-      description: 'Equipamentos fixos de pátio, com pontos de difícil acesso.',
+      description: 'Para empilhadeiras, recuperadoras e equipamentos fixos de pátio.',
       photo: { src: app7, alt: 'Empilhadeira de pátio sobre pilha de minério' },
     },
   ],
