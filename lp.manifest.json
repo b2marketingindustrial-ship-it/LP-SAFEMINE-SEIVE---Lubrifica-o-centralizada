@@ -103,9 +103,7 @@
         "flow"
       ],
       "exampleHash": "8d2664e3a490fc3d",
-      "ctas": [
-        "linhas-cta"
-      ],
+      "ctas": [],
       "contract": {
         "itemsPath": "items",
         "itemsMin": 3,
@@ -165,7 +163,7 @@
       "component": "ProcessSteps.astro",
       "data": "processo.ts",
       "dataExport": "processSteps",
-      "tone": "light",
+      "tone": "gray",
       "rhythm": "panel-lead",
       "rhythms": [
         "panel-lead"
@@ -198,7 +196,7 @@
       "data": "identificar.ts",
       "dataExport": "supportPanel",
       "carriesNavy": false,
-      "tone": "gray",
+      "tone": "light",
       "rhythm": "flow",
       "tones": [
         "light",
@@ -238,7 +236,7 @@
       "data": "aplicacoes.ts",
       "dataExport": "applications",
       "carriesNavy": false,
-      "tone": "light",
+      "tone": "gray",
       "rhythm": "even",
       "tones": [
         "light",
@@ -293,7 +291,7 @@
       "component": "Benefits.astro",
       "data": "beneficios.ts",
       "dataExport": "benefits",
-      "tone": "gray",
+      "tone": "light",
       "rhythm": "even",
       "rhythms": [
         "even",
@@ -340,7 +338,7 @@
       "component": "ClientLogos.astro",
       "data": "clientes.ts",
       "dataExport": "clients",
-      "tone": "light",
+      "tone": "gray",
       "rhythm": "even",
       "rhythms": [
         "even",
@@ -376,7 +374,7 @@
       "component": "Faq.astro",
       "data": "perguntas.ts",
       "dataExport": "faq",
-      "tone": "gray",
+      "tone": "light",
       "rhythm": "even",
       "rhythms": [
         "even",
@@ -411,7 +409,7 @@
       "data": "diferenciais.ts",
       "dataExport": "why",
       "carriesNavy": true,
-      "tone": "gray",
+      "tone": "light",
       "rhythm": "overlap",
       "tones": [
         "light",
@@ -460,5 +458,5 @@
       ]
     }
   ],
-  "note": "Composição estendida à mão (biblioteca indisponível nesta máquina): solucao e beneficios são seções próprias; processo é o bloco navy da fase de apoio e identificar ficou claro; aplicacoes em faixa verde-escura com 8 itens em carrossel; clientes com 18 logos. Tons e ritmos de resolveLayout em 02/11/2026. Ver docs/BRIEFING.md. Em 03/11/2026, a pedido do usuário, os fundos passaram a alternar branco e cinza seção a seção (desvio da troca única do padrão; ver docs/BRIEFING.md)."
+  "note": "Composição estendida à mão (biblioteca indisponível nesta máquina): solucao e beneficios são seções próprias; processo é o bloco navy da fase de apoio e identificar ficou claro; aplicacoes em faixa verde-escura com 8 itens em carrossel; clientes com 18 logos. Tons e ritmos de resolveLayout em 02/11/2026. Ver docs/BRIEFING.md. Em 03/11/2026, a pedido do usuário, os fundos passaram a alternar branco e cinza seção a seção, com linhas e processo no mesmo cinza (desvio da troca única do padrão; ver docs/BRIEFING.md)."
 }

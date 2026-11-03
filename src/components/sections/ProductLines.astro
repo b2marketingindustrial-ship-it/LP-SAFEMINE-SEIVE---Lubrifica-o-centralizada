@@ -5,17 +5,15 @@
  * sobrescreve este arquivo com o da biblioteca: guarde-o antes de recompor.
  *
  * Cabeçalho em duas colunas (título · texto), 4 cards claros com foto, função e atuação
- * lado a lado e resultado; um CTA único sob o grid. Sem a faixa de ajuda da biblioteca: o bloco
+ * lado a lado e resultado; sob o grid, só a nota (sem CTA desde 03/11/2026). Sem a faixa de ajuda da biblioteca: o bloco
  * "Identificar" logo abaixo já cumpre esse papel. `dark` fica nos dados só pelo contrato.
  */
-import Button from '@components/Button.astro'
 import { Image } from 'astro:assets'
 import Section from '@components/Section.astro'
 import SplitHeader from '@components/SplitHeader.astro'
 import Icon from '@components/Icon.astro'
 import BrandCarousel from '@components/BrandCarousel.astro'
 import type { SectionProps } from '@lib/layout'
-import { cta } from '@data/content'
 import { productLines, type ProductLine } from '@data/sections/linhas'
 
 type Props = SectionProps
@@ -97,11 +95,6 @@ const lines: readonly ProductLine[] = productLines.items
     ))}
   </ul>
 
-  {/* CTA único: as partes não são vendidas separadas (03/11/2026). */}
-  <div class="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-    <p class="font-sans text-[14px] text-ink-soft">{productLines.note}</p>
-    <Button cta="linhas-cta" size="md" class="shrink-0">
-      {cta.card}
-    </Button>
-  </div>
+  {/* Sem CTA (pedido do usuário, 03/11/2026): só a nota sob o grid. */}
+  <p class="mt-8 font-sans text-[14px] text-ink-soft">{productLines.note}</p>
 </Section>

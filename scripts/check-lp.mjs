@@ -757,15 +757,12 @@ if (manifest) {
       if (!TONES[tone]) fail(MANIFEST, `"${list[i].slug}": tom "${tone}" não existe`)
 
     // Desvio pedido em 03/11/2026 (docs/BRIEFING.md, Desvios do padrão): os fundos alternam
-    // branco e cinza seção a seção, no lugar da troca única no meio. Continua valendo: começa
-    // branco (depois do hero), termina cinza (antes da cotação) e não repete o fundo em mais de
-    // duas seções seguidas. Os dois blocos navy ficam um em cada metade da página.
-    if (tones[0] !== 'light' || tones[tones.length - 1] !== 'gray')
-      fail(
-        MANIFEST,
-        'a sequência de fundos vai de branco (depois do hero navy) a cinza (antes da ' +
-          `cotação cinza); está ${tones[0]} → ${tones[tones.length - 1]}`,
-      )
+    // branco e cinza seção a seção, no lugar da troca única no meio, com pares no mesmo fundo
+    // onde o usuário pediu (linhas + processo) ou onde o respiro obriga (perguntas +
+    // diferenciais). Continua valendo: começa branco (depois do hero), nunca três seções
+    // seguidas no mesmo fundo, e um bloco navy em cada metade da página.
+    if (tones[0] !== 'light')
+      fail(MANIFEST, `a primeira seção depois do hero navy é branca; está ${tones[0]}`)
     for (let i = 2; i < tones.length; i++)
       if (tones[i] === tones[i - 1] && tones[i] === tones[i - 2])
         fail(
