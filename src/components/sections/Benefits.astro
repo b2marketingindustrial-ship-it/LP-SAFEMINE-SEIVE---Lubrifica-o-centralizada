@@ -4,7 +4,8 @@
  *
  * Simplificada em 02/11/2026 (o usuário achou a lista em 3 colunas densa): os 6
  * benefícios numa grade 3×2 de itens curtos (ícone, título, uma frase) e, abaixo, uma
- * faixa navy só com as duas estatísticas, a fonte e o CTA.
+ * faixa navy em duas linhas (03/11/2026): o problema (título e as duas estatísticas) e,
+ * sob um filete, a resposta do SEIVE LUB em linha inteira com o CTA à direita.
  */
 import Button from '@components/Button.astro'
 import Icon from '@components/Icon.astro'
@@ -17,6 +18,11 @@ import { benefits } from '@data/sections/beneficios'
 type Props = SectionProps
 
 const { tone, rhythm } = Astro.props
+
+// Resposta em duas partes: até os dois-pontos em destaque, o resto em texto corrido.
+const colon = benefits.stats.answer.indexOf(':')
+const answerLead = colon >= 0 ? benefits.stats.answer.slice(0, colon + 1) : ''
+const answerRest = colon >= 0 ? benefits.stats.answer.slice(colon + 1) : benefits.stats.answer
 ---
 
 <Section id="beneficios" tone={tone} rhythm={rhythm} class="rounded-t-[2rem] sm:rounded-t-[3rem]">
@@ -45,7 +51,8 @@ const { tone, rhythm } = Astro.props
 
   <div class="navy-panel panel-shadow relative mt-12 overflow-hidden rounded-[1.5rem] px-6 py-8 sm:px-10 lg:px-12 lg:py-9">
     <span class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></span>
-    <div class="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)_minmax(0,0.9fr)] lg:items-center lg:gap-10">
+    {/* Linha 1 — o problema: título e os dois números */}
+    <div class="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:items-center lg:gap-12">
       <p class="font-display text-[1.6rem] leading-[1.1] font-extrabold tracking-[-0.02em] text-neutral-light sm:text-[1.9rem]">
         {benefits.stats.title}
       </p>
@@ -64,17 +71,22 @@ const { tone, rhythm } = Astro.props
           </div>
         ))}
       </dl>
-      <div class="glass-card flex flex-col gap-4 rounded-2xl p-5">
-        <p class="flex items-start gap-3 font-display text-[16px] leading-snug font-extrabold text-neutral-light">
-          <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent-orange text-neutral-light">
-            <Icon name="check" class="size-4" />
-          </span>
-          {benefits.stats.answer}
-        </p>
-        <Button cta="beneficios-cta" size="md" class="w-full">
-          {cta.card}
-        </Button>
-      </div>
+    </div>
+
+    {/* Linha 2 — a resposta: frase inteira numa linha e o CTA à direita */}
+    <div class="relative mt-8 flex flex-col gap-5 border-t border-white/12 pt-7 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+      <p class="flex items-center gap-3.5 font-sans text-[16px] leading-snug text-neutral-light/80 sm:text-[17px]">
+        <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-accent-orange text-neutral-light">
+          <Icon name="check" class="size-[18px]" />
+        </span>
+        <span>
+          <strong class="font-display font-extrabold text-neutral-light">{answerLead}</strong>
+          {answerRest}
+        </span>
+      </p>
+      <Button cta="beneficios-cta" size="md" class="shrink-0 self-start lg:self-auto">
+        {cta.card}
+      </Button>
     </div>
   </div>
 </Section>
