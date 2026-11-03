@@ -44,6 +44,12 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
+/* Respiro único de seção (03/11/2026, pedido do usuário, como nas LPs Falanga): o mesmo
+   espaço em cima e embaixo de toda seção do meio e da Cotação, em todas as larguras. */
+:root {
+  --section-space: 70px;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

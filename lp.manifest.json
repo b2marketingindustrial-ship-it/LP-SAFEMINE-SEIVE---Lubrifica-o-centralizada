@@ -35,7 +35,7 @@
       "dataExport": "solution",
       "carriesNavy": false,
       "tone": "light",
-      "rhythm": "open",
+      "rhythm": "uniform",
       "tones": [
         "light",
         "gray"
@@ -44,7 +44,8 @@
         "open",
         "even",
         "flow",
-        "tight"
+        "tight",
+        "uniform"
       ],
       "ctas": [
         "solucao-cta"
@@ -91,7 +92,7 @@
       "dataExport": "productLines",
       "carriesNavy": false,
       "tone": "gray",
-      "rhythm": "open",
+      "rhythm": "uniform",
       "tones": [
         "light",
         "gray"
@@ -100,7 +101,8 @@
         "open",
         "tight",
         "even",
-        "flow"
+        "flow",
+        "uniform"
       ],
       "exampleHash": "8d2664e3a490fc3d",
       "ctas": [],
@@ -164,9 +166,10 @@
       "data": "processo.ts",
       "dataExport": "processSteps",
       "tone": "gray",
-      "rhythm": "panel-lead",
+      "rhythm": "uniform",
       "rhythms": [
-        "panel-lead"
+        "panel-lead",
+        "uniform"
       ],
       "ctas": [
         "processo-cta"
@@ -197,7 +200,7 @@
       "dataExport": "supportPanel",
       "carriesNavy": false,
       "tone": "light",
-      "rhythm": "flow",
+      "rhythm": "uniform",
       "tones": [
         "light",
         "gray"
@@ -205,7 +208,8 @@
       "rhythms": [
         "flow",
         "even",
-        "tight"
+        "tight",
+        "uniform"
       ],
       "exampleHash": "dfa6bcf7c0258bb1",
       "ctas": [
@@ -237,7 +241,7 @@
       "dataExport": "applications",
       "carriesNavy": false,
       "tone": "gray",
-      "rhythm": "even",
+      "rhythm": "uniform",
       "tones": [
         "light",
         "gray"
@@ -245,7 +249,8 @@
       "rhythms": [
         "centered-lead",
         "even",
-        "flow"
+        "flow",
+        "uniform"
       ],
       "exampleHash": "61d1254bd3fc3c58",
       "ctas": [
@@ -292,12 +297,13 @@
       "data": "beneficios.ts",
       "dataExport": "benefits",
       "tone": "light",
-      "rhythm": "even",
+      "rhythm": "uniform",
       "rhythms": [
         "even",
         "flow",
         "tight",
-        "open"
+        "open",
+        "uniform"
       ],
       "ctas": [
         "beneficios-cta"
@@ -339,12 +345,13 @@
       "data": "clientes.ts",
       "dataExport": "clients",
       "tone": "gray",
-      "rhythm": "even",
+      "rhythm": "uniform",
       "rhythms": [
         "even",
         "tight",
         "centered-lead",
-        "flow"
+        "flow",
+        "uniform"
       ],
       "ctas": [],
       "contract": {
@@ -375,11 +382,12 @@
       "data": "perguntas.ts",
       "dataExport": "faq",
       "tone": "light",
-      "rhythm": "even",
+      "rhythm": "uniform",
       "rhythms": [
         "even",
         "tight",
-        "flow"
+        "flow",
+        "uniform"
       ],
       "ctas": [
         "perguntas-cta"
@@ -410,13 +418,14 @@
       "dataExport": "why",
       "carriesNavy": true,
       "tone": "light",
-      "rhythm": "overlap",
+      "rhythm": "uniform",
       "tones": [
         "light",
         "gray"
       ],
       "rhythms": [
-        "overlap"
+        "overlap",
+        "uniform"
       ],
       "exampleHash": "24683935274bbad0",
       "ctas": [
@@ -458,5 +467,5 @@
       ]
     }
   ],
-  "note": "Composição estendida à mão (biblioteca indisponível nesta máquina): solucao e beneficios são seções próprias; processo é o bloco navy da fase de apoio e identificar ficou claro; aplicacoes em faixa verde-escura com 8 itens em carrossel; clientes com 18 logos. Tons e ritmos de resolveLayout em 02/11/2026. Ver docs/BRIEFING.md. Em 03/11/2026, a pedido do usuário, os fundos passaram a alternar branco e cinza seção a seção, com linhas e processo no mesmo cinza (desvio da troca única do padrão; ver docs/BRIEFING.md)."
+  "note": "Composição estendida à mão (biblioteca indisponível nesta máquina): solucao e beneficios são seções próprias; processo é o bloco navy da fase de apoio e identificar ficou claro; aplicacoes em faixa verde-escura com 8 itens em carrossel; clientes com 18 logos. Tons e ritmos de resolveLayout em 02/11/2026. Ver docs/BRIEFING.md. Em 03/11/2026, a pedido do usuário, os fundos passaram a alternar branco e cinza seção a seção, com linhas e processo no mesmo cinza (desvio da troca única do padrão; ver docs/BRIEFING.md). Também em 03/11/2026: respiro único `uniform` (70px em cima e embaixo) em todas as seções e na Cotação."
 }

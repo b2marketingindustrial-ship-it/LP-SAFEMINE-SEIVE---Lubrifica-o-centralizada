@@ -17,9 +17,9 @@ const [titleStart, titleEnd = ''] = quote.title.split(quote.titleHighlight)
 const hasHighlight = quote.title.includes(quote.titleHighlight)
 ---
 
-<section id="cotacao" class="bg-neutral-gray-100 pt-8 pb-20">
+<section id="cotacao" class="bg-neutral-gray-100 py-(--section-space)">
   <div class="mx-auto max-w-page px-6 lg:px-10">
-    <div class="grid gap-10 pt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-start lg:gap-16 lg:pt-12">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-start lg:gap-16">
       {/* Coluna do formulário */}
       <div class="order-2 w-full lg:order-1">
         <div class="min-h-[460px] w-full">
