@@ -31,7 +31,7 @@ const textLines = hero.text.split('\n')
 ---
 
 <section
-  class="relative overflow-hidden rounded-b-[2rem] bg-seive-950 sm:rounded-b-[3rem]"
+  class="relative overflow-hidden rounded-b-[2rem] bg-[#064229] sm:rounded-b-[3rem]"
   data-hero
 >
   <div class="hero-photo absolute inset-0 z-[1]">
@@ -225,22 +225,40 @@ const textLines = hero.text.split('\n')
     pointer-events: none;
   }
 
-  /* Véus no verde profundo da logo SEIVE (o mesmo do fundo do banner), com queda suave em
-     vários pontos para a borda não aparecer; brilho verde difuso no alto. */
+  /* Véus nas cores da logo SEIVE (03/11/2026): base em degradê de verdes, spot do verde da
+     marca atrás do título com núcleo mais claro, luz amarela quente no pé, sombras na borda
+     e embaixo, e um feixe de luz diagonal. A transição para a foto é feita por máscara, para
+     as luzes não criarem emenda. */
+  .hero-navy,
+  .hero-navy-right {
+    --hero-base: linear-gradient(160deg, #0b5a37 0%, #064229 48%, #032b1b 100%);
+  }
+
   .hero-navy {
     background:
-      radial-gradient(1100px 560px at 10% -12%, rgb(0 168 90 / 0.16) 0%, transparent 60%),
-      radial-gradient(760px 420px at 28% 118%, rgb(0 168 90 / 0.14) 0%, transparent 70%),
-      linear-gradient(
-        to right,
-        var(--color-seive-950) 0%,
-        rgb(1 34 24 / 0.96) 35%,
-        rgb(1 34 24 / 0.86) 50%,
-        rgb(1 34 24 / 0.66) 64%,
-        rgb(1 34 24 / 0.4) 77%,
-        rgb(1 34 24 / 0.16) 88%,
-        transparent 100%
-      );
+      radial-gradient(60% 55% at 22% 20%, rgb(0 168 90 / 0.42) 0%, transparent 70%),
+      radial-gradient(32% 28% at 30% 24%, rgb(60 196 124 / 0.16) 0%, transparent 70%),
+      radial-gradient(52% 46% at 6% 104%, rgb(255 210 58 / 0.3) 0%, transparent 70%),
+      radial-gradient(70% 60% at 50% 118%, rgb(0 0 0 / 0.38) 0%, transparent 70%),
+      radial-gradient(38% 70% at -6% 50%, rgb(0 0 0 / 0.3) 0%, transparent 70%),
+      linear-gradient(115deg, transparent 34%, rgb(255 255 255 / 0.05) 42%, transparent 52%),
+      var(--hero-base);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      #000 0%,
+      #000 42%,
+      rgb(0 0 0 / 0.72) 64%,
+      rgb(0 0 0 / 0.3) 82%,
+      transparent 98%
+    );
+    mask-image: linear-gradient(
+      to right,
+      #000 0%,
+      #000 42%,
+      rgb(0 0 0 / 0.72) 64%,
+      rgb(0 0 0 / 0.3) 82%,
+      transparent 98%
+    );
   }
 
   @media (min-width: 1024px) {
@@ -256,37 +274,57 @@ const textLines = hero.text.split('\n')
       width: 1700px;
     }
 
-    /* Verde profundo do banner sob a coluna 1, sem fechar em sólido. */
-    /* A arte já escurece à esquerda; a textura dela aparece de leve sob o texto. */
+    /* Sob a coluna 1, dissolvendo em curva longa antes do assunto. */
     .hero-navy {
       width: calc(50% - 20px);
-      background:
-        radial-gradient(900px 560px at 8% -12%, rgb(0 168 90 / 0.16) 0%, transparent 60%),
-        radial-gradient(760px 420px at 28% 118%, rgb(0 168 90 / 0.14) 0%, transparent 70%),
-        linear-gradient(
-          to left,
-          transparent 0px,
-          rgb(1 34 24 / 0.06) 50px,
-          rgb(1 34 24 / 0.18) 110px,
-          rgb(1 34 24 / 0.36) 180px,
-          rgb(1 34 24 / 0.56) 250px,
-          rgb(1 34 24 / 0.74) 330px,
-          rgb(1 34 24 / 0.86) 420px,
-          rgb(1 34 24 / 0.92) 100%
-        );
+      -webkit-mask-image: linear-gradient(
+        to left,
+        transparent 0px,
+        rgb(0 0 0 / 0.06) 50px,
+        rgb(0 0 0 / 0.2) 110px,
+        rgb(0 0 0 / 0.4) 180px,
+        rgb(0 0 0 / 0.62) 260px,
+        rgb(0 0 0 / 0.82) 350px,
+        #000 460px
+      );
+      mask-image: linear-gradient(
+        to left,
+        transparent 0px,
+        rgb(0 0 0 / 0.06) 50px,
+        rgb(0 0 0 / 0.2) 110px,
+        rgb(0 0 0 / 0.4) 180px,
+        rgb(0 0 0 / 0.62) 260px,
+        rgb(0 0 0 / 0.82) 350px,
+        #000 460px
+      );
     }
 
-    /* À direita: cobre a coluna do shortcode e fecha a margem da página no mesmo verde. */
+    /* À direita: cobre a coluna do shortcode e fecha a margem da página. */
+    /* Brilho verde no alto e sombra na base. */
     .hero-navy-right {
       width: calc(50% - 261px);
-      background: linear-gradient(
+      background:
+        radial-gradient(70% 50% at 85% 0%, rgb(0 168 90 / 0.3) 0%, transparent 70%),
+        radial-gradient(60% 45% at 70% 108%, rgb(255 210 58 / 0.1) 0%, transparent 70%),
+        radial-gradient(80% 60% at 60% 120%, rgb(0 0 0 / 0.35) 0%, transparent 70%),
+        var(--hero-base);
+      -webkit-mask-image: linear-gradient(
         to right,
         transparent 0px,
-        rgb(1 34 24 / 0.12) 70px,
-        rgb(1 34 24 / 0.34) 150px,
-        rgb(1 34 24 / 0.6) 230px,
-        rgb(1 34 24 / 0.82) 300px,
-        var(--color-seive-950) 380px
+        rgb(0 0 0 / 0.12) 70px,
+        rgb(0 0 0 / 0.34) 150px,
+        rgb(0 0 0 / 0.6) 230px,
+        rgb(0 0 0 / 0.82) 300px,
+        #000 380px
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0px,
+        rgb(0 0 0 / 0.12) 70px,
+        rgb(0 0 0 / 0.34) 150px,
+        rgb(0 0 0 / 0.6) 230px,
+        rgb(0 0 0 / 0.82) 300px,
+        #000 380px
       );
     }
 
