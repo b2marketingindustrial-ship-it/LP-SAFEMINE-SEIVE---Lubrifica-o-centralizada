@@ -82,7 +82,6 @@ export const benefits = {
     ],
     /** Fecho da faixa: o SEIVE LUB atua nessa causa. */
     answer: 'O SEIVE LUB elimina essa causa na origem.',
-    source: 'Dados de fabricantes de componentes, citados no catálogo SEIVE LUB.',
   },
 } as const satisfies {
   eyebrow: string
@@ -90,5 +89,5 @@ export const benefits = {
   titleHighlight: string
   text: string
   items: readonly Benefit[]
-  stats: { title: string; items: readonly [Stat, Stat]; answer: string; source: string }
+  stats: { title: string; items: readonly [Stat, Stat]; answer: string }
 }

@@ -16,12 +16,12 @@ import Icon from '@components/Icon.astro'
 import BrandCarousel from '@components/BrandCarousel.astro'
 import type { SectionProps } from '@lib/layout'
 import { cta } from '@data/content'
-import { productLines } from '@data/sections/linhas'
+import { productLines, type ProductLine } from '@data/sections/linhas'
 
 type Props = SectionProps
 
 const { tone, rhythm } = Astro.props
-const lines = productLines.items
+const lines: readonly ProductLine[] = productLines.items
 ---
 
 <Section id="linhas" tone={tone} rhythm={rhythm}>
@@ -34,24 +34,18 @@ const lines = productLines.items
 
   <BrandCarousel />
 
-  {/* A partir de 1280px cada card é um subgrid de 7 linhas: título, descrição, função/atuação e
+  {/* A partir de 1280px cada card é um subgrid de 6 linhas: título, descrição, função/atuação e
       resultado ficam na mesma altura nos 4 cards, mesmo com descrições de tamanhos diferentes. */}
   <ul class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-y-0">
     {lines.map((line, index) => (
-      <li class="group flex flex-col rounded-2xl border border-primary-dark/10 bg-neutral-light p-5 card-shadow transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:card-shadow-hover motion-reduce:transition-none motion-reduce:hover:translate-y-0 xl:row-span-7 xl:grid xl:grid-rows-subgrid xl:gap-y-0">
-        <span class="flex items-center justify-between">
-          <span class="rounded-full bg-accent-orange/10 px-3.5 py-1.5 font-sans text-[11px] font-bold tracking-[0.14em] text-accent-orange uppercase">
-            {line.tag}
-          </span>
-          <span
-            class="font-sans text-[12px] font-semibold tracking-[0.12em] text-ink-soft/70 tabular-nums"
-            aria-hidden="true"
-          >
-            {String(index + 1).padStart(2, '0')}/{String(lines.length).padStart(2, '0')}
-          </span>
-        </span>
-
-        <div class="surface-plate mt-4 flex h-48 items-center justify-center overflow-hidden rounded-xl border border-primary-dark/[0.06] p-4">
+      <li class="group flex flex-col overflow-hidden rounded-2xl border border-primary-dark/10 bg-neutral-light card-shadow transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:card-shadow-hover motion-reduce:transition-none motion-reduce:hover:translate-y-0 xl:row-span-6 xl:grid xl:grid-rows-subgrid xl:gap-y-0">
+        {/* Foto ocupando todo o topo do card; recorte transparente vai centrado sobre a placa. */}
+        <div
+          class:list={[
+            'relative aspect-[4/3] overflow-hidden',
+            line.fit === 'contain' ? 'surface-plate' : 'bg-primary-dark-900',
+          ]}
+        >
           <Image
             src={line.photo.src}
             alt={line.photo.alt}
@@ -59,42 +53,61 @@ const lines = productLines.items
             width={640}
             loading="lazy"
             decoding="async"
-            class="max-h-full w-auto max-w-full object-contain mix-blend-multiply transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+            class:list={[
+              'h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.05] motion-reduce:transition-none motion-reduce:group-hover:scale-100',
+              line.fit === 'contain' ? 'object-contain p-6' : 'object-cover',
+            ]}
           />
+          <span class="absolute inset-x-0 top-0 flex items-center justify-between p-4">
+            <span class="rounded-full bg-neutral-light/95 px-3 py-1.5 font-sans text-[11px] font-bold tracking-[0.14em] text-accent-orange uppercase shadow-[0_6px_14px_-8px_rgb(0_0_0/0.5)]">
+              {line.tag}
+            </span>
+            <span
+              class="rounded-full bg-primary-dark-900/80 px-2.5 py-1 font-sans text-[11px] font-semibold tracking-[0.08em] text-neutral-light tabular-nums"
+              aria-hidden="true"
+            >
+              {String(index + 1).padStart(2, '0')}/{String(lines.length).padStart(2, '0')}
+            </span>
+          </span>
         </div>
 
-        <h3 class="mt-4 font-display leading-tight font-extrabold text-primary-dark-900 text-[1.2rem]">
+        <h3 class="px-5 pt-5 font-display text-[1.15rem] leading-tight font-extrabold text-primary-dark-900">
           {line.title}
         </h3>
-        <p class="mt-2 font-sans text-[15px] leading-snug text-ink-soft">{line.description}</p>
+        <p class="px-5 pt-2 font-sans text-[15px] leading-snug text-ink-soft">{line.description}</p>
 
-        <dl class="mt-5 grid grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] border-b border-primary-dark/10 pb-4">
-          <div class="pr-2.5">
-            <dt class="font-sans text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+        <dl class="mx-5 mt-5 grid grid-cols-2 gap-2">
+          <div class="rounded-lg bg-neutral-gray-100 px-3 py-2.5">
+            <dt class="font-sans text-[10.5px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
               {productLines.specLabels[0]}
             </dt>
-            <dd class="mt-1 font-display text-[16px] font-extrabold tracking-[-0.01em] whitespace-nowrap text-primary-dark-900 xl:text-[17px]">
+            <dd class="mt-0.5 font-display text-[15px] font-extrabold text-primary-dark-900">
               {line.features[0]}
             </dd>
           </div>
-          <div class="border-l border-primary-dark/15 pl-3.5">
-            <dt class="font-sans text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+          <div class="rounded-lg bg-neutral-gray-100 px-3 py-2.5">
+            <dt class="font-sans text-[10.5px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
               {productLines.specLabels[1]}
             </dt>
-            <dd class="mt-1 font-display text-[16px] font-extrabold tracking-[-0.01em] whitespace-nowrap text-primary-dark-900 xl:text-[17px]">
+            <dd class="mt-0.5 font-display text-[15px] font-extrabold text-primary-dark-900">
               {line.features[1]}
             </dd>
           </div>
         </dl>
 
-        <p class="mt-4 flex items-center gap-3 font-sans text-[15px] text-ink">
-          <Icon name="check" class="size-7 shrink-0 text-accent-orange" />
+        <p class="mx-5 mt-4 flex items-center gap-2.5 font-sans text-[14.5px] text-ink">
+          <Icon name="check" class="size-5 shrink-0 text-accent-orange" />
           {line.features[2]}
         </p>
 
         {/* mt-auto alinha os botões na base quando os textos têm alturas diferentes */}
-        <div class="mt-auto pt-5">
-          <Button cta={`linhas-${line.id}`} size="md" class="w-full">
+        <div class="mt-auto px-5 pt-5 pb-5">
+          <Button
+            cta={`linhas-${line.id}`}
+            variant="outline-dark"
+            size="md"
+            class="w-full group-hover:border-accent-orange group-hover:bg-accent-orange group-hover:text-neutral-light"
+          >
             {cta.card}
           </Button>
         </div>

@@ -23,6 +23,8 @@ export interface ProductLine {
   title: string
   description: string
   photo: Photo
+  /** `contain` para recorte com fundo transparente; `cover` (padrão) para foto. */
+  fit?: 'cover' | 'contain'
   features: readonly [string, string, string]
   /** Exatamente um card escuro por grid. Informe sempre (true/false). */
   dark: boolean
@@ -44,6 +46,7 @@ export const productLines = {
       title: 'Bomba e reservatório',
       description: 'Armazenam o lubrificante e alimentam o circuito de forma automática.',
       photo: { src: linha1, alt: 'Bomba SEIVE LUB com reservatório transparente' },
+      fit: 'contain',
       features: ['Alimentação', 'Contínua', 'Processo automático'],
       dark: false,
     },

@@ -1,18 +1,19 @@
 ---
 /**
- * Clientes — biblioteca B2, fase prova. Reformulada em 03/11/2026: em vez do carrossel,
- * os logos (clientes da SEIVE, com aval registrado no BRIEFING) ficam parados e agrupados
- * por setor, como na página 5 do catálogo, para mostrar alcance em cada setor.
+ * Clientes — biblioteca B2, fase prova. Clientes da SEIVE (aval registrado no BRIEFING),
+ * agrupados por setor como na página 5 do catálogo.
  *
- * Duas colunas: à esquerda o cabeçalho, o texto e o CTA (fixos ao rolar no desktop); à
- * direita um painel com uma linha por setor (ícone e nome, depois os logos em placas).
- * Logos em cinza que ganham cor no hover; a escala de cinza disfarça a baixa resolução.
+ * Cabeçalho em duas colunas e, abaixo, um painel com uma linha por setor: rótulo à
+ * esquerda e os logos daquele setor correndo num carrossel contínuo à direita. As linhas
+ * alternam a direção; o carrossel para no hover e fica parado com reduced-motion. A lista
+ * de cada setor é repetida até encher o trilho, para o loop não ter buraco. Logos em cinza
+ * (disfarça a baixa resolução) que ganham cor no hover. No pé, a linha de CTA.
  */
 import { Image } from 'astro:assets'
 import Button from '@components/Button.astro'
-import Eyebrow from '@components/Eyebrow.astro'
 import Icon from '@components/Icon.astro'
 import Section from '@components/Section.astro'
+import SplitHeader from '@components/SplitHeader.astro'
 import type { SectionProps } from '@lib/layout'
 import { cta } from '@data/content'
 import { clients } from '@data/sections/clientes'
@@ -21,40 +22,27 @@ type Props = SectionProps
 
 const { tone, rhythm } = Astro.props
 
-const at = clients.title.indexOf(clients.titleHighlight)
-const before = at >= 0 ? clients.title.slice(0, at) : clients.title
-const after = at >= 0 ? clients.title.slice(at + clients.titleHighlight.length) : ''
-
-const groups = clients.sectors.map((sector) => ({
-  ...sector,
-  logos: clients.logos.filter((logo) => logo.sector === sector.id),
-}))
+// Cada metade do trilho precisa de pelo menos ~8 logos para cobrir a largura.
+const groups = clients.sectors.map((sector) => {
+  const logos = clients.logos.filter((logo) => logo.sector === sector.id)
+  const repeat = Math.max(1, Math.ceil(8 / logos.length))
+  return { ...sector, logos, half: Array.from({ length: repeat }, () => logos).flat() }
+})
 ---
 
 <Section id="clientes" tone={tone} rhythm={rhythm}>
-  <div class="grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-14">
-    <div class="lg:sticky lg:top-28 lg:self-start">
-      <Eyebrow>{clients.eyebrow}</Eyebrow>
-      <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-primary-dark-900 sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
-        {before}
-        {at >= 0 && <span class="text-accent-orange">{clients.titleHighlight}</span>}
-        {after}
-      </h2>
-      <p class="mt-4 max-w-[26rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[17px]">
-        {clients.text}
-      </p>
-      <p class="mt-8 font-sans text-[15px] font-semibold text-primary-dark-900">
-        {clients.ctaText}
-      </p>
-      <Button cta="clientes-cta" size="md" class="mt-4">
-        {cta.card}
-      </Button>
-    </div>
+  <SplitHeader
+    eyebrow={clients.eyebrow}
+    title={clients.title}
+    highlight={clients.titleHighlight}
+    text={clients.text}
+  />
 
-    <ul class="overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
-      {groups.map((group) => (
-        <li class="grid gap-4 border-b border-primary-dark/10 px-5 py-5 last:border-b-0 sm:grid-cols-[9.5rem_minmax(0,1fr)] sm:items-center sm:gap-6 sm:px-7">
-          <span class="flex items-center gap-3">
+  <div class="mt-10 overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
+    <ul>
+      {groups.map((group, row) => (
+        <li class="grid border-b border-primary-dark/10 sm:grid-cols-[12rem_minmax(0,1fr)] sm:items-center">
+          <span class="flex items-center gap-3 px-5 pt-5 sm:border-r sm:border-primary-dark/10 sm:px-7 sm:py-6">
             <span class="icon-chip size-9">
               <Icon name={group.icon} class="size-[18px]" />
             </span>
@@ -62,45 +50,104 @@ const groups = clients.sectors.map((sector) => ({
               {group.label}
             </span>
           </span>
-          <ul
-            class="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap"
-            aria-label={`Clientes SEIVE em ${group.label}`}
-          >
-            {group.logos.map((logo) => (
-              <li class="client-tile flex h-14 w-full items-center sm:w-[8.5rem] justify-center rounded-xl border border-primary-dark/[0.08] bg-neutral-gray-100 px-4">
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  height={48}
-                  format="webp"
-                  loading="lazy"
-                  decoding="async"
-                  class="client-logo max-h-8 w-auto max-w-full object-contain"
-                />
-              </li>
-            ))}
-          </ul>
+
+          <div class="clients-marquee overflow-hidden py-5 sm:py-6">
+            <ul class="sr-only">
+              {group.logos.map((logo) => (
+                <li>{logo.alt}</li>
+              ))}
+            </ul>
+            <div
+              class:list={['clients-track flex w-max items-center', row % 2 === 1 && 'is-reverse']}
+              aria-hidden="true"
+            >
+              {[0, 1].map(() =>
+                group.half.map((logo) => (
+                  <span class="flex h-10 w-40 shrink-0 items-center justify-center px-6">
+                    <Image
+                      src={logo.src}
+                      alt=""
+                      height={48}
+                      format="webp"
+                      loading="lazy"
+                      decoding="async"
+                      class="client-logo max-h-8 w-auto max-w-full object-contain"
+                    />
+                  </span>
+                )),
+              )}
+            </div>
+          </div>
         </li>
       ))}
     </ul>
+
+    <div class="flex flex-col gap-4 bg-neutral-gray-100/60 px-6 py-5 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <p class="font-sans text-[15px] font-semibold text-primary-dark-900">{clients.ctaText}</p>
+      <Button cta="clientes-cta" size="md" class="self-start sm:self-auto">
+        {cta.card}
+      </Button>
+    </div>
   </div>
 </Section>
 
 <style>
+  .clients-marquee {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 56px,
+      black calc(100% - 56px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 56px,
+      black calc(100% - 56px),
+      transparent 100%
+    );
+  }
+
+  .clients-track {
+    animation: clients-scroll 40s linear infinite;
+  }
+
+  .clients-track.is-reverse {
+    animation-direction: reverse;
+  }
+
+  .clients-marquee:hover .clients-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes clients-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
   .client-logo {
     filter: grayscale(1);
-    opacity: 0.75;
+    opacity: 0.7;
     transition:
       filter 300ms ease,
       opacity 300ms ease;
   }
 
-  .client-tile:hover .client-logo {
+  .clients-marquee:hover .client-logo {
     filter: none;
     opacity: 1;
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .clients-track {
+      animation: none;
+    }
+
     .client-logo {
       transition: none;
     }
