@@ -55,7 +55,7 @@ export const hero = {
   titleBreakAfter: 'Lubrificação centralizada',
   /** Trecho do H1 em verde. */
   highlight: 'máquinas pesadas',
-  text: 'Lubrificante levado a cada ponto da máquina de forma precisa,\nautomática e uniforme. A Safe Mine ajuda você a definir a solução para a sua máquina.',
+  text: 'Lubrificante levado a cada ponto da máquina de forma precisa,\nautomática e uniforme. A SEIVE ajuda você a definir a solução para a sua máquina.',
   banner: {
     src: heroBg,
     alt: 'Bomba de lubrificação centralizada SEIVE LUB instalada em máquina pesada',
