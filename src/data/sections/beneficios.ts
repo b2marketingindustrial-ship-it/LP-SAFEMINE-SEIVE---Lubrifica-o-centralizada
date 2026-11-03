@@ -25,55 +25,54 @@ export const benefits = {
   title: 'Por que investir no SEIVE LUB',
   /** Trecho do título em verde. */
   titleHighlight: 'no SEIVE LUB',
-  text: 'A falta de lubrificação desgasta componentes, para a produção e aumenta o risco de incêndio. O SEIVE LUB atua como medida preventiva em cada ponto da máquina.',
+  text: 'Lubrificação automática é manutenção preventiva: menos desgaste, menos paradas e mais segurança.',
   items: [
     {
       id: 'corretivas',
       icon: 'wrench',
       title: 'Menos corretivas',
-      description: 'Menos manutenção corretiva, troca e estoque de peças por desgaste.',
+      description: 'Menos troca de peças por desgaste.',
     },
     {
       id: 'disponibilidade',
       icon: 'trend-up',
       title: 'Mais disponibilidade',
-      description: 'Menos paradas programadas e não programadas na produção.',
+      description: 'Menos paradas na produção.',
     },
     {
       id: 'consumo',
       icon: 'leaf',
       title: 'Menos consumo e resíduos',
-      description: 'Sem excesso de graxa: menor consumo de lubrificante e de resíduos.',
+      description: 'Sem excesso de graxa.',
     },
     {
       id: 'seguranca',
       icon: 'shield',
       title: 'Mais segurança',
-      description: 'Previne acidentes mecânicos e incêndios ligados à falta de lubrificação.',
+      description: 'Previne acidentes e incêndios.',
     },
     {
       id: 'quantidade',
       icon: 'target',
       title: 'Quantidade exata',
-      description: 'A dose certa em todos os pontos, inclusive os de difícil acesso.',
+      description: 'Inclusive nos pontos de difícil acesso.',
     },
     {
       id: 'custo',
       icon: 'tag',
       title: 'Baixo custo de manutenção',
-      description: 'Sistema simples: a equipe só faz a recarga da bomba.',
+      description: 'A equipe só faz a recarga.',
     },
   ],
   stats: {
     items: [
       {
         value: '+60%',
-        label:
-          'das falhas de peças, engrenagens e rolamentos estão ligadas à falta de lubrificação',
+        label: 'das falhas de peças estão ligadas à falta de lubrificação',
       },
       {
         value: '+50%',
-        label: 'dos incêndios em equipamentos vêm de atrito e fricção sem lubrificação',
+        label: 'dos incêndios em equipamentos vêm de atrito sem lubrificação',
       },
     ],
     source: 'Dados de fabricantes de componentes, citados no catálogo SEIVE LUB.',
