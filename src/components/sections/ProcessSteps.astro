@@ -14,7 +14,6 @@ import Section from '@components/Section.astro'
 import type { SectionProps } from '@lib/layout'
 import { cta } from '@data/content'
 import { processSteps } from '@data/sections/processo'
-import { solution } from '@data/sections/solucao'
 
 type Props = SectionProps
 
@@ -30,7 +29,7 @@ const after = at >= 0 ? processSteps.title.slice(at + processSteps.titleHighligh
     <span class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></span>
     {/* Esquemático em marca d'água: só no desktop, atrás do CTA. */}
     <Image
-      src={solution.scheme.src}
+      src={processSteps.diagram}
       alt=""
       format="webp"
       width={1200}

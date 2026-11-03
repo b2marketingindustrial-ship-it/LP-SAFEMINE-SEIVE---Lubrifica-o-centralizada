@@ -7,6 +7,9 @@
  */
 import type { IconName } from '@data/icons'
 
+/** Esquemático da instalação, em marca d'água atrás do CTA do painel (só desktop). */
+import esquema from '@assets/processo/esquema.png'
+
 export interface Step {
   icon: IconName
   title: string
@@ -14,6 +17,7 @@ export interface Step {
 }
 
 export const processSteps = {
+  diagram: esquema,
   eyebrow: 'Como funciona',
   title: 'Como o SEIVE LUB funciona',
   /** Trecho do título em verde. */
@@ -43,6 +47,7 @@ export const processSteps = {
     },
   ],
 } as const satisfies {
+  diagram: ImageMetadata
   eyebrow: string
   title: string
   titleHighlight: string
