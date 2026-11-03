@@ -65,9 +65,10 @@ Certificações do supressor (ABNT PE-223, NFPA, UL), área de atendimento, tele
 
 ## Desvios do padrão
 
-- **Header:** sem desvio. Restaurado em 01/11/2026 à estrutura fixa 4.1.1 (barra navy sticky, logo em placa pendurada, tagline central, CTA laranja, sem âncoras).
+- **Header:** desvio pedido pelo usuário em 03/11/2026: mesmo estilo e layout do header das LPs Falanga. Barra branca sticky com as logos SEIVE e Safe Mine dentro dela (sem a placa pendurada), filete verde-azul da marca no topo, tagline central com selo verde, CTA verde e sombra só ao rolar. Sem menu (regra 1). Assinatura A8 do `check-lp.mjs` repinada.
 - **Hero:** sem desvio. O Hero da primeira versão (fundo claro, sem a coluna do chat) foi substituído em 01/11/2026 pelo da estrutura fixa 4.1.2: grid `1fr · 270px · 300px`, coluna 2 vazia, slot `shortcode` de 300px, foto de 1700px ancorada na borda do container. A faixa de quatro prioridades e o cartão de ajuda do hero saíram; a nota de resultados ficou sob os botões.
 - **Linhas:** `ProductLines.astro` sem a faixa "Não sabe qual configuração escolher?" (01/11/2026), por repetir o bloco `identificar` logo abaixo. Recompor com `compose.mjs` sobrescreve o arquivo: guarde esta versão antes.
+- **Clientes:** `ClientLogos.astro` com cabeçalho próprio, centrado e empilhado (rótulo em pill, título e descrição, cada um numa linha a partir do tablet), no lugar do `SplitHeader` (03/11/2026). Recompor com `compose.mjs` sobrescreve o arquivo: guarde esta versão antes.
 - **Paleta:** os véus do hero usam o azul `#0a1d4d` da marca no lugar do navy `#001830` do template. O token `accent-orange-light` (`#7ba249`) existe só para o destaque do H1 sobre o fundo escuro.
 
 ## Limitações conhecidas

@@ -2,14 +2,14 @@
 /**
  * Clientes — biblioteca B2, fase prova. Clientes da SEIVE (aval registrado no BRIEFING).
  *
- * Só o cabeçalho e os logos em carrossel contínuo: duas faixas, uma para cada lado, sem
- * tabela, rótulos de setor nem CTA (pedido do usuário, 03/11/2026). Para no hover e fica
+ * Cabeçalho centrado (pill, título e descrição, um sobre o outro) e os logos em carrossel
+ * contínuo: duas faixas, uma para cada lado, sem tabela, rótulos de setor nem CTA (pedidos
+ * do usuário, 03/11/2026). Para no hover e fica
  * parado com reduced-motion. Logos em cinza (disfarça a baixa resolução) que ganham cor
  * no hover. Os setores continuam nos dados, para uso futuro.
  */
 import { Image } from 'astro:assets'
 import Section from '@components/Section.astro'
-import SplitHeader from '@components/SplitHeader.astro'
 import type { SectionProps } from '@lib/layout'
 import { clients } from '@data/sections/clientes'
 
@@ -17,17 +17,31 @@ type Props = SectionProps
 
 const { tone, rhythm } = Astro.props
 
+const titleAt = clients.title.indexOf(clients.titleHighlight)
+const titleBefore = titleAt >= 0 ? clients.title.slice(0, titleAt) : clients.title
+const titleAfter = titleAt >= 0 ? clients.title.slice(titleAt + clients.titleHighlight.length) : ''
+
 const middle = Math.ceil(clients.logos.length / 2)
 const rows = [clients.logos.slice(0, middle), clients.logos.slice(middle)]
 ---
 
 <Section id="clientes" tone={tone} rhythm={rhythm}>
-  <SplitHeader
-    eyebrow={clients.eyebrow}
-    title={clients.title}
-    highlight={clients.titleHighlight}
-    text={clients.text}
-  />
+  {/* Cabeçalho centrado e empilhado (pedido do usuário, 03/11/2026): pill, título e descrição,
+      cada um numa linha só a partir do tablet. */}
+  <div class="flex flex-col items-center text-center">
+    <span class="inline-flex items-center gap-2 rounded-full border border-accent-orange/25 bg-accent-orange/[0.08] px-4 py-1.5 font-sans text-[12px] font-semibold tracking-[0.18em] text-accent-orange-dark uppercase sm:text-[13px]">
+      <span class="size-1.5 rounded-full bg-accent-orange" aria-hidden="true"></span>
+      {clients.eyebrow}
+    </span>
+    <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-primary-dark-900 sm:text-[2.1rem] sm:whitespace-nowrap xl:text-[2.4rem]">
+      {titleBefore}
+      {titleAt >= 0 && <span class="text-accent-orange">{clients.titleHighlight}</span>}
+      {titleAfter}
+    </h2>
+    <p class="mt-4 font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[17px] md:whitespace-nowrap">
+      {clients.text}
+    </p>
+  </div>
 
   <ul class="sr-only">
     {clients.logos.map((logo) => (

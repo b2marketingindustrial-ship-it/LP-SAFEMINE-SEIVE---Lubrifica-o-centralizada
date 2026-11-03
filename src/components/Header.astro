@@ -1,51 +1,93 @@
 ---
 /**
- * ESTRUTURA FIXA (PROMPT-PADRAO-LP 4.1.1). Barra navy sticky, logo em placa branca
- * "pendurada" (invade o hero), tagline central e CTA laranja. Sem menu e sem âncoras.
+ * ESTRUTURA FIXA (PROMPT-PADRAO-LP 4.1.1), com desvio pedido pelo usuário em 03/11/2026:
+ * mesmo estilo e layout do header das LPs Falanga — barra branca com as logos alinhadas
+ * dentro dela (sem a placa pendurada), filete verde-azul da marca no topo, tagline central
+ * com selo, CTA verde e sombra só depois que a página rola (`data-scrolled`). Sem menu:
+ * uma rota, uma página (regra 1). Registrado em docs/BRIEFING.md (Desvios do padrão).
+ * Muda só: logos (src/assets/seive-logo.webp, marca-safe-mine.png), tagline e rótulos.
  */
 import Button from './Button.astro'
+import Icon from './Icon.astro'
 import { Image } from 'astro:assets'
 import seiveLogo from '../assets/seive-logo.webp'
 import logo from '../assets/marca-safe-mine.png'
 import { header, cta } from '../data/content'
 ---
 
-<header class="sticky top-0 z-50 bg-primary-dark-900">
+<header data-header class="site-header sticky top-0 z-50 bg-neutral-light/95 backdrop-blur-md">
+  <span
+    aria-hidden="true"
+    class="block h-[3px] bg-[linear-gradient(90deg,var(--color-accent-orange-light)_0%,var(--color-accent-orange)_40%,var(--color-primary-dark-800)_100%)]"
+  ></span>
   <div class="mx-auto flex max-w-page items-center justify-between gap-3 px-4 py-3 sm:gap-6 sm:px-6 lg:px-10">
-    <a href="/" class="flex shrink-0 items-center self-start">
-      <span class="header-plate -mt-3 -mb-10 flex items-center gap-3 rounded-b-xl bg-neutral-light px-3.5 pt-[18px] pb-[18px] shadow-[0_10px_24px_-10px_rgba(0,0,0,0.55)] sm:gap-[18px] sm:px-[22px]">
-        <Image
-          src={seiveLogo}
-          alt="SEIVE"
-          width={476}
-          height={126}
-          format="webp"
-          loading="eager"
-          fetchpriority="low"
-          decoding="async"
-          class="h-[22px] w-auto sm:h-[35px]"
-        />
-        <span aria-hidden="true" class="h-[26px] w-px shrink-0 bg-ink/20 sm:h-[31px]"></span>
-        <Image
-          src={logo}
-          alt="Safe Mine"
-          width={420}
-          format="webp"
-          loading="eager"
-          fetchpriority="low"
-          decoding="async"
-          class="h-[18px] w-auto sm:h-[26px]"
-        />
-      </span>
+    {/* 1. Logos SEIVE (fabricante) e Safe Mine (anunciante), separadas por um filete */}
+    <a href="/" class="header-logo flex shrink-0 items-center gap-3 sm:gap-[18px]">
+      <Image
+        src={seiveLogo}
+        alt="SEIVE"
+        width={476}
+        height={126}
+        format="webp"
+        loading="eager"
+        fetchpriority="low"
+        decoding="async"
+        class="h-[22px] w-auto sm:h-[34px]"
+      />
+      <span aria-hidden="true" class="h-[26px] w-px shrink-0 bg-primary-dark/15 sm:h-8"></span>
+      <Image
+        src={logo}
+        alt="Safe Mine"
+        width={420}
+        format="webp"
+        loading="eager"
+        fetchpriority="low"
+        decoding="async"
+        class="h-[18px] w-auto sm:h-[26px]"
+      />
     </a>
 
-    <span class="hidden flex-1 text-center font-display text-[15px] font-extrabold tracking-[0.14em] text-neutral-light uppercase sm:block lg:text-[17px]">
-      {header.tagline}
-    </span>
+    {/* 2. Tagline com selo, centrada entre as logos e o CTA (some abaixo de lg) */}
+    <div class="hidden flex-1 items-center justify-center lg:flex">
+      <span class="flex items-center gap-2.5 font-display text-[13px] font-extrabold tracking-[0.14em] text-primary-dark uppercase">
+        <span class="flex size-7 items-center justify-center rounded-full bg-accent-orange/12 text-accent-orange">
+          <Icon name="badge-check" class="size-4" />
+        </span>
+        {header.tagline}
+      </span>
+    </div>
 
+    {/* 3. CTA, rótulo curto no mobile */}
     <Button cta="header-cta" size="sm" icon={false} class="shrink-0">
       <span class="sm:hidden">{cta.primaryShort}</span>
       <span class="hidden sm:inline">{cta.primary}</span>
     </Button>
   </div>
 </header>
+
+<style>
+  /* Linha fina enquanto a página está no topo; sombra quando o conteúdo passa por baixo. */
+  .site-header {
+    box-shadow: 0 1px 0 rgb(10 29 77 / 0.08);
+    transition: box-shadow 0.25s ease;
+  }
+
+  .site-header[data-scrolled] {
+    box-shadow: 0 14px 30px -20px rgb(10 29 77 / 0.55);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-header {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Sombra do header só depois que a página rola.
+  document.querySelectorAll<HTMLElement>('[data-header]').forEach((el) => {
+    const update = () => el.toggleAttribute('data-scrolled', window.scrollY > 8)
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+  })
+</script>
