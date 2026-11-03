@@ -88,12 +88,11 @@
 
 /* Duas seções seguidas no mesmo fundo (03/11/2026, como nas LPs Falanga): sem troca de cor,
    os dois respiros somados abriam um vão de 140px. A segunda perde o respiro de cima e o
-   espaço entre elas fica só o --section-space da anterior. Os diferenciais ficam de fora:
-   o bloco verde deles sobe sobre o próprio respiro de cima (ver WhyBrand.astro). */
-#main > section.bg-neutral-light:not(#diferenciais) + section.bg-neutral-light:not(#diferenciais),
-#main
-  > section.bg-neutral-gray-100:not(#diferenciais)
-  + section.bg-neutral-gray-100:not(#diferenciais) {
+   espaço entre elas fica só o --section-space da anterior (componentes → como funciona,
+   diferenciais → cotação). Os diferenciais nunca perdem o respiro de cima: o bloco verde
+   deles sobe sobre ele (ver WhyBrand.astro). */
+#main > section.bg-neutral-light + section.bg-neutral-light:not(#diferenciais),
+#main > section.bg-neutral-gray-100 + section.bg-neutral-gray-100:not(#diferenciais) {
   padding-top: 0;
 }
 
