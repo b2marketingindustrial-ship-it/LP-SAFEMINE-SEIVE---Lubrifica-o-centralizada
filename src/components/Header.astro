@@ -2,7 +2,7 @@
 /**
  * ESTRUTURA FIXA (PROMPT-PADRAO-LP 4.1.1), com desvio pedido pelo usuário em 03/11/2026:
  * mesmo estilo e layout do header das LPs Falanga — barra branca com as logos alinhadas
- * dentro dela (sem a placa pendurada), filete verde-azul da marca no topo, tagline central
+ * dentro dela (sem a placa pendurada), filete amarelo-verde da marca no topo, tagline central
  * com selo, CTA verde e sombra só depois que a página rola (`data-scrolled`). Sem menu:
  * uma rota, uma página (regra 1). Registrado em docs/BRIEFING.md (Desvios do padrão).
  * Muda só: logos (src/assets/seive-logo.webp, marca-safe-mine.png), tagline e rótulos.
@@ -68,12 +68,12 @@ import { header, cta } from '../data/content'
 <style>
   /* Linha fina enquanto a página está no topo; sombra quando o conteúdo passa por baixo. */
   .site-header {
-    box-shadow: 0 1px 0 rgb(10 29 77 / 0.08);
+    box-shadow: 0 1px 0 rgb(4 41 27 / 0.08);
     transition: box-shadow 0.25s ease;
   }
 
   .site-header[data-scrolled] {
-    box-shadow: 0 14px 30px -20px rgb(10 29 77 / 0.55);
+    box-shadow: 0 14px 30px -20px rgb(4 41 27 / 0.55);
   }
 
   @media (prefers-reduced-motion: reduce) {
