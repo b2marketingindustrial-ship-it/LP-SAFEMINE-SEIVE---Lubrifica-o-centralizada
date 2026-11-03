@@ -72,7 +72,7 @@ export const benefits = {
       {
         prefix: 'mais de',
         value: '60%',
-        label: 'das falhas de peças, engrenagens e rolamentos',
+        label: 'das falhas em engrenagens e rolamentos',
       },
       {
         prefix: 'mais de',
