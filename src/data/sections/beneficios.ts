@@ -16,6 +16,7 @@ export interface Benefit {
 }
 
 export interface Stat {
+  prefix: string
   value: string
   label: string
 }
@@ -65,16 +66,22 @@ export const benefits = {
     },
   ],
   stats: {
+    /** Título da faixa: deixa claro que os números são o problema, não o resultado. */
+    title: 'O que a falta de lubrificação causa',
     items: [
       {
-        value: '+60%',
-        label: 'das falhas de peças estão ligadas à falta de lubrificação',
+        prefix: 'mais de',
+        value: '60%',
+        label: 'das falhas de peças, engrenagens e rolamentos',
       },
       {
-        value: '+50%',
-        label: 'dos incêndios em equipamentos vêm de atrito sem lubrificação',
+        prefix: 'mais de',
+        value: '50%',
+        label: 'dos incêndios em equipamentos, por atrito',
       },
     ],
+    /** Fecho da faixa: o SEIVE LUB atua nessa causa. */
+    answer: 'O SEIVE LUB elimina essa causa na origem.',
     source: 'Dados de fabricantes de componentes, citados no catálogo SEIVE LUB.',
   },
 } as const satisfies {
@@ -83,5 +90,5 @@ export const benefits = {
   titleHighlight: string
   text: string
   items: readonly Benefit[]
-  stats: { items: readonly [Stat, Stat]; source: string }
+  stats: { title: string; items: readonly [Stat, Stat]; answer: string; source: string }
 }

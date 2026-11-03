@@ -45,18 +45,34 @@ const { tone, rhythm } = Astro.props
 
   <div class="navy-panel panel-shadow relative mt-12 overflow-hidden rounded-[1.5rem] px-6 py-7 sm:px-10 lg:px-12">
     <span class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></span>
-    <div class="relative grid gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] lg:items-center lg:gap-10">
-      {benefits.stats.items.map((stat) => (
-        <p class="flex items-center gap-5">
-          <span class="shrink-0 font-display text-[2.6rem] leading-none font-extrabold tracking-[-0.03em] text-accent-orange-light tabular-nums">
-            {stat.value}
-          </span>
-          <span class="font-sans text-[15px] leading-snug text-neutral-light/85">{stat.label}</span>
+    <div class="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)_auto] lg:items-center lg:gap-10">
+      <p class="font-display text-[1.25rem] leading-snug font-extrabold text-neutral-light sm:text-[1.4rem]">
+        {benefits.stats.title}
+      </p>
+      <dl class="grid gap-6 sm:grid-cols-2 sm:gap-8">
+        {benefits.stats.items.map((stat) => (
+          <div class="flex flex-col border-l border-white/15 pl-5">
+            <dt class="order-2 mt-1 font-sans text-[14.5px] leading-snug text-neutral-light/80">
+              {stat.label}
+            </dt>
+            <dd class="order-1 font-sans text-[12px] font-semibold tracking-[0.14em] text-neutral-light/60 uppercase">
+              {stat.prefix}
+              <span class="block font-display text-[2.4rem] leading-none font-extrabold tracking-[-0.03em] text-neutral-light normal-case tabular-nums">
+                {stat.value}
+              </span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <div class="flex flex-col items-start gap-3 lg:items-end">
+        <p class="flex items-center gap-2 font-sans text-[15px] font-semibold text-accent-orange-light">
+          <Icon name="check" class="size-5 shrink-0" />
+          {benefits.stats.answer}
         </p>
-      ))}
-      <Button cta="beneficios-cta" size="md" class="self-start lg:self-auto">
-        {cta.card}
-      </Button>
+        <Button cta="beneficios-cta" size="md">
+          {cta.card}
+        </Button>
+      </div>
     </div>
     <p class="relative mt-5 font-sans text-[12.5px] text-neutral-light/55">
       {benefits.stats.source}

@@ -1,14 +1,18 @@
 ---
 /**
- * Clientes e números — biblioteca B2, fase prova. Nesta LP os logos (clientes da SEIVE,
- * com aval registrado no BRIEFING) correm num carrossel contínuo em escala de cinza, que
- * ganha cor e para no hover e fica parado com `prefers-reduced-motion`. Abaixo, uma
- * régua com os 2 números e o CTA.
+ * Clientes — biblioteca B2, fase prova. Reformulada em 03/11/2026: em vez do carrossel,
+ * os logos (clientes da SEIVE, com aval registrado no BRIEFING) ficam parados e agrupados
+ * por setor, como na página 5 do catálogo, para mostrar alcance em cada setor.
+ *
+ * Duas colunas: à esquerda o cabeçalho, o texto e o CTA (fixos ao rolar no desktop); à
+ * direita um painel com uma linha por setor (ícone e nome, depois os logos em placas).
+ * Logos em cinza que ganham cor no hover; a escala de cinza disfarça a baixa resolução.
  */
 import { Image } from 'astro:assets'
 import Button from '@components/Button.astro'
+import Eyebrow from '@components/Eyebrow.astro'
+import Icon from '@components/Icon.astro'
 import Section from '@components/Section.astro'
-import SplitHeader from '@components/SplitHeader.astro'
 import type { SectionProps } from '@lib/layout'
 import { cta } from '@data/content'
 import { clients } from '@data/sections/clientes'
@@ -16,103 +20,87 @@ import { clients } from '@data/sections/clientes'
 type Props = SectionProps
 
 const { tone, rhythm } = Astro.props
+
+const at = clients.title.indexOf(clients.titleHighlight)
+const before = at >= 0 ? clients.title.slice(0, at) : clients.title
+const after = at >= 0 ? clients.title.slice(at + clients.titleHighlight.length) : ''
+
+const groups = clients.sectors.map((sector) => ({
+  ...sector,
+  logos: clients.logos.filter((logo) => logo.sector === sector.id),
+}))
 ---
 
 <Section id="clientes" tone={tone} rhythm={rhythm}>
-  <SplitHeader
-    eyebrow={clients.eyebrow}
-    title={clients.title}
-    highlight={clients.titleHighlight}
-    text={clients.text}
-  />
+  <div class="grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-14">
+    <div class="lg:sticky lg:top-28 lg:self-start">
+      <Eyebrow>{clients.eyebrow}</Eyebrow>
+      <h2 class="mt-4 font-display text-[1.75rem] leading-[1.08] font-extrabold tracking-[-0.02em] text-primary-dark-900 sm:text-[2.1rem] lg:text-[2.1rem] xl:text-[2.4rem]">
+        {before}
+        {at >= 0 && <span class="text-accent-orange">{clients.titleHighlight}</span>}
+        {after}
+      </h2>
+      <p class="mt-4 max-w-[26rem] font-sans text-[16px] leading-relaxed text-ink-soft sm:text-[17px]">
+        {clients.text}
+      </p>
+      <p class="mt-8 font-sans text-[15px] font-semibold text-primary-dark-900">
+        {clients.ctaText}
+      </p>
+      <Button cta="clientes-cta" size="md" class="mt-4">
+        {cta.card}
+      </Button>
+    </div>
 
-  <div class="relative mt-10 overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
-    <div class="clients-marquee relative py-12">
-      <div class="clients-track flex w-max items-center">
-        {/* Lista duplicada para o loop ficar contínuo; a cópia some para leitor de tela. */}
-        {[0, 1].map((copy) => (
-          <ul class="flex shrink-0 items-center" aria-hidden={copy === 1 ? 'true' : undefined}>
-            {clients.logos.map((logo) => (
-              <li class="flex h-12 w-48 shrink-0 items-center justify-center px-7">
+    <ul class="overflow-hidden rounded-[1.5rem] border border-primary-dark/10 bg-neutral-light card-shadow">
+      {groups.map((group) => (
+        <li class="grid gap-4 border-b border-primary-dark/10 px-5 py-5 last:border-b-0 sm:grid-cols-[9.5rem_minmax(0,1fr)] sm:items-center sm:gap-6 sm:px-7">
+          <span class="flex items-center gap-3">
+            <span class="icon-chip size-9">
+              <Icon name={group.icon} class="size-[18px]" />
+            </span>
+            <span class="font-display text-[15px] font-extrabold text-primary-dark-900">
+              {group.label}
+            </span>
+          </span>
+          <ul
+            class="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap"
+            aria-label={`Clientes SEIVE em ${group.label}`}
+          >
+            {group.logos.map((logo) => (
+              <li class="client-tile flex h-14 w-full items-center sm:w-[8.5rem] justify-center rounded-xl border border-primary-dark/[0.08] bg-neutral-gray-100 px-4">
                 <Image
                   src={logo.src}
-                  alt={copy === 1 ? '' : logo.alt}
+                  alt={logo.alt}
                   height={48}
                   format="webp"
                   loading="lazy"
                   decoding="async"
-                  class="client-logo max-h-10 w-auto object-contain"
+                  class="client-logo max-h-8 w-auto max-w-full object-contain"
                 />
               </li>
             ))}
           </ul>
-        ))}
-      </div>
-    </div>
-
-    <div class="relative flex flex-col gap-4 border-t border-primary-dark/10 bg-neutral-gray-100/60 px-6 py-5 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-      <p class="font-sans text-[15px] text-ink">{clients.ctaText}</p>
-      <Button cta="clientes-cta" size="md" class="self-start sm:self-auto">
-        {cta.card}
-      </Button>
-    </div>
+        </li>
+      ))}
+    </ul>
   </div>
 </Section>
 
 <style>
-  .clients-marquee {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      black 72px,
-      black calc(100% - 72px),
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      black 72px,
-      black calc(100% - 72px),
-      transparent 100%
-    );
-  }
-
-  .clients-track {
-    animation: clients-scroll 52s linear infinite;
-  }
-
-  /* Cinza por padrão (disfarça a baixa resolução); cor e pausa no hover. */
   .client-logo {
     filter: grayscale(1);
-    opacity: 0.7;
+    opacity: 0.75;
     transition:
       filter 300ms ease,
       opacity 300ms ease;
   }
 
-  .clients-marquee:hover .clients-track {
-    animation-play-state: paused;
-  }
-
-  .clients-marquee:hover .client-logo {
+  .client-tile:hover .client-logo {
     filter: none;
     opacity: 1;
   }
 
-  @keyframes clients-scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .clients-track {
-      animation: none;
-    }
-
     .client-logo {
       transition: none;
     }
